@@ -1,6 +1,6 @@
 public class BinarySearchIterativeWay {
 
-    public static int search(int[] array, int element) {
+    private static int search(int[] array, int element) {
         int index = Integer.MAX_VALUE;
         int lowIndex = 0;
         int highIndex = array.length - 1;

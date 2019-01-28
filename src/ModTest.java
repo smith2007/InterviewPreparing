@@ -12,7 +12,6 @@ public class ModTest {
 
         System.out.println("9%4 = " + 9 % 4); // оказалось - 1
 
-
         System.out.println("5%1 = " + 5 % 1); // тут логично - делится без остатка - 0
 
 
