@@ -1,6 +1,7 @@
 public class BinarySearchRecursiveWay {
 
     private static int search(int[] array, int element, int lowIndex, int highIndex) {
+
         int mid = (lowIndex + highIndex) / 2;
         if (array[mid] < element) {
             return search(array, element, lowIndex + 1, highIndex);
