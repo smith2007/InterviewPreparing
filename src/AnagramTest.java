@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class AnagramTest {
 
@@ -10,6 +10,13 @@ public class AnagramTest {
 
         boolean anagram = isAnagram(first, second);
         System.out.println("Strings " + (anagram ? "are" : "are not") + " anagram");
+
+
+        Collection<List<String>> anagrams = getAnagrams("нос", "сон", "снедь", "днесь");
+
+
+
+
     }
 
     // O(n log n)
@@ -33,5 +40,25 @@ public class AnagramTest {
         }
         return true;
 
+    }
+
+
+    private static Collection<List<String>> getAnagrams(String... values) {
+        HashMap<String, List<String>> map = new HashMap<>();
+
+        for (String value : values) {
+            char[] key = value.toCharArray();
+            Arrays.sort(key);
+            String key1 = String.valueOf(key);
+            List<String> strings = map.get(key1);
+            if (strings == null) {
+                ArrayList<String> newList = new ArrayList<>();
+                newList.add(value);
+                map.put(key1, newList);
+            } else {
+                strings.add(value);
+            }
+        }
+        return map.values();
     }
 }
