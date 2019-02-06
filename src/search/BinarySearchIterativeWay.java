@@ -1,3 +1,5 @@
+package search;
+
 public class BinarySearchIterativeWay {
 
     private static int search(int[] array, int element) {

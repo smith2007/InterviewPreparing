@@ -1,3 +1,5 @@
+package search;
+
 public class BinarySearchRecursiveWay {
 
     private static int search(int[] array, int element, int lowIndex, int highIndex) {

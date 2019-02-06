@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class TwoArraysFindDuplicates {
+public class TwoArraysFindDuplicatesHashSet {
 
     public static void main(String[] args) {
         int[] firstArray = {3, 2, 5, 1, 4};

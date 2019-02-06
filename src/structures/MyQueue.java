@@ -1,3 +1,4 @@
+package structures;
 
 public class MyQueue<T> {
 
@@ -69,7 +70,7 @@ public class MyQueue<T> {
 
     @Override
     public String toString() {
-        return "MyQueue{" +
+        return "structures.MyQueue{" +
                 "first=" + first +
                 ", last=" + last +
                 '}';
