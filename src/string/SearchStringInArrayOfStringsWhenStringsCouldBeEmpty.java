@@ -1,4 +1,6 @@
-public class SearchStringInArrayOfStrings {
+package string;
+
+public class SearchStringInArrayOfStringsWhenStringsCouldBeEmpty {
 
     public static void main(String[] args) {
         String[] arr = {"ant", "", "ball", "", "coach", "", "dad"};

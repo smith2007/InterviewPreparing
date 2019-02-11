@@ -1,6 +1,8 @@
+package string;
+
 import java.util.*;
 
-public class AnagramTest {
+public class AnagramUsingSorting {
 
     public static void main(String[] args) {
 

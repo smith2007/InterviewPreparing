@@ -1,3 +1,5 @@
+package string;
+
 import java.util.HashMap;
 
 public class FindHowOftenCharsContainsInStringYandex {
@@ -49,7 +51,7 @@ public class FindHowOftenCharsContainsInStringYandex {
     }
 
     public static void main(String[] args) {
-        System.out.println("quadratic result is :" + findQuadratic("ab", "aabbccd"));
-        System.out.println("linear result is: " + findLinear("ab", "aabbccd"));
+        System.out.println("quadratic result isContainsDoubleChars :" + findQuadratic("ab", "aabbccd"));
+        System.out.println("linear result isContainsDoubleChars: " + findLinear("ab", "aabbccd"));
     }
 }
