@@ -5,20 +5,20 @@ public class MyQueue<T> {
     public static void main(String[] args) {
         MyQueue<String> stringMyQueue = new MyQueue<>();
 
-        stringMyQueue.add("first");
+        stringMyQueue.push("first");
 
         System.out.println(stringMyQueue);
 
-        stringMyQueue.add("second");
+        stringMyQueue.push("second");
 
         System.out.println(stringMyQueue);
 
-        stringMyQueue.add("third");
+        stringMyQueue.push("third");
 
         System.out.println(stringMyQueue);
 
 
-        stringMyQueue.remove();
+        stringMyQueue.poll();
 
         System.out.println(stringMyQueue);
     }
@@ -43,7 +43,7 @@ public class MyQueue<T> {
     private MyNode<T> first;
     private MyNode<T> last;
 
-    public void add(T data) {
+    public void push(T data) {
         MyNode<T> newItem = new MyNode<>(data);
         if (last != null) {
             last.next = newItem; //старый ласт его ссылку на следующий в очереди присваиваем на наш новый ласт
@@ -56,15 +56,31 @@ public class MyQueue<T> {
         }
     }
 
-    public void remove() {
+    public void poll() {
         if (first == null) {
-            throw new RuntimeException("first element is null. Nothing to remove.");
+            throw new RuntimeException("first element is null. Nothing to poll.");
         }
 
         first = first.next;
 
         if (first == null) {
             last = null;
+        }
+    }
+
+    public T peekFirst() {
+        if (first == null) {
+            throw new RuntimeException("first element is null. Nothing to peek.");
+        } else {
+            return first.data;
+        }
+    }
+
+    public T peekLast(){
+        if (last == null) {
+            throw new RuntimeException("last element is null. Nothing to peek.");
+        } else {
+            return last.data;
         }
     }
 

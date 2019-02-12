@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class StringTransformAAA_A3 {
+public class StringTransformAAA_A3UsingHashMap {
 
     public static void main(String[] args) {
         /*
@@ -20,7 +20,9 @@ public class StringTransformAAA_A3 {
         System.out.println(transform("aaabbc"));
     }
 
-    // O(n)
+    // O(n) - по времени - по памяти О(n)
+    // есть более прямолинейный способ - бежать по строкев в цикле - проверять каждый символ
+    // если такой ранее был модифицировать счетки и конкатенировать с помощью StringBuilder
     private static String transform(String orginal) {
         Map<Character, Integer> map = new HashMap<>();
         char[] chars = orginal.toCharArray();
