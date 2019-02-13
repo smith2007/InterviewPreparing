@@ -1,4 +1,4 @@
-public class FindDuplicatesInArrayOnO1 {
+public class ArrayFindDuplicatesOnO1 {
 
     public static void main(String[] args) {
         //эта штука работает только если значения в массиве ограничены значением n-1

@@ -1,4 +1,4 @@
-public class FIndMinimumAndMaximumInArray {
+public class ArrayFIndMinimumAndMaximum {
 
     public static void main(String[] args) {
         int[] arr = {3, 1, 5, 6, 2, 9, 9, 1};

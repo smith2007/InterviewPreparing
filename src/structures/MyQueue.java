@@ -24,7 +24,7 @@ public class MyQueue<T> {
     }
 
 
-    private static class MyNode<T> {
+    static class MyNode<T> {
         private T data;
         private MyNode<T> next; //ссылка на предыдущий следующий в очереди элемент
 
@@ -37,6 +37,14 @@ public class MyQueue<T> {
             return "MyNode{" +
                     "data=" + data +
                     '}';
+        }
+
+        public T getData() {
+            return data;
+        }
+
+        public MyNode<T> getNext() {
+            return next;
         }
     }
 
@@ -60,7 +68,6 @@ public class MyQueue<T> {
         if (first == null) {
             throw new RuntimeException("first element is null. Nothing to poll.");
         }
-
         first = first.next;
 
         if (first == null) {
@@ -69,19 +76,27 @@ public class MyQueue<T> {
     }
 
     public T peekFirst() {
+        return this.peekFirstNode().data;
+    }
+
+    public MyNode<T> peekFirstNode() {
         if (first == null) {
             throw new RuntimeException("first element is null. Nothing to peek.");
         } else {
-            return first.data;
+            return first;
         }
     }
 
-    public T peekLast(){
+    public MyNode<T> peekLastNode() {
         if (last == null) {
             throw new RuntimeException("last element is null. Nothing to peek.");
         } else {
-            return last.data;
+            return last;
         }
+    }
+
+    public T peekLast() {
+        return peekLastNode().data;
     }
 
     @Override
