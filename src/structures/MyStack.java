@@ -33,7 +33,7 @@ public class MyStack<T> {
     }
 
     public T pop() {
-        if (top == null){
+        if (top == null) {
             return null;
         } else {
             MyNode<T> result = top;
@@ -41,6 +41,13 @@ public class MyStack<T> {
             return result.data;
         }
 
+    }
+
+    public T peek() {
+        if (top == null) {
+            return null;
+        }
+        return top.data;
     }
 
 
