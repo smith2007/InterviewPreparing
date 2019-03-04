@@ -1,6 +1,6 @@
-package string;
+package search;
 
-public class SearchStringInArrayOfStringsWhenStringsCouldBeEmpty {
+public class BinarySearchStringInArrayOfStringsWhenStringsCouldBeEmpty {
 
     public static void main(String[] args) {
         String[] arr = {"ant", "", "ball", "", "coach", "", "dad"};

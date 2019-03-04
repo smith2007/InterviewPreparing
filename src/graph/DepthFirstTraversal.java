@@ -4,7 +4,7 @@ public class DepthFirstTraversal {
 
     public static void main(String[] args) {
 
-        //создаем граф из 4х вершин : 0-1-2-3-4
+        //создаем граф из 4х вершин : 0-1-2-3
         Graph graph = new Graph(4);
         graph.addEdge(0, 1);
         graph.addEdge(1, 3);
