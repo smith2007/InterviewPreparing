@@ -16,9 +16,6 @@ public class AnagramUsingSorting {
 
         Collection<List<String>> anagrams = getAnagrams("нос", "сон", "снедь", "днесь");
 
-
-
-
     }
 
     // O(n log n)

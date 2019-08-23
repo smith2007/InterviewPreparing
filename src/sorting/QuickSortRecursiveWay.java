@@ -2,7 +2,7 @@ package sorting;
 
 import java.util.stream.IntStream;
 
-public class QuickSort {
+public class QuickSortRecursiveWay {
 
     private static void sort(int[] arr) {
         int begin = 0;
@@ -12,6 +12,8 @@ public class QuickSort {
 
     private static void sort(int[] arr, int begin, int end) {
 
+        //условие прекращени цикла
+        //оно возникнет тогда когда мы достигнем базового случая
         if (begin > end) {
             return;
         }

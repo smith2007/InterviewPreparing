@@ -1,4 +1,4 @@
-public class ArrayFindSumOrExceptionArraySorted {
+public class TwoSumArraySorted {
 
     public static void main(String[] args) {
 

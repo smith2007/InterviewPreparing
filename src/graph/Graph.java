@@ -13,21 +13,21 @@ public class Graph {
     //массив соседей
     //каждый индекс - условно - номер вершины
     //каждый элемент - массив из списка соседей
-    List<List<Integer>> adjacencyLists;
+    List<List<Integer>> nodesAndNeighbors;
 
     //конструктор инициализирует вершины
     //ставит пустой список соседей
     Graph(int numberOfVertices) {
         this.numberOfVertices = numberOfVertices;
-        adjacencyLists = new ArrayList<>();
+        nodesAndNeighbors = new ArrayList<>();
         for (int i = 0; i < numberOfVertices; i++) {
-            adjacencyLists.add(new ArrayList<>());
+            nodesAndNeighbors.add(new ArrayList<>());
         }
     }
 
     //добавляем соседей то есть ребра
     void addEdge(int vertex, int newAdjacency) {
-        adjacencyLists.get(vertex).add(newAdjacency);
+        nodesAndNeighbors.get(vertex).add(newAdjacency);
     }
 
 }

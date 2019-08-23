@@ -6,9 +6,9 @@ public class BinarySearchRecursiveWay {
 
         int mid = (lowIndex + highIndex) / 2;
         if (array[mid] < element) {
-            return search(array, element, lowIndex + 1, highIndex);
+            return search(array, element, mid + 1, highIndex);
         } else if (array[mid] > element) {
-            return search(array, element, lowIndex, highIndex + 1);
+            return search(array, element, lowIndex, mid - 1);
         }
         if (array[mid] == element) {
             return mid;

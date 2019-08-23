@@ -4,6 +4,11 @@ import java.util.HashMap;
 
 public class FindHowOftenCharsContainsInStringYandex {
 
+    /**
+     * есть две строчки
+     * нужно понять сколько раз символы из первой
+     * строки встречаются во второй строке
+     */
     private static int findQuadratic(String first, String second) {
         char[] firstCharArray = first.toCharArray();
         char[] secondCharArray = second.toCharArray();

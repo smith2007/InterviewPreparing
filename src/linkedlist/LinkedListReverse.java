@@ -1,3 +1,5 @@
+package linkedlist;
+
 import java.util.LinkedList;
 
 public class LinkedListReverse {
@@ -15,14 +17,14 @@ public class LinkedListReverse {
     }
 
     //O(n)
-    //O(1)
-    private static LinkedList<Integer> reverseWithRemoving(LinkedList<Integer> linkedList) {
+    //O(1) - ну такое себе
+    private static LinkedList<Integer> reverseWithRemoving(LinkedList<Integer> original) {
         LinkedList<Integer> result = new LinkedList<>();
 
-        int size = linkedList.size();
+        int size = original.size();
         for (int i = 0; i < size; i++) {
-            Integer last = linkedList.getLast();
-            linkedList.removeLast();
+            Integer last = original.getLast();
+            original.removeLast();
             result.add(last);
         }
         return result;

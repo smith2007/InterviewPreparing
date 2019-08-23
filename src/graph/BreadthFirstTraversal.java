@@ -7,7 +7,7 @@ public class BreadthFirstTraversal {
 
     public static void main(String[] args) {
 
-        //создаем граф из 4х вершин : 0-1-2-3-4
+        //создаем граф из 4х вершин : 0-1-2-3
         Graph graph = new Graph(4);
 
         //фигачим связи между ними - ребра
@@ -53,7 +53,7 @@ public class BreadthFirstTraversal {
             System.out.print(elm + " ");
 
             //далее берем список соседей
-            List<Integer> adjacenciesForVisit = graph.adjacencyLists.get(elm);
+            List<Integer> adjacenciesForVisit = graph.nodesAndNeighbors.get(elm);
             for (Integer adjacencyForFutureVisit : adjacenciesForVisit) {
                 //исключаем уже просмотренных соседей
                 if (!visited[adjacencyForFutureVisit]) {

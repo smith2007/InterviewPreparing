@@ -22,16 +22,16 @@ public class DepthFirstTraversal {
     // слоность О (V + E)
     //достаточно простой алгоритм
     //заключается в рекурсивном обходе подмассива соседей
-    static void dft(int currVertex, boolean[] visited, Graph graph) {
-        if (visited[currVertex]) {
+    static void dft(int currNode, boolean[] visited, Graph graph) {
+        if (visited[currNode]) {
             return;
         }
 
-        System.out.println("Vertex " + currVertex + " has visited");
-        visited[currVertex] = true;
+        System.out.println("Vertex " + currNode + " has visited");
+        visited[currNode] = true;
 
-        for (Integer adj : graph.adjacencyLists.get(currVertex)) {
-            dft(adj, visited, graph);
+        for (Integer node : graph.nodesAndNeighbors.get(currNode)) {
+            dft(node, visited, graph);
         }
 
     }

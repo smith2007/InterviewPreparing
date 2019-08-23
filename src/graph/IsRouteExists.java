@@ -36,7 +36,7 @@ public class IsRouteExists {
                 return true;
             } else if (!visited[elm]) {
                 visited[elm] = true;
-                for (Integer adj : graph.adjacencyLists.get(elm)) {
+                for (Integer adj : graph.nodesAndNeighbors.get(elm)) {
                     queue.push(adj);
                 }
             }
