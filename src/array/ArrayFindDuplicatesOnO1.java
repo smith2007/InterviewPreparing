@@ -1,3 +1,5 @@
+package array;
+
 public class ArrayFindDuplicatesOnO1 {
 
     public static void main(String[] args) {

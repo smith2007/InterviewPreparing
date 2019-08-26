@@ -1,3 +1,5 @@
+package array;
+
 public class TwoSumArraySorted {
 
     public static void main(String[] args) {

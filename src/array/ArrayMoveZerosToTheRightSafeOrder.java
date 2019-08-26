@@ -1,6 +1,8 @@
+package array;
+
 import java.util.stream.IntStream;
 
-public class ArrayMoveZerosToTheLeftSafeOrder {
+public class ArrayMoveZerosToTheRightSafeOrder {
 
     /**
      * ну что есть массив чисел в них рандомно разбросаны нули
@@ -60,4 +62,5 @@ public class ArrayMoveZerosToTheLeftSafeOrder {
         return arr;
 
     }
+
 }

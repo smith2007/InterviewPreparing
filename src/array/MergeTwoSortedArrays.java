@@ -1,3 +1,5 @@
+package array;
+
 import java.util.stream.IntStream;
 
 public class MergeTwoSortedArrays {

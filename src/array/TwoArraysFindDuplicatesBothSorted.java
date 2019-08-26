@@ -1,3 +1,5 @@
+package array;
+
 public class TwoArraysFindDuplicatesBothSorted {
 
     public static void main(String[] args) {

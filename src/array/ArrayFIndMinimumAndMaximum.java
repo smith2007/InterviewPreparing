@@ -1,3 +1,5 @@
+package array;
+
 public class ArrayFIndMinimumAndMaximum {
 
     public static void main(String[] args) {

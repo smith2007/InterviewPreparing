@@ -1,3 +1,5 @@
+package array;
+
 import java.util.HashSet;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

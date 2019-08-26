@@ -1,3 +1,5 @@
+package array;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Singleton {
@@ -24,7 +26,7 @@ public class Singleton {
 
     @Override
     public String toString() {
-        return "Singleton{" +
+        return "array.Singleton{" +
                 "id=" + id +
                 '}';
     }
