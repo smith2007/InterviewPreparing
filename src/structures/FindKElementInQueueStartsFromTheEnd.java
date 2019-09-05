@@ -13,6 +13,7 @@ public class FindKElementInQueueStartsFromTheEnd {
         System.out.println(findByEndIndex(0, myQueue));
 
         System.out.println(findByEndIndex(1000, myQueue));
+
     }
 
     //самое первое что мне приходит в голову это

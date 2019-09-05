@@ -23,7 +23,7 @@ public class BreadthFirstTraversal {
                 "(starting from vertex 2)");
 
         // ну и пробуем обойти этот граф начиная со второй вершины
-        bfs(2, graph);
+        bfs(0, graph);
 
     }
 
@@ -48,7 +48,7 @@ public class BreadthFirstTraversal {
         //ну и все, погнали обходить
         while (queue.size() != 0) {
             //извлекаем элемент из очереди и печатаем его
-            Integer elm = queue.poll();
+            Integer elm = queue.remove();
 
             System.out.print(elm + " ");
 
@@ -58,7 +58,7 @@ public class BreadthFirstTraversal {
                 //исключаем уже просмотренных соседей
                 if (!visited[adjacencyForFutureVisit]) {
                     //и хуярим в очередь на обход
-                    queue.push(adjacencyForFutureVisit);
+                    queue.add(adjacencyForFutureVisit);
                     visited[adjacencyForFutureVisit] = true;
                 }
             }
