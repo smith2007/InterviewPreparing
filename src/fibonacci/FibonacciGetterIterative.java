@@ -1,6 +1,6 @@
 package fibonacci;
 
-public class FibonacciGetter {
+public class FibonacciGetterIterative {
 
     public static void main(String[] args) {
 
@@ -10,7 +10,7 @@ public class FibonacciGetter {
         System.out.println(fibb(2));
         //1
 
-        System.out.println(fibb(9));
+        System.out.println(fibb(50));
         //34
     }
 

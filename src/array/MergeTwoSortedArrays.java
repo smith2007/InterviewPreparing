@@ -13,6 +13,14 @@ public class MergeTwoSortedArrays {
         IntStream.of(merged).forEach(System.out::print);
     }
 
+    /**
+     * подход с двумя указателями
+     * тупо ходим по обоим массивам набивая третий до тех пор
+     * пока не упремся в конец одного из них
+     *
+     * как только уперлись в конец, добегаем до конца
+     * забиваем массив оставшимися значениями из оставшегося массива
+     */
     static int[] merge(int[] arr1, int[] arr2) {
 
         int[] arr3 = new int[arr1.length + arr2.length];
@@ -20,6 +28,7 @@ public class MergeTwoSortedArrays {
         int i = 0;
         int j = 0;
         int k = 0;
+
 
         while (i < arr1.length && j < arr2.length) {
             if (arr1[i] <= arr2[j]) {
