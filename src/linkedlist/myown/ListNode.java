@@ -1,20 +1,20 @@
 package linkedlist.myown;
 
-public class Node {
+public class ListNode {
 
-    private Node next;
-    private Integer value;
+    public ListNode next;
+    public Integer value;
 
-    public Node(Integer value) {
+    public ListNode(Integer value) {
         this.value = value;
     }
 
-    public Node(Node next, Integer value) {
+    public ListNode(ListNode next, Integer value) {
         this.next = next;
         this.value = value;
     }
 
-    public void setNext(Node next) {
+    public void setNext(ListNode next) {
         this.next = next;
     }
 
@@ -22,7 +22,7 @@ public class Node {
         this.value = value;
     }
 
-    public Node getNext() {
+    public ListNode getNext() {
         return next;
     }
 

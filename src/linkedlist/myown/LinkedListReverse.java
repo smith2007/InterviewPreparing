@@ -3,16 +3,16 @@ package linkedlist.myown;
 public class LinkedListReverse {
 
     public static void main(String[] args) {
-        Node first = new Node(1);
+        ListNode first = new ListNode(1);
 
-        Node second = new Node(2);
+        ListNode second = new ListNode(2);
 
-        Node third = new Node(3);
+        ListNode third = new ListNode(3);
 
         first.setNext(second);
         second.setNext(third);
 
-        Node curr = first;
+        ListNode curr = first;
         while (curr != null) {
             System.out.println(curr.getValue());
             curr = curr.getNext();
@@ -22,7 +22,7 @@ public class LinkedListReverse {
         System.out.println("------------");
 
 
-        Node newRoot = reverse(first);
+        ListNode newRoot = reverse(first);
 
         curr = newRoot;
         while (curr != null) {
@@ -32,18 +32,18 @@ public class LinkedListReverse {
     }
 
 
-    static Node reverse(Node root) {
+    static ListNode reverse(ListNode root) {
 
-        Node prev = null;
-        Node curr = root;
-        Node next = root.getNext();
+        ListNode prev = null;
+        ListNode curr = root;
+        ListNode next = root.getNext();
 
         while (curr != null) {
 
-            Node newPrev = curr;
-            Node newCurr = next;
+            ListNode newPrev = curr;
+            ListNode newCurr = next;
 
-            Node newNext = next != null ? next.getNext() : null;
+            ListNode newNext = next != null ? next.getNext() : null;
 
             curr.setNext(prev);
 

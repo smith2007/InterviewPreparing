@@ -92,7 +92,7 @@ public class BinaryTreeFindClosestAncestorOfTwoNodes {
                 return node;
             } else if (leftRes != null) {
                 //если только левое поддереве содержит нужные нам элементы
-                //отдаем его, значит блять текущий Node не является а является
+                //отдаем его, значит блять текущий ListNode не является а является
                 //носителем двух нод левое поддерево его и возвращаем
                 return leftRes;
             } else if (rightRes != null) {

@@ -3,15 +3,15 @@ package linkedlist.myown;
 public class IsLinkedListLooped {
 
     public static void main(String[] args) {
-        Node first = new Node(1);
+        ListNode first = new ListNode(1);
 
-        Node second = new Node(2);
+        ListNode second = new ListNode(2);
 
-        Node third = new Node(3);
+        ListNode third = new ListNode(3);
 
-        Node fourth = new Node(4);
+        ListNode fourth = new ListNode(4);
 
-        Node fifth = new Node(5);
+        ListNode fifth = new ListNode(5);
 
         first.setNext(second);
         second.setNext(third);
@@ -26,10 +26,10 @@ public class IsLinkedListLooped {
 
     }
 
-    static boolean is(Node root) {
+    static boolean is(ListNode root) {
 
-        Node first = root;
-        Node second = root;
+        ListNode first = root;
+        ListNode second = root;
         while (true) {
             first = first.getNext();
             second = second.getNext();
