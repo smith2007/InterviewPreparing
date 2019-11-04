@@ -19,7 +19,7 @@ public class LinkedListsMerge {
         ListNode res = mergeKLists(arr);
 
         while (true) {
-            System.out.println(res.getValue());
+            System.out.println(res.getVal());
 
             if (res.next != null) {
                 res = res.next;
@@ -32,7 +32,7 @@ public class LinkedListsMerge {
 
     static ListNode mergeKLists(ListNode[] arr) {
 
-        PriorityQueue<ListNode> queue = new PriorityQueue<>((e1, e2) -> e1.getValue().compareTo(e2.getValue()));
+        PriorityQueue<ListNode> queue = new PriorityQueue<>((e1, e2) -> e1.getVal().compareTo(e2.getVal()));
 
         for (int i = 0; i < arr.length; i++) {
             queue.add(arr[i]);

@@ -14,7 +14,7 @@ public class LinkedListReverse {
 
         ListNode curr = first;
         while (curr != null) {
-            System.out.println(curr.getValue());
+            System.out.println(curr.getVal());
             curr = curr.getNext();
         }
 
@@ -26,7 +26,7 @@ public class LinkedListReverse {
 
         curr = newRoot;
         while (curr != null) {
-            System.out.println(curr.getValue());
+            System.out.println(curr.getVal());
             curr = curr.getNext();
         }
     }

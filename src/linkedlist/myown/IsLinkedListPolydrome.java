@@ -68,7 +68,7 @@ public class IsLinkedListPolydrome {
         ListNode right = prev;
 
         while (true) {
-            if (!left.getValue().equals(right.getValue())) {
+            if (!left.getVal().equals(right.getVal())) {
                 return false;
             }
             left = left.getNext();

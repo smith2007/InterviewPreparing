@@ -13,7 +13,7 @@ public class MergeTwoLinkedLists {
         ListNode res = mergeTwoLists(first, second);
 
         while (true) {
-            System.out.println(res.getValue());
+            System.out.println(res.getVal());
 
             if (res.next != null) {
                 res = res.next;
@@ -35,7 +35,7 @@ public class MergeTwoLinkedLists {
         ListNode curr = result;
 
         while (l1 != null && l2 != null) {
-            if (l1.value <= l2.value) {
+            if (l1.val <= l2.val) {
                 curr.next = l1;
                 l1 = l1.next;
             } else {

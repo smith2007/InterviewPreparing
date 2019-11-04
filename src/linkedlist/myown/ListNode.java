@@ -3,30 +3,30 @@ package linkedlist.myown;
 public class ListNode {
 
     public ListNode next;
-    public Integer value;
+    public Integer val;
 
-    public ListNode(Integer value) {
-        this.value = value;
+    public ListNode(Integer val) {
+        this.val = val;
     }
 
-    public ListNode(ListNode next, Integer value) {
+    public ListNode(ListNode next, Integer val) {
         this.next = next;
-        this.value = value;
+        this.val = val;
     }
 
     public void setNext(ListNode next) {
         this.next = next;
     }
 
-    public void setValue(Integer value) {
-        this.value = value;
+    public void setVal(Integer val) {
+        this.val = val;
     }
 
     public ListNode getNext() {
         return next;
     }
 
-    public Integer getValue() {
-        return value;
+    public Integer getVal() {
+        return val;
     }
 }
