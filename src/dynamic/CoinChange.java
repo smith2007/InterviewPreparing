@@ -3,14 +3,6 @@ package dynamic;
 import java.util.Arrays;
 
 public class CoinChange {
-
-    public static void main(String[] args) {
-
-        int[] coins = {5, 1, 2};
-
-        System.out.println(change(coins, 11));
-    }
-
     static int change(int[] coins, int amount) {
 
         if (coins.length == 0) {
@@ -46,5 +38,11 @@ public class CoinChange {
         return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
     }
 
+    public static void main(String[] args) {
+
+        int[] coins = {5, 1, 2};
+
+        System.out.println(change(coins, 11));
+    }
 
 }

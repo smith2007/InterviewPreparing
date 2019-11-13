@@ -12,7 +12,9 @@ public class BinarySearchIterative {
         int end = arr.length - 1;
 
         while (end >= start) {
+            //делим пополам - берем средний элемент
             int mid = (start + end) / 2;
+
             if (arr[mid] == elm) {
                 return mid;
             } else if (arr[mid] > elm) {
@@ -21,7 +23,6 @@ public class BinarySearchIterative {
                 start = mid + 1;
             }
         }
-
         return -1;
     }
 }

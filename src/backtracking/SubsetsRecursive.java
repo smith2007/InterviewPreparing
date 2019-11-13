@@ -6,12 +6,6 @@ import java.util.List;
 
 public class SubsetsRecursive {
 
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3};
-        List<List<Integer>> subsets = subsets(arr);
-        System.out.println(subsets);
-    }
-
     static List<List<Integer>> subsets(int[] arr) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(arr);
@@ -29,4 +23,12 @@ public class SubsetsRecursive {
                                                         // что бы учесть дырочные чейны
         }
     }
+
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3};
+        List<List<Integer>> subsets = subsets(arr);
+        System.out.println(subsets);
+    }
+
 }

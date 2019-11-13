@@ -1,19 +1,13 @@
 package search;
 
 public class BinarySearchRecursiveWay2 {
-
-
     public static void main(String[] args) {
         int[] arr = {3, 4, 6, 8, 9};
-
         int elm = 8;
-
         //нужно вернуть индекс
-
         int search = search(arr, elm, 0, arr.length - 1);
         System.out.println("Index of elm is " + search);
     }
-
 
     // сложность по времени О(log n)
     // сложность по памяти О(log n)

@@ -1,4 +1,4 @@
-package string;
+package slidind_window;
 
 import java.util.HashMap;
 import java.util.Map;

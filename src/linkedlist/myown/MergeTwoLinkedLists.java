@@ -3,27 +3,6 @@ package linkedlist.myown;
 public class MergeTwoLinkedLists {
 
 
-    public static void main(String[] args) {
-        ListNode first = new ListNode(1);
-        first.next = new ListNode(4);
-
-        ListNode second = new ListNode(1);
-        second.next = new ListNode(3);
-
-        ListNode res = mergeTwoLists(first, second);
-
-        while (true) {
-            System.out.println(res.getVal());
-
-            if (res.next != null) {
-                res = res.next;
-            } else {
-                break;
-            }
-        }
-
-    }
-
     static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l2;
@@ -48,4 +27,26 @@ public class MergeTwoLinkedLists {
         curr.next = l1 == null ? l2 : l1;
         return result.next;
     }
+
+    public static void main(String[] args) {
+        ListNode first = new ListNode(1);
+        first.next = new ListNode(4);
+
+        ListNode second = new ListNode(1);
+        second.next = new ListNode(3);
+
+        ListNode res = mergeTwoLists(first, second);
+
+        while (true) {
+            System.out.println(res.getVal());
+
+            if (res.next != null) {
+                res = res.next;
+            } else {
+                break;
+            }
+        }
+
+    }
+
 }

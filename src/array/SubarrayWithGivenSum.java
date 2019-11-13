@@ -5,7 +5,6 @@ import java.util.HashMap;
 public class SubarrayWithGivenSum {
 
     public static void main(String[] args) {
-        int[] arr = {6, 3, 8, 2, 7, 9};
 
         int positionA = 2;
         int positionB = 5;
@@ -19,7 +18,10 @@ public class SubarrayWithGivenSum {
 
 
         */
-        printPositionsOfSubArraySumm(arr, 16);
+
+        int[] arr = {-19,-82,-70,-46,-29,7,15,-72,-7,100,303};
+
+        printPositionsOfSubArraySumm(arr, 100);
     }
 
     static int summByPosition(int[] arr, int positionA, int positionB) {
@@ -58,7 +60,8 @@ public class SubarrayWithGivenSum {
     //но сложность квадратичная
 
     /**
-     * можно идти по массиву и считать сумму, как только текущая сумма превысит искомую - мы нашли конечный индекс
+     * можно идти по массиву и считать сумму, как только текущая
+     * сумма превысит искомую - мы нашли конечный индекс
      * далее еще раз идем и ищем начальный индекс
      */
 

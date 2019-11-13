@@ -4,52 +4,64 @@ public class LongestPalidromicSubstring {
 
 
     public static void main(String[] args) {
-        String str = "babad";
+        String str = "cbbd";
 
-        System.out.println(longest(str));
+        LongestPalidromicSubstring lps = new LongestPalidromicSubstring();
+        System.out.println(lps.longestPalindrome(str));
 
     }
 
-    static String longest(String str) {
-        if (str == null || str.length() <= 1) {
-            return str;
+    private int start, end, maxLen;
+
+    public String longestPalindrome(String s) {
+
+        if (s.length() < 2) {
+            return s;
         }
 
-        char[] chars = str.toCharArray();
-        int start = 0;
-        int end = 0;
-        int max = 0;
+        //тут идея в следующем - берем итый элемент
+        //и бежим в обе стороны
+        //влево и вправо
+        //подсчитываем смотрим что это палиндром
 
-        for (int i = 0; i < chars.length; i++) {
+        //итый индекс это центр палиндрома
 
-            if (isPallidrome(chars, i - max - 1, i)) {
-                start = i - max - 1;
-                end = i;
-                max += 2;
-            } else if (isPallidrome(chars, i - max, i)) {
-                start = i - max;
-                end = i;
-                max += 1;
-            }
+        for (int i = 0; i < s.length() - 1; i++) {
+            extendPalindrome(s, i, i);  //assume odd length, try to extend Palindrome as possible
+            extendPalindrome(s, i, i + 1); //assume even length.
         }
 
-        return str.substring(start, end + 1);
+        return s.substring(start, end + 1);
     }
 
-    static boolean isPallidrome(char[] chars, int i, int j) {
-        if (i < 0) {
-            return false;
+    private void extendPalindrome(String s, int i, int j) {
+
+        //бежим влево и вправо
+        //сужаем границы до тех пор пока и слева и справа будут равные символы
+        //ищем полиндром
+        //как только достигли границ строки
+        //или наткнулись на то что символы разные
+        //выходим из цикла
+        while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
+            j++;
+            i--;
         }
 
-        while (i < j) {
-            if (chars[i] != chars[j]) {
-                return false;
-            }
+        //как только вышли из цикла значит палиндром нашли
+        //хоть какой-либо
+        //ну или не нашли и остаемся с пустой строкой
+        //он может состоять хоть из одного символа
+        //хоть из нуля
+        int currSubsLength = j - i - 1;
 
-            i++;
-            j--;
+        //ну и все дальше дело техники, надо
+        // посмотреть длинну и сохранить
+        if (end - start - 1 < currSubsLength) {
+            maxLen = currSubsLength;
+            start = i + 1;
+            end = j - 1;
         }
-        return true;
-
     }
 }
+
+

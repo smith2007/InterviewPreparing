@@ -6,20 +6,10 @@ import java.util.List;
 
 public class CombinationSumII {
 
-    public static void main(String[] args) {
-
-        int[] arr = {10, 1, 2, 7, 6, 1, 5};
-
-
-        System.out.println(combinationSum2(arr, 8));
-
-    }
-
     static List<List<Integer>> combinationSum2(int[] arr, int target) {
         if (arr.length == 0) {
             return null;
         }
-
         Arrays.sort(arr);
 
         ArrayList<List<Integer>> res = new ArrayList<>();
@@ -43,4 +33,13 @@ public class CombinationSumII {
             }
         }
     }
+
+    public static void main(String[] args) {
+
+        int[] arr = {10, 1, 2, 7, 6, 1, 5};
+        // int[] arr = {-1, 0, 1, 2, -1, -4};
+        System.out.println(combinationSum2(arr, 8));
+
+    }
+
 }

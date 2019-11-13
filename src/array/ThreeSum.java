@@ -43,7 +43,7 @@ public class ThreeSum {
             }
         }
 
-        // If we reach here, then no triplet was found
+        // если достигли этой точки, значит нет такого триплета
         return false;
     }
 
