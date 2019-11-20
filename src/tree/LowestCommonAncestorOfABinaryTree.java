@@ -1,6 +1,6 @@
 package tree;
 
-public class BinaryTreeFindClosestAncestorOfTwoNodes {
+public class LowestCommonAncestorOfABinaryTree {
 
     /**
      *
@@ -12,9 +12,13 @@ public class BinaryTreeFindClosestAncestorOfTwoNodes {
      два варианта решения:
 
 
-     1 - с памятью, начинаем обход дерева и ищем наши искомые вершины используем два стека, в стеках фиксируем наш пройденный путь, как только элементы в стеках совпадут - первый совпавший элемент - и есть наш общий потомок
+     1 - с памятью, начинаем обход дерева и ищем наши искомые вершины используем два стека,
+     в стеках фиксируем наш пройденный путь, как только элементы в стеках совпадут -
+     первый совпавший элемент - и есть наш общий потомок
 
-     2 - действуем рекурсией, обходим, левое правое поддерево, возвращаем ноду если и в левом и в правом поддереве есть оба наши искомых элемента, возвращаем левый потомок если в есть только в левом или правый потомок если только в левом
+     2 - действуем рекурсией, обходим, левое правое поддерево,
+     возвращаем ноду если и в левом и в правом поддереве есть оба наши искомых элемента,
+     возвращаем левый потомок если в есть только в левом или правый потомок если только в левом
 
      сложность по времени: О(n)
      сложность по памяти: О(1)
@@ -55,7 +59,7 @@ public class BinaryTreeFindClosestAncestorOfTwoNodes {
 
 
         TreeNode result = find(root, 17, 11);
-        System.out.println(result != null ? result.value : "null");
+        System.out.println(result != null ? result.val : "null");
 
     }
 
@@ -67,6 +71,7 @@ public class BinaryTreeFindClosestAncestorOfTwoNodes {
      *
      */
     static TreeNode find(TreeNode node, int a, int b) {
+
         // частный случай, нода пуская
         if (node == null) {
             return null;
@@ -75,7 +80,7 @@ public class BinaryTreeFindClosestAncestorOfTwoNodes {
         //какой либо из элементов равен текущей ноде
         //это нужно сделать для того что бы
         //потом ниже по коду обработать эту ситуацию
-        if (node.value == a || node.value == b) {
+        if (node.val == a || node.val == b) {
             return node;
         } else {
 

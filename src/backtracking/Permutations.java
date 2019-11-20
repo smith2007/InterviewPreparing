@@ -5,6 +5,13 @@ import java.util.List;
 
 public class Permutations {
 
+    /**
+     * используем рекурсию, подумай блять башкой как это сделать,
+     * надо крутится в цикле и набивать массив, так же надо трекать каждый
+     * из уже просмотренных вариантов что бы они не печатались,
+     * для этого можно использовать сэт а еще лучше массив булеанов
+     */
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 3};
         List<List<Integer>> lists = permute(arr);
@@ -25,16 +32,16 @@ public class Permutations {
         List<List<Integer>> res = new ArrayList<>();
 
 
-        fillIn(res, new ArrayList<>(), arr, new boolean[arr.length]);
+        backtrack(res, new ArrayList<>(), arr, new boolean[arr.length]);
 
         return res;
     }
 
 
-    static void fillIn(List<List<Integer>> res, List<Integer> temp, int[] arr, boolean[] used) {
+    static void backtrack(List<List<Integer>> res, List<Integer> curr, int[] arr, boolean[] used) {
 
-        if (temp.size() == arr.length) {
-            res.add(temp);
+        if (curr.size() == arr.length) {
+            res.add(new ArrayList<>(curr));
             return;
         }
 
@@ -43,13 +50,12 @@ public class Permutations {
                 continue;
             }
 
-
-            ArrayList<Integer> local = new ArrayList<>(temp);
             used[i] = true;
-            local.add(arr[i]);
+            curr.add(arr[i]);
 
-            fillIn(res, local, arr, used);
+            backtrack(res, curr, arr, used);
 
+            curr.remove(curr.size()-1);
             used[i] = false;
         }
     }

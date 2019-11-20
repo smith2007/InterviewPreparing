@@ -94,7 +94,7 @@ public class BinaryTreeSerializationDeserializationDFS {
                 continue;
             }
 
-            list.add(node.value);
+            list.add(node.val);
             stack.push(node.left);
             stack.push(node.right);
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BinaryTreeRetrunListOfListsOfAllFlorsOfThisTree {
+public class BinaryTreeLevelOrderTraversal {
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(5);

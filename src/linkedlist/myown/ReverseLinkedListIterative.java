@@ -1,30 +1,18 @@
 package linkedlist.myown;
 
-public class LinkedListReverseIterative {
+public class ReverseLinkedListIterative {
 
-    static ListNode reverse(ListNode root) {
-        ListNode prev = null;
-        ListNode curr = root;
-        ListNode next = root.getNext();
-        while (curr != null) {
+    static ListNode reverse(ListNode head) {
+        ListNode newHead = null;
 
-            ListNode newPrev = curr;
-            ListNode newCurr = next;
-
-            ListNode newNext = next != null ? next.getNext() : null;
-
-            curr.setNext(prev);
-
-            if (next != null) {
-                next.setNext(curr);
-            }
-
-            prev = newPrev;
-            curr = newCurr;
-            next = newNext;
-
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = next;
         }
-        return prev;
+
+        return newHead;
     }
 
 

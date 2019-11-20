@@ -57,7 +57,7 @@ public class ZigZagTraversal {
             return res;
         }
 
-        res.add(List.of(root.value));
+        res.add(List.of(root.val));
 
         boolean isLeftNext = false;
 
@@ -81,7 +81,7 @@ public class ZigZagTraversal {
 
             while (phantomQueueSize != 0) {
                 TreeNode elm = queue.poll();
-                floor[i] = elm.value;
+                floor[i] = elm.val;
                 phantomQueueSize--;
                 if (elm.left != null) {
                     queue.add(elm.left);

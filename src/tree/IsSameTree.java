@@ -5,21 +5,21 @@ import java.util.LinkedList;
 public class IsSameTree {
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(5);
+        TreeNode root = new TreeNode(2);
 
-        TreeNode rootLeft = new TreeNode(7);
+        TreeNode rootLeft = new TreeNode(3);
 
-        TreeNode rootRight = new TreeNode(9);
+        TreeNode rootRight = new TreeNode(4);
 
         root.left = rootLeft;
         root.right = rootRight;
 
 
-        TreeNode root2 = new TreeNode(5);
+        TreeNode root2 = new TreeNode(2);
 
-        TreeNode rootLeft2 = new TreeNode(7);
+        TreeNode rootLeft2 = new TreeNode(3);
 
-        TreeNode rootRight2 = new TreeNode(9);
+        TreeNode rootRight2 = new TreeNode(4);
 
         root2.left = rootLeft2;
         root2.right = rootRight2;
@@ -48,7 +48,7 @@ public class IsSameTree {
             TreeNode felm = fq.poll();
             TreeNode selm = sq.poll();
 
-            if (felm.value != selm.value) {
+            if (felm.val != selm.val) {
                 return false;
             }
 

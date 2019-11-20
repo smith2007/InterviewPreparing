@@ -92,7 +92,7 @@ public class BinaryTreeSerializationDeserializationBFS {
                 continue;
             }
 
-            list.add(node.value);
+            list.add(node.val);
             queue.add(node.left);
             queue.add(node.right);
 

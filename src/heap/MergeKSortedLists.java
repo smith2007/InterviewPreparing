@@ -5,7 +5,7 @@ import linkedlist.myown.ListNode;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class LinkedListsMerge {
+public class MergeKSortedLists {
     /**
      * есть вариант сделать это за время O(n log k), решение в следующем,
      * будем держать кучу, PriorityQueue, где самые приоритетные это минимальные элементы

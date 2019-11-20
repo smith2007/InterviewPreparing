@@ -1,7 +1,29 @@
 package linkedlist.myown;
 
-public class MergeTwoLinkedLists {
+public class MergeTwoSortedListsIterative {
 
+    /**
+     * дан два не пустых линкед листа которые представляют собой как бы два числа
+     *
+     * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+     * Output: 7 -> 0 -> 8
+     * Explanation: 342 + 465 = 807.
+     *
+     * необходимо сложить их
+     *
+     * ну тут я как делал, ходим по каждому из листов паралельно и создаем пару,
+     * можно отдельный класс для этого завести, ну что пытаемся сложить, паралельно
+     * понимаем результат сложения у нас с остатком или без
+     * как проверить
+     *
+     *     ostatok = 0;
+     *             if (newVal > 9) {
+     *                 ostatok = newVal / 10;
+     *                 newVal = newVal % 10;
+     *             }
+     *
+     * тогда держим это в уме
+     */
 
     static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {
@@ -25,6 +47,7 @@ public class MergeTwoLinkedLists {
         }
 
         curr.next = l1 == null ? l2 : l1;
+
         return result.next;
     }
 
@@ -46,7 +69,6 @@ public class MergeTwoLinkedLists {
                 break;
             }
         }
-
     }
 
 }

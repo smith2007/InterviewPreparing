@@ -21,14 +21,8 @@ public class AnagrammUsingLetterCounting2 {
     static boolean isAnagramm(String first, String second) {
         HashMap<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < first.length(); i++) {
-
             Character c = first.charAt(i);
-            Integer count = map.get(c);
-            if (count == null) {
-                map.put(c, 1);
-            } else {
-                map.put(c, count + 1);
-            }
+            map.merge(c, 1, (a, b) -> a + b);
         }
 
         for (int i = 0; i < second.length(); i++) {

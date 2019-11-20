@@ -54,7 +54,7 @@ public class BinaryTreeBreathFirstTraversal {
                 if (elm == null) {
                     break;
                 }
-                System.out.print(elm.value + " ");
+                System.out.print(elm.val + " ");
 
                 if (elm.left != null) {
                     queue.add(elm.left);

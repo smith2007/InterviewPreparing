@@ -71,7 +71,7 @@ public class BinaryTreeInorderTraversal {
             //как только максимально глубоко влево упали
             //все достаем и распечатываем
             cur = stack.pop();
-            res.add(cur.value);
+            res.add(cur.val);
 
             //какой блять следующий сука должен
             //быть элемент? конечно правый

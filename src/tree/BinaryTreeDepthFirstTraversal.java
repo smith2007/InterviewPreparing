@@ -53,7 +53,7 @@ public class BinaryTreeDepthFirstTraversal {
 
         while (!stack.isEmpty()) {
             TreeNode curr = stack.pop();
-            System.out.println(curr.value);
+            System.out.println(curr.val);
 
             //кладем сначала правую ноду
             //в сл итерации снова правую положим уже дочерней ноды
