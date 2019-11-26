@@ -9,19 +9,11 @@ public class FindHowOftenCharsContainsInStringYandex {
      * нужно понять сколько раз символы из первой
      * строки встречаются во второй строке
      */
-    private static int findQuadratic(String first, String second) {
-        char[] firstCharArray = first.toCharArray();
-        char[] secondCharArray = second.toCharArray();
 
-        int count = 0;
+    public static void main(String[] args) {
+        System.out.println("linear result isContainsDoubleChars: " + findLinear("label", "lllnmabre"));
 
-        for (int i = 0; i <= firstCharArray.length - 1; i++) {
-            for (int j = 0; j <= secondCharArray.length - 1; j++) {
-                if (firstCharArray[i] == secondCharArray[j])
-                    count++;
-            }
-        }
-        return count;
+        // System.out.println("quadratic result isContainsDoubleChars :" + findQuadratic("ab", "aabbccd"));
     }
 
 
@@ -35,6 +27,7 @@ public class FindHowOftenCharsContainsInStringYandex {
         char[] secondCharArray = second.toCharArray();
 
         HashMap<Character, Integer> map = new HashMap<>();
+
         for (Character character : firstCharArray) {
             if (!map.containsKey(character)) {
                 map.put(character, 1);
@@ -55,8 +48,22 @@ public class FindHowOftenCharsContainsInStringYandex {
         return count;
     }
 
-    public static void main(String[] args) {
-        System.out.println("quadratic result isContainsDoubleChars :" + findQuadratic("ab", "aabbccd"));
-        System.out.println("linear result isContainsDoubleChars: " + findLinear("ab", "aabbccd"));
+    private static int findQuadratic(String first, String second) {
+        char[] firstCharArray = first.toCharArray();
+        char[] secondCharArray = second.toCharArray();
+
+        int count = 0;
+
+        for (int i = 0; i <= firstCharArray.length - 1; i++) {
+            for (int j = 0; j <= secondCharArray.length - 1; j++) {
+                if (firstCharArray[i] == secondCharArray[j])
+                    count++;
+            }
+        }
+        return count;
     }
+
+
+
+
 }

@@ -5,8 +5,6 @@ import java.util.LinkedList;
 public class SymmetricTree {
 
     public static void main(String[] args) {
-
-
         TreeNode root = new TreeNode(2);
 
         TreeNode rootLeft = new TreeNode(3);

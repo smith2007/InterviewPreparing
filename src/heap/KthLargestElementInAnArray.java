@@ -4,6 +4,11 @@ import java.util.PriorityQueue;
 
 public class KthLargestElementInAnArray {
 
+    /**
+     * решается элементарно через кучу, будь внимателен тут надо создавать
+     * кучу с компаратором в reverseOrder
+     * вот так  PriorityQueue<Integer> pq = new PriorityQueue<>((Comparator.reverseOrder()));
+     */
     public static void main(String[] args) {
         int[] arr = {3, 2, 3, 1, 2, 4, 5, 5, 6};
 

@@ -1,4 +1,4 @@
-package structures;
+package stack;
 
 public class StackWithMin2<T extends Comparable<T>> {
 

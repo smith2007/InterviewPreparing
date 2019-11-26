@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public class Multiiterator {
+public class FlattenNestedListIterator {
 
     public static <T> Iterator<T> flatten(Iterator<Iterator<T>> iterator) {
 
@@ -8,8 +8,6 @@ public class Multiiterator {
         return new Iterator<T>() {
 
             Iterator<T> curr = null;
-
-
 
             @Override
             public boolean hasNext() {

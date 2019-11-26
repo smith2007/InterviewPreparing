@@ -1,6 +1,6 @@
 package array;
 
-public class StringTransform1A2B3CWithBrackets {
+public class DecodeString {
 
     // 2[a]3[b]10[c] - aabbbc
     public static void main(String[] args) {

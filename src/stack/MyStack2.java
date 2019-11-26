@@ -1,4 +1,4 @@
-package structures;
+package stack;
 
 public class MyStack2<T> {
 

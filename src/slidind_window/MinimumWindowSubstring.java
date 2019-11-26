@@ -7,16 +7,16 @@ public class MinimumWindowSubstring {
 
     public static void main(String[] args) {
 
-        String s = "a";
-        String t = "a";
+        String s = "ADOBECODEBANC";
+        String t = "ABC";
 
         String minWindow = minWindow(s, t);
 
         System.out.println(minWindow);
     }
 
-
     static String minWindow(String s, String t) {
+
 
         if (s == null || t == null || s.isEmpty() || t.isEmpty()) {
             return "";
@@ -44,7 +44,6 @@ public class MinimumWindowSubstring {
 
         int i = 0;
         int j = 0;
-
         boolean flag = false;
 
         while (j < s.length()) {
@@ -55,7 +54,6 @@ public class MinimumWindowSubstring {
             if (count != null) {
                 tmap.put(s.charAt(j), count - 1);
             }
-
 
             if (currLen >= t.length()) {
                 while (isAllZeroOrLess(tmap)) {
@@ -77,11 +75,13 @@ public class MinimumWindowSubstring {
             j++;
         }
 
+
         if (start == 0 && end == 0 && strLen == s.length() && !flag) {
             return "";
         }
 
         return s.substring(start, end + 1);
+
     }
 
     static boolean isAllZeroOrLess(Map<Character, Integer> map) {
@@ -92,4 +92,5 @@ public class MinimumWindowSubstring {
         }
         return true;
     }
+
 }
