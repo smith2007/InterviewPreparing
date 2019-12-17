@@ -10,6 +10,8 @@ public class LowestCommonAncestorOfABinarySearchTreeIterative {
     /**
      * тут алгоритм очень прост - всего лишь надо найти точку пересечения двух нод
      * двигаемся влево или вправо в зависимости от того какой элемент перед нами
+     *
+     * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
      */
 
     static TreeNode lowestCommonAncestor(TreeNode root, TreeNode a, TreeNode b) {

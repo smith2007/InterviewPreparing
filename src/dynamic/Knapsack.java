@@ -5,7 +5,9 @@ public class Knapsack {
     public static void main(String[] args) {
         int[] itemsValue = new int[]{150, 300, 200, 100, 400, 200, 20, 10, 50, 250, 70};
         int[] itemsWeight = new int[]{1, 4, 2, 10, 6, 1, 2, 9, 3, 11, 13};
+
         int backpackCapacity = 25;
+
         int itemsCount = itemsValue.length;
         System.out.println(knapSack(backpackCapacity, itemsWeight, itemsValue, itemsCount));
     }
@@ -15,7 +17,7 @@ public class Knapsack {
     static int knapSack(int backpackCapacity, int[] itemsWeight, int[] itemsValue, int itemsCount) {
         int[][] matrix = new int[itemsCount + 1][backpackCapacity + 1];
 
-        // Build table matrix[][] in bottom up manner
+        // dp[][] - вещи-размер рюказка
         for (int itemIndex = 0; itemIndex <= itemsCount; itemIndex++) {
             for (int subBackpackWeight = 0; subBackpackWeight <= backpackCapacity; subBackpackWeight++) {
                 if (itemIndex == 0 || subBackpackWeight == 0) {

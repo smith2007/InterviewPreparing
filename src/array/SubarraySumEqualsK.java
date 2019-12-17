@@ -30,14 +30,14 @@ public class SubarraySumEqualsK {
             // но что если сумма будет больше или меньше
             // то надо понимат а есть ли на прошлом шаге какая либо
             //под сумма которая в итоге даст нужный результат
-            int countsFound = localSum - k;
+            int neededSum = localSum - k;
 
-            if (map.containsKey(countsFound)) {
-                count += map.get(countsFound);
+            if (map.containsKey(neededSum)) {
+                count += map.get(neededSum);
             }
 
             //заодно берем и кладем в мапу эту локальную сумму
-            map.put(localSum, map.getOrDefault(localSum, 0) + 1);
+            map.merge(localSum, 1, Integer::sum);
         }
         return count;
     }

@@ -58,7 +58,7 @@ public class LongestIncreasingSubsequenceNLogN {
     }
 
 
-    // Binary search (note boundaries in the caller)
+    // Binary binary_search (note boundaries in the caller)
     // arr[] is ceilIndex in the caller
     static int binarySearch(int[] arr, int left, int right, int key) {
         while (right - left > 1) {

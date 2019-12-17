@@ -29,8 +29,6 @@ public class LetterCombinationsOfAPhoneNumber {
 
 
     List<String> letterCombinations(String digits) {
-
-
         ArrayList<String> res = new ArrayList<>();
         backtrack(res, "", digits, 0, digits.length());
         return res;
@@ -42,9 +40,10 @@ public class LetterCombinationsOfAPhoneNumber {
             res.add(curr);
             return;
         }
+        //два цикла первый по числам
+        //второй по буква которые соотв этому числу
 
         for (int i = currIndex; i < digits.length(); i++) {
-
             char[] lettersByDigit = map.get(digits.charAt(i));
             for (char c : lettersByDigit) {
                 backtrack(res, curr + c, digits, i + 1, digitsLen);

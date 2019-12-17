@@ -9,6 +9,8 @@ public class LowestCommonAncestorOfABinarySearchTreeReursive {
 
     /**
      тут алгоритм очень прост - всего лишь надо найти точку пересечения двух нод
+
+     https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
      */
 
     static TreeNode lowestCommonAncestor(TreeNode root, TreeNode a, TreeNode b) {

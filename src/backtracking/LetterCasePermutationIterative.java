@@ -14,6 +14,8 @@ public class LetterCasePermutationIterative {
      *
      * конечно так же проверяем на цифру, а так же проверяем буква в маленьком регистре или
      * в большом в зависимости от этого сетим тот или иной регистр
+     *
+     * https://leetcode.com/problems/letter-case-permutation/solution/
      */
     public static void main(String[] args) {
         String str = "a1b2";

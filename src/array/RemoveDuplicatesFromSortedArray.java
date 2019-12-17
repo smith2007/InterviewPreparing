@@ -15,15 +15,27 @@ public class RemoveDuplicatesFromSortedArray {
 
     }
 
+    /**
+     * тут работает принцип выталкивания
+     * https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+     */
     static int removeDuplicates(int[] arr) {
         if (arr.length == 0) {
             return 0;
         }
+        //житый бежит вперед
+
         int i = 0;
         int j = 1;
 
         while (j < arr.length) {
+        //как только мы поняли что жытый отличается от итого, то есть дубли закончились
+
             if (arr[j] != arr[i]) {
+                //надо вместо как бы первого дубля
+                //поствить наш житый
+                //получится такой эффект пуша
+                //эффект выталкивания
                 i++;
                 arr[i] = arr[j];
             }

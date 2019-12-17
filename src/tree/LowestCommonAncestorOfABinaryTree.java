@@ -22,6 +22,8 @@ public class LowestCommonAncestorOfABinaryTree {
 
      сложность по времени: О(n)
      сложность по памяти: О(1)
+
+     https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
      *
      */
     public static void main(String[] args) {

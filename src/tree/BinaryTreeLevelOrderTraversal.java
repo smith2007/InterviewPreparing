@@ -6,6 +6,13 @@ import java.util.List;
 
 public class BinaryTreeLevelOrderTraversal {
 
+    /**
+     *Дано бинарное дерево (в виде рут ноды)
+     * - необходимо вывести массив массивов из нод, находящихся на каждом из этажей этого дерева
+     *
+     * https://leetcode.com/problems/binary-tree-level-order-traversal/
+     */
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(5);
 

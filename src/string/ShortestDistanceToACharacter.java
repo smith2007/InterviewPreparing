@@ -39,7 +39,7 @@ public class ShortestDistanceToACharacter {
      */
     static int[] shortestToChar(String str, char ch) {
 
-        int[] res = new int[str.length()];
+        int[] distances = new int[str.length()];
         int prevPositionOfCh = Integer.MIN_VALUE / 2; // обязательно инициализируем как минимумом
 
         for (int i = 0; i < str.length(); i++) {
@@ -47,7 +47,7 @@ public class ShortestDistanceToACharacter {
             if (curr == ch){
                 prevPositionOfCh = i;
             }
-            res[i] = i - prevPositionOfCh;
+            distances[i] = i - prevPositionOfCh;
         }
 
         prevPositionOfCh = Integer.MAX_VALUE / 2; // обязательно как максимумом
@@ -56,9 +56,9 @@ public class ShortestDistanceToACharacter {
             if (curr == ch){
                 prevPositionOfCh = i;
             }
-            res[i] = Math.min(res[i], prevPositionOfCh - i); //берем минимум
+            distances[i] = Math.min(distances[i], prevPositionOfCh - i); //берем минимум
         }
 
-        return res;
+        return distances;
     }
 }

@@ -13,25 +13,27 @@ public class MergeKSortedLists {
      * потом крутимся в цикле и набиваем финальный список путем вытаскивания
      * из PriorityQueue и последующего добавления в нее следующего за вытащенным элементов,
      * попутно проверяем что вытащенный имеет next - ссылку на следующий, иначе упадем в NPE
+     *
+     * https://leetcode.com/problems/merge-k-sorted-lists/
      */
     static ListNode mergeKLists(ListNode[] arr) {
 
-        PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparing(ListNode::getVal));
+        PriorityQueue<ListNode> heap = new PriorityQueue<>(Comparator.comparing(ListNode::getVal));
 
         for (int i = 0; i < arr.length; i++) {
-            queue.add(arr[i]);
+            heap.add(arr[i]);
         }
 
-        ListNode root = queue.poll();
+        ListNode root = heap.poll();
 
         ListNode curr = root;
 
-        while (!queue.isEmpty()) {
-            ListNode elm = queue.poll();
+        while (!heap.isEmpty()) {
+            ListNode elm = heap.poll();
             curr.next = elm;
             curr = curr.next;
             if (elm.next != null) {
-                queue.add(elm.next);
+                heap.add(elm.next);
             }
         }
         return root;

@@ -12,7 +12,7 @@ public class TwoArraysFindDuplicatesSortFirst {
         //duplicates : 6
     }
 
-    // sorting - O(n log n) + search O(log n) + traversing first array O(n)
+    // sorting - O(n log n) + binary_search O(log n) + traversing first array O(n)
     // => O(4n log n) -> O(n log n)
     private static void find(int[] first, int[] second) {
         Arrays.sort(first);
