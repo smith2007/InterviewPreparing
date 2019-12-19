@@ -1,12 +1,12 @@
 package string;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RomanToInteger {
 
     public static void main(String[] args) {
-
         System.out.println(romanToInt("III"));
     }
 
@@ -31,5 +31,9 @@ public class RomanToInteger {
         }
         return res;
 
+    }
+
+    static int getSum(int a, int b) {
+        return BigInteger.valueOf(a).add(BigInteger.valueOf(b)).intValue();
     }
 }

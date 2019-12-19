@@ -1,4 +1,4 @@
-package tree;
+package binary_tree;
 
 import java.util.Comparator;
 import java.util.LinkedList;

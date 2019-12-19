@@ -1,11 +1,19 @@
-package tree;
+package binary_tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
-public class BinaryTreeBreathFirstTraversal {
+public class BinaryTreeLevelOrderTraversal {
+
+    /**
+     *Дано бинарное дерево (в виде рут ноды)
+     * - необходимо вывести массив массивов из нод, находящихся на каждом из этажей этого дерева
+     *
+     * https://leetcode.com/problems/binary-tree-level-order-traversal/
+     */
 
     public static void main(String[] args) {
-
         TreeNode root = new TreeNode(5);
 
         TreeNode rootLeft = new TreeNode(7);
@@ -14,6 +22,7 @@ public class BinaryTreeBreathFirstTraversal {
 
         root.left = rootLeft;
         root.right = rootRight;
+
 
         TreeNode rootLeftLeft = new TreeNode(11);
 
@@ -36,36 +45,46 @@ public class BinaryTreeBreathFirstTraversal {
         rootLeftRight.left = rootLeftRightLeft;
         rootLeftRight.right = rootLeftRightRight;
 
-        traverse(root);
+        List<List<TreeNode>> lists = find(root);
+
+        System.out.println(lists);
+
     }
 
 
-    static void traverse(TreeNode root) {
+    static List<List<TreeNode>> find(TreeNode root) {
+        ArrayList<List<TreeNode>> result = new ArrayList<>();
+
         LinkedList<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
         while (!queue.isEmpty()) {
 
-            int size = queue.size();
+            List<TreeNode> floor = new ArrayList<>();
 
-            while (size != 0) {
-                size--;
+            int phantomQueueSize = queue.size();
+
+            while (phantomQueueSize != 0) {
                 TreeNode elm = queue.poll();
                 if (elm == null) {
                     break;
                 }
-                System.out.print(elm.val + " ");
+
+                floor.add(elm);
 
                 if (elm.left != null) {
                     queue.add(elm.left);
-                }
 
+                }
                 if (elm.right != null) {
                     queue.add(elm.right);
                 }
+                phantomQueueSize--;
             }
-            System.out.println();
+
+            result.add(floor);
         }
 
+        return result;
     }
 }

@@ -1,4 +1,4 @@
-package tree;
+package binary_tree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class SerializeAndDeserializeBinaryTreeBFS {
+public class SerializeAndDeserializeBinaryTreeDFS {
 
 
     /*
@@ -30,6 +30,7 @@ public class SerializeAndDeserializeBinaryTreeBFS {
 
         root.left = rootLeft;
         root.right = rootRight;
+
 
         TreeNode rootLeftLeft = new TreeNode(11);
 
@@ -74,21 +75,19 @@ public class SerializeAndDeserializeBinaryTreeBFS {
          у нас bfs-ом идет сначала два элемента
          потом 4 элемента массив
          затем следующий этаж 8 элементов
-
-         если же нам встретился нуловый элемент
-         то его тоже кладем в очередь, а вот его детей нет
      */
+
 
     static String serialize(TreeNode root) {
 
         List<Integer> list = new ArrayList<>();
 
-        LinkedList<TreeNode> queue = new LinkedList<>();
+        LinkedList<TreeNode> stack = new LinkedList<>();
 
-        queue.add(root);
+        stack.push(root);
 
-        while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
 
             if (node == null) {
                 list.add(null);
@@ -96,8 +95,8 @@ public class SerializeAndDeserializeBinaryTreeBFS {
             }
 
             list.add(node.val);
-            queue.add(node.left);
-            queue.add(node.right);
+            stack.push(node.left);
+            stack.push(node.right);
 
         }
 
@@ -113,39 +112,26 @@ public class SerializeAndDeserializeBinaryTreeBFS {
         String[] arr = str.split(",");
 
 
-        LinkedList<Integer> queue = new LinkedList<>();
+        LinkedList<Integer> deq = new LinkedList<>();
         for (String elm : arr) {
-            queue.add(elm.equals("null") ? null : Integer.parseInt(elm));
+            deq.add(elm.equals("null") ? null : Integer.parseInt(elm));
         }
 
-        LinkedList<TreeNode> temp = new LinkedList<>();
-        TreeNode root = new TreeNode(queue.poll());
-        temp.add(root);
+        return buildNode(deq);
+    }
 
-        while (!queue.isEmpty()) {
-
-
-            LinkedList<TreeNode> newTreeNodes = new LinkedList<>();
-            while (!temp.isEmpty()) {
-                TreeNode node = temp.poll();
-
-                Integer leftInt = queue.poll();
-                Integer rightInt = queue.poll();
-
-                if (leftInt != null) {
-                    node.left = new TreeNode(leftInt);
-                    newTreeNodes.add(node.left);
-                }
-                if (rightInt != null) {
-                    node.right = new TreeNode(rightInt);
-                    newTreeNodes.add(node.right);
-                }
-
-            }
-
-            temp.addAll(newTreeNodes);
+    static TreeNode buildNode(LinkedList<Integer> deq) {
+        if (deq.isEmpty()) {
+            return null;
         }
+        Integer remove = deq.remove();
+        if (remove == null) {
+            return null;
+        }
+        TreeNode treeNode = new TreeNode(remove);
 
-        return root;
+        treeNode.right = buildNode(deq);
+        treeNode.left = buildNode(deq);
+        return treeNode;
     }
 }

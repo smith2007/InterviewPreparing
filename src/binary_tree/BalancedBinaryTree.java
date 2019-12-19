@@ -1,6 +1,6 @@
-package tree;
+package binary_tree;
 
-import static tree.StringToNodeBuilder.stringToTreeNode;
+import static binary_tree.StringToNodeBuilder.stringToTreeNode;
 
 public class BalancedBinaryTree {
 
