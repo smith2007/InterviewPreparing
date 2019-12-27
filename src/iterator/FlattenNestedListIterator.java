@@ -1,3 +1,5 @@
+package iterator;
+
 import java.util.Iterator;
 
 public class FlattenNestedListIterator {

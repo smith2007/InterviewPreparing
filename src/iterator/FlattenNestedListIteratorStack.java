@@ -1,4 +1,4 @@
-package stack;
+package iterator;
 
 import java.util.Iterator;
 import java.util.List;
@@ -59,14 +59,14 @@ public class FlattenNestedListIteratorStack implements Iterator<Integer> {
 // You should not implement it, or speculate about its implementation
 interface NestedInteger {
 
-    // @return true if this stack.NestedInteger holds a single integer, rather than a nested list.
+    // @return true if this iterator.NestedInteger holds a single integer, rather than a nested list.
     boolean isInteger();
 
-    // @return the single integer that this stack.NestedInteger holds, if it holds a single integer
-    // Return null if this stack.NestedInteger holds a nested list
+    // @return the single integer that this iterator.NestedInteger holds, if it holds a single integer
+    // Return null if this iterator.NestedInteger holds a nested list
     Integer getInteger();
 
-    // @return the nested list that this stack.NestedInteger holds, if it holds a nested list
-// Return null if this stack.NestedInteger holds a single integer
+    // @return the nested list that this iterator.NestedInteger holds, if it holds a nested list
+// Return null if this iterator.NestedInteger holds a single integer
     List<NestedInteger> getList();
 }
