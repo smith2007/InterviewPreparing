@@ -142,8 +142,6 @@ public class LRUCache {
         head.next = oldHead;
         oldHead.prev = head;
         head.prev = null;
-
-
         return elm.value;
     }
 
