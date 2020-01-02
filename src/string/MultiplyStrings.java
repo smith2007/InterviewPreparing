@@ -7,6 +7,32 @@ public class MultiplyStrings {
         System.out.println(multiply("123", "456"));
     }
 
+    /**
+     *
+     дано две строки, в них только числа - необходимо перемножить их и вернуть результат, при этом конвертировать в интеджер напрямую
+     очень интересный алгоритм и одновременно сложный для меня - суть сводится к умножению в столбик - но интересному умножению
+
+     для записи столбика мы будем использовать одномерный массив
+
+     суть как и в умножении в столбик это идти с конца первого числа и умножать на каждую цифру на цифру фиксируя остаток
+     для фиксации этого мы вводим массив int[] collector = new int[num1.length() + num2.length()]; - будем накидывать туда данные с конца
+     ну и раскручиваем два цикла по i и j - внутри делаем ряд шагов
+     шаг первый умножение цифру на цифру - 3*5=15 например
+     шаг второй фиксируем индекс куда будем класть остаток int ostatokIndex = i + j + 1;
+     шаг третий фиксируем как бы финальную сумму которая скл из произведения с прибавлением с тем что там уже когда-то от предыдущего шага лежало int sum = mult + collector[ostatokIndex];
+
+     далее кладем этот наш суммированный остаток в массив
+
+     шаг четвертый - сначала остаток collector[ostatokIndex] = sum % 10;
+
+     шаг пятый -  десятые части, но уже на один индекс ближе
+
+     int desyatieIndex = i + j;
+     collector[desyatieIndex] = collector[desyatieIndex] + sum / 10;
+
+     все, весь алгоритм
+     в конце бежим и набиваем стринг билдер
+     */
     static String multiply(String num1, String num2) {
 
         if (num1 == null || num2 == null) {
@@ -27,15 +53,15 @@ public class MultiplyStrings {
                 int mult = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
 
 
-                //само велью в ближний
-                int valuePosition = i + j + 1;
-                int valueSum = mult + collector[valuePosition];
-                collector[valuePosition] = valueSum % 10;
+                //сам остаток в дальний
+                int ostatokIndex = i + j + 1;
+                int sum = mult + collector[ostatokIndex];
+                collector[ostatokIndex] = sum % 10;
 
-                //остаток по дефолту записывается в ближний разряд
+                //десятые части по дефолту записывается в ближний разряд
                 //при этом там уже что-то может быть и так
-                int carryPosition = i + j;
-                collector[carryPosition] = collector[carryPosition] + valueSum / 10;
+                int desyatieIndex = i + j;
+                collector[desyatieIndex] = collector[desyatieIndex] + sum / 10;
 
             }
         }
