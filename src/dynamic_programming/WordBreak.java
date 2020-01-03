@@ -1,4 +1,4 @@
-package dynamic;
+package dynamic_programming;
 
 import java.util.HashSet;
 import java.util.List;
