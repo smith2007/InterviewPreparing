@@ -6,13 +6,10 @@ import java.util.concurrent.FutureTask;
 public class CallableTest {
     public static void main(String[] args) throws Exception {
 
-        Callable<Integer> myCallable = new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                System.out.println("Callable called");
-                Thread.sleep(4 * 1000);
-                return 1991;
-            }
+        Callable<Integer> myCallable = () -> {
+            System.out.println("Callable called");
+            Thread.sleep(4 * 1000);
+            return 1991;
         };
 
         FutureTask<Integer> fututre = new FutureTask<>(myCallable);
