@@ -30,10 +30,12 @@ public class SuspiciosActivitiesInLogs {
             }
         }
 
-
         return map
                 .entrySet().stream()
-                .filter(e -> e.getValue() >= threshold).map(Map.Entry::getKey).sorted().collect(Collectors.toList());
+                .filter(e -> e.getValue() >= threshold)
+                .map(Map.Entry::getKey)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
 }
