@@ -15,7 +15,7 @@ public class PermutationInString {
      *
      * Input: s1 = "ab" s2 = "eidbaooo"
      * Output: True
-     * Explanation: s2 contains one permutation of s1 ("ba").
+     * Explanation: s2 contains one permutation of s1 ("SuspiciosActivitiesInLogs").
      *
      * решается так же как и FindAllAnagramsInAString
      *

@@ -4,7 +4,7 @@ public class StringReverse {
 
 
     public static void main(String[] args) {
-        StringReverse.reverse("andrey");
+        StringReverse.reverse("kate winslet");
     }
 
 /*
