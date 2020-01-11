@@ -28,15 +28,12 @@ public class PerfectSquares {
     }
 
     static int numSquares(int n) {
-
         //решаем через динамическое программирование
         int[] dp = new int[n + 1];
-
         //заполняем массив максимальными значениями
         //потому что потом будем брать минимум
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
-
         //идея такая - два указателя i и j
         //i убегает вперед j каждый раз его догоняет
         //идея такая - а вот рассматривая что максимальный элемент у нас i
@@ -60,7 +57,6 @@ public class PerfectSquares {
                 dp[i] = Math.min(dp[i], newElm);
 
                 j++;
-
             }
         }
         return dp[n];
