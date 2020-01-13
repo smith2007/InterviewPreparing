@@ -56,7 +56,6 @@ public class WordBreak {
         boolean[] dp = new boolean[len + 1];
 
         HashSet<String> wordDictSet = new HashSet<>(wordDict);
-
         // нулевой элемент равен true - это значит что пустая строка епта тут есть уже
         dp[0] = true;
 

@@ -31,14 +31,11 @@ public class QueueUsing2Stacks {
             return stack2.pop();
         }
 
-        if (!stack1.isEmpty()) {
-            while (!stack1.isEmpty()) {
-                Integer elm = stack1.pop();
-                stack2.push(elm);
-            }
-            return stack2.pop();
+        while (!stack1.isEmpty()) {
+            Integer elm = stack1.pop();
+            stack2.push(elm);
         }
+        return stack2.pop();
 
-        return null;
     }
 }
