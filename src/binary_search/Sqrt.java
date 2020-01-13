@@ -15,6 +15,7 @@ public class Sqrt {
             return x;
         }
 
+
         long midKvadrat = 0;
         int mid = 0;
         int start = 2;
