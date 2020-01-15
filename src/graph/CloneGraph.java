@@ -52,9 +52,9 @@ public class CloneGraph {
         public Node() {
         }
 
-        public Node(int _val, List<Node> _neighbors) {
-            val = _val;
-            neighbors = _neighbors;
+        public Node(int val, List<Node> neighbors) {
+            this.val = val;
+            this.neighbors = neighbors;
         }
 
         public Node(int val) {
