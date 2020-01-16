@@ -48,33 +48,33 @@ public class CourseScheduleDFS {
 		if (numCourses == 0 || prerequisites.length == 0) {
 			return true;
 		}
-		Map<Integer, Node> map = new HashMap<>();
+
+		List<Course> courses = new ArrayList<>();
 
 		for (int i = 0; i < numCourses; i++) {
-			Node node = new Node(i);
-			map.put(i, node);
+			courses.add(new Course(i));
 		}
 
 		for (int[] prerequisite : prerequisites) {
-			Node left = map.get(prerequisite[0]);
-			Node right = map.get(prerequisite[1]);
+			Course left = courses.get(prerequisite[0]);
+			Course right = courses.get(prerequisite[1]);
 			if (!left.equals(right)) {
-				left.neigh.put(right.val, right);
+				left.dep.add(right);
 			}
 		}
 
-		for (Node node : map.values()) {
-			if (isCycle(node, new boolean[numCourses])){
+		for (Course course : courses) {
+			if (isCycle(course, new boolean[numCourses])){
 				return false;
 			}
 		}
 		return true;
 	}
 
-	static boolean isCycle(Node curr, boolean[] visited) {
+	static boolean isCycle(Course curr, boolean[] visited) {
 		visited[curr.val] = true;
-		for (Node node : curr.neigh.values()) {
-			if (visited[node.val] || isCycle(node, visited)) {
+		for (Course course : curr.dep) {
+			if (visited[course.val] || isCycle(course, visited)) {
 				return true;
 			}
 		}
@@ -83,12 +83,12 @@ public class CourseScheduleDFS {
 	}
 
 
-	static class Node {
+	static class Course {
 		int val;
-		Map<Integer, Node> neigh;
-		public Node(int val) {
+		List<Course> dep;
+		public Course(int val) {
 			this.val = val;
-			this.neigh = new HashMap<>();
+			this.dep = new ArrayList<>();
 		}
 	}
 
