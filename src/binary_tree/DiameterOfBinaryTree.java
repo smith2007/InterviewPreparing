@@ -25,7 +25,7 @@ public class DiameterOfBinaryTree {
     }
 
     /**
-     * 1
+     *  1
      * / \
      * 2   3
      * / \
