@@ -1,6 +1,6 @@
-package core;
+package math;
 
-public class ProductMinusSum {
+public class SubtractTheProductAndSumOfDigitsOfAnInteger {
 
     public static void main(String[] args) {
         System.out.println(s(80));
