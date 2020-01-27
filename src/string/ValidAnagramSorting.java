@@ -8,7 +8,7 @@ public class ValidAnagramSorting {
 
         String first = "andrey nevedin";
 
-        String second = "nnn ddreeeviay";
+        String second = "ProductMinusSum ddreeeviay";
 
         boolean anagram = isAnagram(first, second);
         System.out.println("Strings " + (anagram ? "are" : "are not") + " anagram");
