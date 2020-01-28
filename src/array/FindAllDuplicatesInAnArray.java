@@ -5,6 +5,24 @@ import java.util.List;
 
 public class FindAllDuplicatesInAnArray {
 
+
+    /**
+     *
+     121.FindAllDuplicatesInAnArray.
+     https://leetcode.com/problems/find-all-duplicates-in-an-array/
+
+     дан массив чисел, числа от 1 до n, вернуть все задублированные элементы в нем
+
+     Input:
+     [4,3,2,7,8,2,3,1]
+     Output:
+     [2,3]
+
+     опять как и в задаче про первый дубликат 87.FindTheDuplicateNumber - мы рассматриваем задачу как закольцованный
+     линкед лист (потому что максимальное число n), соответсвенно решение в том что мы маркируем
+     наш итый элемент массива минусом, это значит мы это число уже посетили
+     *
+     */
     public static void main(String[] args) {
         int[] arr = {4, 3, 2, 7, 8, 2, 3, 1};
         System.out.println(findDuplicates(arr));
