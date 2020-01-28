@@ -35,9 +35,10 @@ public class FindAllDuplicatesInAnArray {
         if (arr.length == 0) {
             return res;
         }
-
+        // раскручиваем цикл
         for (int i = 0; i < arr.length; i++) {
 
+            //берем текущий элемент
             int elm = arr[i];
 
             int elmFromElm = arr[Math.abs(elm) - 1];
