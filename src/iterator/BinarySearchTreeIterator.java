@@ -1,17 +1,24 @@
 package iterator;
 
+import binary_tree.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
-import binary_tree.TreeNode;
 
 public class BinarySearchTreeIterator {
 
 	private List<Integer> list = new ArrayList<>();
 	private Iterator<Integer> iterator = list.iterator();
 
+	/**
+	 * 160.BinarySearchTreeIterator
+	 * https://leetcode.com/problems/binary-search-tree-iterator/
+	 *
+	 * необходимо имплементировать итератор бинарного дерева поиска, этот итератор будет инициализирован рутовой нодой дерева
+	 * метод next должен возвращать следующий НАИМЕНЬШИЙ элемент в бинарном дереве
+	 */
 	public static void main(String[] args) {
 		TreeNode root = new TreeNode(5);
 
