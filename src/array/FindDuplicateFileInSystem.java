@@ -34,6 +34,14 @@ public class FindDuplicateFileInSystem {
      Output:
      [["root/a/2.txt","root/c/d/4.txt","root/4.txt"],["root/a/1.txt","root/c/3.txt"]]
 
+     задача в принципе не сложная решается через мапы, я например решил через 2 мапы
+     Map<String, Map<String, String>> dirToFiles = new HashMap<>();
+     Map<String, List<String>> contentToPath = new HashMap<>();
+
+     бегаем и через цикл парсим входные строки, сомтрим что у нас там, вытаскиваем путь, вытаскиваем имя файла и контент, кладем,
+     затем пробегаем второй раз группируем по контенту
+
+     можно сделать проще и сразу набивать мапу по контенту
 
      *
      */
