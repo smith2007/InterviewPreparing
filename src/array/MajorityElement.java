@@ -7,7 +7,7 @@ public class MajorityElement {
      */
     public static void main(String[] args) {
 
-        int[] arr = {2, 3, 3};
+        int[] arr = {2, 1, 2, 5, 3, 2};
         System.out.println(majorityElement(arr));
     }
 
@@ -25,7 +25,6 @@ public class MajorityElement {
         int major = arr[0];
 
         for (int elm : arr) {
-
             if (count == 0) {
                 major = elm;
                 count++;
