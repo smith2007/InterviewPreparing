@@ -1,4 +1,6 @@
-package array;
+package matrix;
+
+import java.util.Arrays;
 
 public class GameOfLife {
 
@@ -36,16 +38,16 @@ public class GameOfLife {
      */
 
     public static void main(String[] args) {
-
+        int[][] board = {{0, 1, 0}, {0, 0, 1}, {1, 1, 1}, {0, 0, 0}};
+        gameOfLife(board);
+        System.out.println(Arrays.deepToString(board));
     }
 
-    public void gameOfLife(int[][] board) {
+    static void gameOfLife(int[][] board) {
 
         if (board.length == 0) {
             return;
         }
-
-        int[][] next = new int[board.length][board[0].length];
 
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
@@ -53,65 +55,71 @@ public class GameOfLife {
                 int curr = board[i][j];
 
                 int numberOfAlive = 0;
-                if (i - 1 >= 0 && board[i - 1][j] == 1) {
+                if (i - 1 >= 0 && (board[i - 1][j] == 1 || board[i - 1][j] == -1)) {
                     numberOfAlive++;
                 }
-                if (i + 1 < board.length && board[i+1][j] == 1){
+                if (i + 1 < board.length && (board[i + 1][j] == 1 || board[i + 1][j] == -1)) {
                     numberOfAlive++;
                 }
-                if (j-1 >= 0 && board[i][j-1] == 1){
+                if (j - 1 >= 0 && (board[i][j - 1] == 1 || board[i][j - 1] == -1)) {
                     numberOfAlive++;
                 }
-                if (j+1 < board[0].length && board[i][j+1] == 1 ){
-                    numberOfAlive++;
-                }
-
-                int leftUpi = i-1;
-                int leftUpj = j-1;
-
-                if (leftUpi>=0 && leftUpj>=0 && board[leftUpi][leftUpj] == 1){
+                if (j + 1 < board[0].length && (board[i][j + 1] == 1 || board[i][j + 1] == -1)) {
                     numberOfAlive++;
                 }
 
-                int leftDowni = i+1;
-                int leftDownj = j-1;
+                int leftUpi = i - 1;
+                int leftUpj = j - 1;
 
-                if (leftDowni<board.length && leftDownj>=0 && board[leftDowni][leftDownj] == 1){
+                if (leftUpi >= 0 && leftUpj >= 0 && (board[leftUpi][leftUpj] == 1 || board[leftUpi][leftUpj] == -1)) {
+                    numberOfAlive++;
+                }
+
+                int leftDowni = i + 1;
+                int leftDownj = j - 1;
+
+                if (leftDowni < board.length && leftDownj >= 0 && (board[leftDowni][leftDownj] == 1 || board[leftDowni][leftDownj] == -1)) {
                     numberOfAlive++;
                 }
 
 
-                int rightUpi = i+1;
-                int rightUpj = j+1;
+                int rightUpi = i + 1;
+                int rightUpj = j + 1;
 
-                if (rightUpi<board.length && rightUpj<board[0].length && board[rightUpi][rightUpi] == 1){
+                if (rightUpi < board.length && rightUpj < board[0].length && (board[rightUpi][rightUpj] == 1 || board[rightUpi][rightUpj] == -1)) {
                     numberOfAlive++;
                 }
 
-                int rightDowni = i-1;
-                int rightDownj = j+1;
+                int rightDowni = i - 1;
+                int rightDownj = j + 1;
 
-                if (rightDowni>=0 && rightDownj<board[0].length && board[rightDowni][rightDownj] ==1){
+                if (rightDowni >= 0 && rightDownj < board[0].length && (board[rightDowni][rightDownj] == 1 || board[rightDowni][rightDownj] == -1)) {
                     numberOfAlive++;
                 }
 
                 if (curr == 1) {
-                    if (numberOfAlive==2 || numberOfAlive==3){
-                        next[i][j] = 1;
-                    } else{
-                        next[i][j] = 0;
-                    }
+                    if (numberOfAlive < 2 || numberOfAlive > 3) {
+                        board[i][j] = -1;
 
+                    }
                 } else {
-                    if (numberOfAlive == 3){
-                        next[i][j] = 1;
-                    } else {
-                        next[i][j] = 0;
+                    if (numberOfAlive == 3) {
+                        board[i][j] = 2;
                     }
                 }
 
             }
         }
-        board = next;
+
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] == 2) {
+                    board[i][j] = 1;
+                } else if (board[i][j] == -1) {
+                    board[i][j] = 0;
+                }
+            }
+        }
     }
 }
