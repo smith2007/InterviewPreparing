@@ -3,7 +3,7 @@ package dynamic_programming;
 public class DecodeWaysIterative {
 
     public static void main(String[] args) {
-        String str = "226";
+        String str = "12";
 
         System.out.println(decode(str));
     }
