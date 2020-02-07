@@ -21,8 +21,8 @@ public class DecodeWaysIterative {
         arr[1] = str.charAt(0) != '0' ? 1 : 0;
         for (int i = 2; i <= n; i++) {
 
-            int first = Integer.valueOf(str.substring(i - 1, i));
-            int second = Integer.valueOf(str.substring(i - 2, i));
+            int first = Integer.parseInt(str.substring(i - 1, i));
+            int second = Integer.parseInt(str.substring(i - 2, i));
 
             if (first >= 1 && first <= 9) {
                 int iMinus1 = arr[i - 1];
