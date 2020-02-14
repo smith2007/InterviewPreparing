@@ -13,10 +13,10 @@ public class HouseRobber {
         int maxIfLastRob = 0; //макс число денег если грабить текущий дом
         int maxIfLastNotRob = 0; //макс число денег если НЕ грабить текущий дом
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int curr : arr) {
 
             //если текущий дом грабить, предыдущий НЕ должен быть ограблен
-            int maxIfCurrRob = maxIfLastNotRob + arr[i];
+            int maxIfCurrRob = maxIfLastNotRob + curr;
 
             //если НЕ грабить текущий, то возьми максимум от
             // того что бы грабить предыдущий i-1 дом и НЕ грабить этот предыдущий
