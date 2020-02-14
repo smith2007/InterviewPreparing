@@ -65,14 +65,14 @@ public class FirstMissingPositive {
 		//и грубо говоря сводим задачу к подзадаче где надо найти
 		//первый пропущенный элемент и все числа от 1 до n
 		for (int i = 0; i < arr.length; i++) {
-			int a = Math.abs(arr[i]);
+			int elm = Math.abs(arr[i]);
 			//если ты встретил число в массиве - меняем знак
 			//будь осторожен - менять знак надо только один раз
 			//мало ли там сколько дубликатов будет
-			if (a == arr.length) {
+			if (elm == arr.length) {
 				arr[0] = -Math.abs(arr[0]);
 			} else {
-				arr[a] = -Math.abs(arr[a]);
+				arr[elm] = -Math.abs(arr[elm]);
 			}
 		}
 
