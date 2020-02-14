@@ -65,7 +65,10 @@ public class FourSum {
             }
 
             //а вот если 4 * firstElm дает наш таргет то это повод задуматься
+            //и попробовать заюзать данный элемент представив что впереди стоят 3 дубля
+            //предварительно проверив
             if (4 * firstElm == target) {
+                //проверяем а может быть там дубли впереди
                 if (i + 3 < arr.length && arr[i + 3] == firstElm) {
                     //добавляем его в наш массив
                     res.add(Arrays.asList(firstElm, firstElm, firstElm, firstElm));

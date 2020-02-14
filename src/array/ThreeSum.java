@@ -12,8 +12,8 @@ public class ThreeSum {
     }
 
     // returns true if there is triplet
-    // with sum equal to 'sum' present
-    // in arr[]. Also, prints the triplet
+    // with sum equal to 'sum'
+    // in arr[]. Also, prints the tripletpresent
     static boolean find3Numbers(int[] arr, int sum) {
 
         // Fix the first element as arr[i]
