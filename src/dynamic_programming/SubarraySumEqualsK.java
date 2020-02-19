@@ -1,4 +1,4 @@
-package array;
+package dynamic_programming;
 
 import java.util.HashMap;
 
