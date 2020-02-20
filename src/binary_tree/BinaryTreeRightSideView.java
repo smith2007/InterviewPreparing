@@ -7,13 +7,11 @@ import java.util.List;
 public class BinaryTreeRightSideView {
 
 	public static void main(String[] args) {
-
 		TreeNode root = StringToNodeBuilder.stringToTreeNode("[1,2,3,null,5,null,4]");
 
 		for (Integer integer : rightSideView(root)) {
 			System.out.println(integer);
 		}
-
 	}
 
 	static List<Integer> rightSideView(TreeNode root) {
