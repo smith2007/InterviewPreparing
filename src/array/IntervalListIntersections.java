@@ -13,7 +13,7 @@ public class IntervalListIntersections {
 	static int[][] intervalIntersection(int[][] a, int[][] b) {
 
 		if (a.length == 0 || b.length == 0) {
-			return new int[][];
+			return new int[0][0];
 		}
 
 		List<int[]> result = new ArrayList<>();
