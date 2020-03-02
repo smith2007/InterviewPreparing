@@ -7,7 +7,8 @@ public class TaskScheduler {
 
     public static void main(String[] args) {
         char[] tasks = {'A', 'A', 'A', 'B', 'B', 'B'};
-        System.out.println(leastInterval(tasks, 2));
+        // ответ будет 104 потому что надо положить сначала A затем B потом сделать еще 49 пробелов и только потом опять А
+        System.out.println(leastInterval(tasks, 50));
     }
 
     static int leastInterval(char[] tasks, int n) {
@@ -17,27 +18,40 @@ public class TaskScheduler {
             map.merge(c, 1, Integer::sum);
         }
 
-        //нам надо трекать максимальное кол-во задач
-        int max = 0;
-        int count = 1;
+        //нам надо трекать максимальное кол-во задач не важно какого типа
+        //это значит что это максимальное кол-во задач надо обслужить и делать между ними
+        //перерывы из пробелов или других задач не важно, главное посчиать максимум
+        int maximumTasksCountByAnyType = 0;
+
+        // так же считаем сколько таких максимумом всего
+        //например максимальное кол во тасков А = 3, но и тасков B тоже 3 соотв maxCount = 2
+        int maximumOfMaximums = 1;
         //берем каждый тип таски, а именно ее кол-во
-        for (int taskCount : map.values()) {
-            if (taskCount == 0) {
+        for (int currTaskCount : map.values()) {
+            if (currTaskCount == 0) {
                 continue;
             }
-            if (max < taskCount) {
-                max = taskCount;
-                count = 1;
-            } else if (max == taskCount) {
-                count++;
+
+            if (maximumTasksCountByAnyType < currTaskCount) {
+                maximumTasksCountByAnyType = currTaskCount;
+                maximumOfMaximums = 1;
+            } else if (maximumTasksCountByAnyType == currTaskCount) {
+                maximumOfMaximums++;
             }
         }
-        //в конце расчитываем кол-во пробелов
-        int res = (n + 1) * (max - 1);
-        int space = res + count;
-        //а кол-во элементов в мапе оно вообще больше чем то кол-во спейсов которое нам надо для того что бы разместить?
-        //если да то приоритет отдаем общем кол-ву элементов
-        return (space < map.values().size()) ? map.size() : space;
 
+        //в конце расчитываем кол-во слотов в нашем как бы массиве
+        int res = (n + 1) * (maximumTasksCountByAnyType - 1);
+        int slotsCount = res + maximumOfMaximums;
+
+        //предположим у нас массив из тасок A A A B B B
+        // - соотв максимум по кол-ву = 3 а максимум максимов у нас = 2
+        //кол во пробелов между каждым из тасков должно быть 50
+        //соотв сколько слотов должно ?? 104 которое выходит из A B + 49 idle + A B + 49 idle + A B = 104
+
+        //а кол-во элементов в изначальном массиве оно вообще больше чем
+        // то кол-во спейсов которое нам надо для того что бы разместить?
+        //если да то приоритет отдаем общем кол-ву элементов
+        return (slotsCount < tasks.length) ? tasks.length : slotsCount;
     }
 }
