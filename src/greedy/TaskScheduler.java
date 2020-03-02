@@ -58,6 +58,8 @@ public class TaskScheduler {
         }
 
         //в конце расчитываем кол-во слотов в нашем как бы массиве
+        // maximumTasksCountByAnyType - 1 - потому что последняя итерация на хвосте,
+        //например A B + 49 idle + A B + 49 idle + A B - последняя A B не требует отдыха
         int res = (n + 1) * (maximumTasksCountByAnyType - 1);
         int slotsCount = res + maximumOfMaximums;
 
