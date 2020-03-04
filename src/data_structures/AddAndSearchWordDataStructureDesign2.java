@@ -27,6 +27,7 @@ public class AddAndSearchWordDataStructureDesign2 {
   }
 
   static class TrieNode {
+
     public TrieNode[] children = new TrieNode[26];
     public String item = "";
   }
@@ -54,10 +55,7 @@ public class AddAndSearchWordDataStructureDesign2 {
     }
 
     char firstLetter = chars[startIndex];
-    if (firstLetter != '.') {
-      return node.children[firstLetter - 'a'] != null
-          && match(chars, startIndex + 1, node.children[firstLetter - 'a']);
-    } else {
+    if (firstLetter == '.') {
       for (int i = 0; i < node.children.length; i++) {
         if (node.children[i] != null) {
           if (match(chars, startIndex + 1, node.children[i])) {
@@ -65,6 +63,9 @@ public class AddAndSearchWordDataStructureDesign2 {
           }
         }
       }
+    } else {
+      return node.children[firstLetter - 'a'] != null
+          && match(chars, startIndex + 1, node.children[firstLetter - 'a']);
     }
     return false;
   }
