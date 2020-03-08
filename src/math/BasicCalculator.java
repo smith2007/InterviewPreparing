@@ -1,7 +1,5 @@
 package math;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
 public class BasicCalculator {
@@ -82,7 +80,6 @@ public class BasicCalculator {
       } else if (currCh == '(') {
         //если это откр или закр скобка то пушим в стек наш знак
         stack.push(sign);
-
       } else if (currCh == ')') {
         stack.pop();
       }
