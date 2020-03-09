@@ -22,11 +22,8 @@ public class MaximumProductSubarray {
         int localProduct = 1;
 
         for (int num : arr) {
-
             localProduct *= num;
-
             globalMax = Math.max(localProduct, globalMax);
-
             //но тут надо держать в голове что если мы встретили ноль, то это не варик и нам как бы надо обнулить
             //наше произведение
             if (localProduct == 0) {
