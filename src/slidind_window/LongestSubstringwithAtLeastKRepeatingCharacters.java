@@ -7,55 +7,57 @@ import java.util.Set;
 
 public class LongestSubstringwithAtLeastKRepeatingCharacters {
 
-    public static void main(String[] args) {
-        System.out.println(longestSubstring("aaabbb", 3));
+  public static void main(String[] args) {
+    System.out.println(longestSubstring("ccabababnn", 3));
+  }
+
+
+  static int longestSubstring(String s, int k) {
+    if (s == null || s.length() == 0) {
+      return 0;
+    }
+    Map<Character, Integer> map = new HashMap<>();
+
+    // record the frequency of each character
+    for (int i = 0; i < s.length(); i += 1) {
+      map.merge(s.charAt(i), 1, Integer::sum);
     }
 
-
-    static int longestSubstring(String s, int k) {
-        if (s == null || s.isEmpty()) {
-            return 0;
-        }
-
-        Map<Character, Integer> map = new HashMap<>();
-        Set<Character> flags = new HashSet<>();
-
-        char[] chars = s.toCharArray();
-
-        int i = 0;
-        int j = 0;
-
-        int max = 0;
-        while (j < chars.length) {
-            map.merge(chars[j], 1, Integer::sum);
-
-            if (map.get(chars[j]) == k) {
-                flags.add(chars[j]);
-            }
-
-            if (flags.size() == map.size()) {
-                max = Math.max(j - i + 1, max);
-            } else if (flags.size() != 0 && map.size() > flags.size()) {
-                while (map.size() > flags.size()) {
-                    Integer counti = map.get(chars[i]);
-                    if (counti - 1 < k) {
-                        flags.remove(chars[i]);
-                    }
-
-                    if (counti - 1 == 0) {
-                        map.remove(chars[i]);
-                    } else {
-                        map.put(chars[i], counti - 1);
-                    }
-                    i++;
-                }
-            }
-            j++;
-        }
-
-        return max;
-
+    //сразу делаем проверку а может быть все символы там встречаются меньше чем к раз??
+    boolean flag = true;
+    for (int count : map.values()) {
+      if (count < k) {
+        flag = false;
+        break;
+      }
     }
+    // возвращаем длинн строки если действительно все символы встречаются ровно столько раз сколько надо
+    if (flag) {
+      return s.length();
+    }
+
+    //далее если гипотеза не подтвердилась, будем раскручивать цикл двумя указателями
+    //фиксируя максимум
+    int max = 0;
+    int i = 0;
+    int j = 0;
+    //причем раскручиваем очень хитро
+    //как только мы встетили символ который дает нам кол-во встречаний меньше чем надо
+    //мы запускаем рекурсивно ту же функцию на еще раз но на под строку которая не включает этот символ
+    //и всю подстроку впередистоящую перед ним, как бы мы понимаем что этот символ обуза,
+    //он не дает того что нам надо и строчку его содержащую надо исключить
+    while (j < s.length()) {
+      if (map.get(s.charAt(j)) < k) {
+        max = Math.max(max, longestSubstring(s.substring(i, j), k));
+        i = j + 1;//итый символ встает на сл жытый как бы
+      }
+      j++;
+    }
+    //как только мы дошли до конца, то есть житый указатель уперся в конец, то давай
+    //еще проверим подстрочку строчку начиная от житого символа
+    return Math.max(max, longestSubstring(s.substring(i), k));
+
+  }
 
 
 }
