@@ -23,7 +23,7 @@ public class GoatLatin {
       } else {
         localSb.append(word.substring(1)).append(word.charAt(0)).append("ma");
       }
-      localSb.append("a".repeat(i + 1));
+     // localSb.append("a".repeat(i + 1));
       sb.append(localSb);
       if (i != arr.length - 1) {
         sb.append(" ");
@@ -32,7 +32,7 @@ public class GoatLatin {
     return sb.toString();
   }
 
-  public static boolean isVowel(char c) {
+  private static boolean isVowel(char c) {
     return "AEIOUaeiou".indexOf(c) != -1;
   }
 
