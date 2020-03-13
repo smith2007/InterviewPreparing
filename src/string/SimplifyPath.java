@@ -2,6 +2,7 @@ package string;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class SimplifyPath {
@@ -11,7 +12,6 @@ public class SimplifyPath {
   }
 
   static String simplifyPath(String path) {
-
     if (path == null || path.isEmpty()) {
       return null;
     }
@@ -26,7 +26,7 @@ public class SimplifyPath {
       }
       if (curr.equals("..") && res.size() > 0) {
         res.remove(res.size() - 1);
-      } else if (!curr.equals("..")){
+      } else if (!curr.equals("..")) {
         res.add(curr);
       }
     }
