@@ -43,14 +43,6 @@ public class LongestPalindromicSubsequence {
       }
     }
 
-    for (int[] ints : dp) {
-      for (int anInt : ints) {
-        System.out.print(anInt + " ");
-      }
-
-      System.out.println();
-    }
-
     return dp[0][s.length() - 1];
 
   }
