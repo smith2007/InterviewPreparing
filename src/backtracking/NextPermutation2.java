@@ -10,63 +10,43 @@ public class NextPermutation2 {
         System.out.println(Arrays.toString(arr));
     }
 
-    static void nextPermutation(int[] arr) {
-        int i = arr.length - 1;
-        for (; i >= 1; i--) {
-            if (arr[i] > arr[i - 1]) {
-                break;
-            }
+    /**
+     *
+     * это более простая версия тут мы просто идем и ищем элемент который нарушает убывающий порядок
+     */
+    static void nextPermutation(int[] nums) {
+        int i = nums.length - 2;
+        while (i >= 0 && nums[i + 1] <= nums[i]) {
+            i--;
         }
-
-        if (i == 0) {
-            if (arr.length == 1 || arr[i] == arr[i + 1]) {
-                return;
+        //ищем элемент который нарушает убывающий порядок
+        //если нашли - то есть мы не дошли до конца
+        //то ищем индексы
+        if (i >= 0) {
+            //опять идем с конца и ищем элемент который больше либо равен нашему итому
+            int j = nums.length - 1;
+            while (j >= 0 && nums[j] <= nums[i]) {
+                j--;
             }
-
-            int i1 = i;
-            int i2 = arr.length - 1;
-            while (i1 < i2) {
-                swap(arr, i1, i2);
-                i1++;
-                i2--;
-            }
-
-        } else {
-
-            //надо найти минимальный близкий к i-1
-            int j = binarySearch(arr, i, arr.length - 1, arr[i - 1]);
-
-            if (j != -1) {
-                swap(arr, i - 1, j);
-            }
-
-            int i1 = i;
-            int i2 = arr.length - 1;
-            while (i1 < i2) {
-                swap(arr, i1, i2);
-                i1++;
-                i2--;
-            }
+            //как только нашли свопаем элементы
+            swap(nums, i, j);
         }
-
+        //и в конце реверсим последнюю часть массива
+        reverse(nums, i + 1);
     }
 
-
-    static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    static void reverse(int[] nums, int start) {
+        int i = start, j = nums.length - 1;
+        while (i < j) {
+            swap(nums, i, j);
+            i++;
+            j--;
+        }
     }
 
-    static int binarySearch(int[] arr, int start, int end, int key) {
-        while (start <= end) {
-            int mid = start+(end-start) / 2;
-           if (arr[mid] > key) {
-                start = mid + 1;
-            } else {
-                end = mid - 1;
-            }
-        }
-        return end;
+    static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }

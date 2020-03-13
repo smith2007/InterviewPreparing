@@ -29,6 +29,9 @@ public class LetterCombinationsOfAPhoneNumber {
 
 
     List<String> letterCombinations(String digits) {
+        if (digits.isEmpty()){
+            return new ArrayList<>();
+        }
         ArrayList<String> res = new ArrayList<>();
         backtrack(res, "", digits, 0, digits.length());
         return res;
