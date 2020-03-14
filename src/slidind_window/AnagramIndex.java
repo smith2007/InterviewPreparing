@@ -1,4 +1,4 @@
-package string;
+package slidind_window;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 public class AnagramIndex {
 
   public static void main(String[] args) {
-    System.out.println(find("actkil","kit"));
+    System.out.println(find("actufg","cat"));
   }
 
   static int find(String first, String second) {

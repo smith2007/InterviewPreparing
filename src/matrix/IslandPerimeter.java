@@ -10,7 +10,7 @@ public class IslandPerimeter {
         System.out.println(i);
     }
 
-    public int islandPerimeter(int[][] grid) {
+    int islandPerimeter(int[][] grid) {
         if (grid == null) {
             return 0;
         }
@@ -27,7 +27,7 @@ public class IslandPerimeter {
         return 0;
     }
 
-    public int getPerimeter(int[][] grid, int i, int j) {
+    int getPerimeter(int[][] grid, int i, int j) {
         //если мы вышли за пределы массива то зашибись нам дает дополнительную единицу
         if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length) {
             return 1;
@@ -38,7 +38,7 @@ public class IslandPerimeter {
         }
 
         //если встретили ранее помеченный элемент то отлично мы тут уже были - 0
-        if (grid[i][j] == -1){
+        if (grid[i][j] == -1) {
             return 0;
         }
 
