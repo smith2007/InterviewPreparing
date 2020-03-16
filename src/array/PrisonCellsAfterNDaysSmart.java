@@ -40,13 +40,13 @@ public class PrisonCellsAfterNDaysSmart {
   }
 
 
-  static int[] prisonAfterNDays(int[] cells, int N) {
-    N = N % 14;
-    if (N == 0) {
-      N = 14;
+  static int[] prisonAfterNDays(int[] cells, int т) {
+    т = т % 14;
+    if (т == 0) {
+      т = 14;
     }
     int[] res = new int[cells.length];
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < т; i++) {
       res = convert(cells);
       cells = res;
     }
