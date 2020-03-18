@@ -3,8 +3,8 @@ package string;
 public class FindSubstringInString {
 
     public static void main(String[] args) {
-        String str1 = "abababababaaba";
-        String str2 = "abaa";
+        String str1 = "ababcaababcaabc";
+        String str2 =       "ababcaabc";
 
         System.out.println(find(str1, str2));
 
