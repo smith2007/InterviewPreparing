@@ -13,6 +13,9 @@ public class SortColors {
     }
   }
 
+  public SortColors() {
+  }
+
   static void sortColors(int[] arr) {
     if (arr.length == 0) {
       return;
