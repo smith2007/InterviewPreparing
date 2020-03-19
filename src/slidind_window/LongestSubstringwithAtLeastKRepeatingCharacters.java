@@ -1,9 +1,7 @@
 package slidind_window;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class LongestSubstringwithAtLeastKRepeatingCharacters {
 
@@ -18,7 +16,7 @@ public class LongestSubstringwithAtLeastKRepeatingCharacters {
     }
     Map<Character, Integer> map = new HashMap<>();
 
-    // record the frequency of each character
+    // мержим мапу каунтеров
     for (int i = 0; i < s.length(); i += 1) {
       map.merge(s.charAt(i), 1, Integer::sum);
     }
@@ -41,7 +39,8 @@ public class LongestSubstringwithAtLeastKRepeatingCharacters {
     int max = 0;
     int i = 0;
     int j = 0;
-    //причем раскручиваем очень хитро
+
+    //причем раскручиваем очень хитро - ПРИНЦИП - УБЕРИ СИМВОЛ ОБУЗУ и посчитай на подстроке
     //как только мы встетили символ который дает нам кол-во встречаний меньше чем надо
     //мы запускаем рекурсивно ту же функцию на еще раз но на под строку которая не включает этот символ
     //и всю подстроку впередистоящую перед ним, как бы мы понимаем что этот символ обуза,

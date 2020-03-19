@@ -1,11 +1,6 @@
 package binary_tree;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class FindDuplicateSubtrees {
 
@@ -38,8 +33,11 @@ public class FindDuplicateSubtrees {
     //если какой-то из детей равне налл - мы ставим вместо него решетку
     String left = dive(root.left, map, set);
     String right = dive(root.right, map, set);
-    String curr = root.val + left + right;
+    String curr = root.val + left + right; // хэш нашей дуги
 
+    //очень хитро трекаем то что мы ранее уже встречали
+    //такой элемент - а именно сначала кладем по ключу null
+    //затем уже нормальные элементы
     if (map.containsKey(curr) && map.get(curr) == null) {
       set.add(root);
       map.put(curr, 1);
