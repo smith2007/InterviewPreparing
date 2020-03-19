@@ -19,7 +19,6 @@ public class SparseMatrixMultiplication {
     //помни матчасть - размер матрицы будет длинна - по а а ширина по b
     //матрица интов - по дефолту заполнена нулями
     int[][] c = new int[a.length][b[0].length];
-
     for (int i = 0; i < a.length; i++) {
       for (int j = 0; j < a[0].length; j++) {
         //если a[i][j] == 0 то умножать смысла нет
