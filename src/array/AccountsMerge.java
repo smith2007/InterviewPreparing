@@ -13,7 +13,6 @@ public class AccountsMerge {
         input.add(List.of("Mary", "mary@mail.com"));
 
 
-
         for (List<String> strings : accountsMerge(input)) {
             for (String string : strings) {
                 System.out.print(string + " ");
@@ -26,15 +25,14 @@ public class AccountsMerge {
     }
 
     /**
-     *
      * input
      * [["Gabe","Gabe0@m.co","Gabe3@m.co","Gabe1@m.co"],
      * ["Kevin","Kevin3@m.co","Kevin5@m.co","Kevin0@m.co"],
      * ["Ethan","Ethan5@m.co","Ethan4@m.co","Ethan0@m.co"],
      * ["Hanzo","Hanzo3@m.co","Hanzo1@m.co","Hanzo0@m.co"],
      * ["Fern","Fern5@m.co","Fern1@m.co","Fern0@m.co"]]
-     *
-     *
+     * <p>
+     * <p>
      * my
      * [["Hanzo","Hanzo3@m.co","Hanzo1@m.co","Hanzo0@m.co"],
      * ["Fern","Fern5@m.co","Fern1@m.co","Fern0@m.co"],
@@ -47,15 +45,15 @@ public class AccountsMerge {
      * ["Gabe","Gabe0@m.co","Gabe3@m.co","Gabe1@m.co"],
      * ["Ethan","Ethan5@m.co","Ethan4@m.co","Ethan0@m.co"],
      * ["Hanzo","Hanzo3@m.co","Hanzo1@m.co","Hanzo0@m.co"],["Kevin","Kevin3@m.co","Kevin5@m.co","Kevin0@m.co"],["Hanzo","Hanzo3@m.co","Hanzo1@m.co","Hanzo0@m.co"],["Ethan","Ethan5@m.co","Ethan4@m.co","Ethan0@m.co"],["Ethan","Ethan5@m.co","Ethan4@m.co","Ethan0@m.co"]]
-
-
-     needed
-
-     [["Ethan","Ethan0@m.co","Ethan4@m.co","Ethan5@m.co"],
-     ["Gabe","Gabe0@m.co","Gabe1@m.co","Gabe3@m.co"],
-     ["Hanzo","Hanzo0@m.co","Hanzo1@m.co","Hanzo3@m.co"],
-     ["Kevin","Kevin0@m.co","Kevin3@m.co","Kevin5@m.co"],
-     ["Fern","Fern0@m.co","Fern1@m.co","Fern5@m.co"]]
+     * <p>
+     * <p>
+     * needed
+     * <p>
+     * [["Ethan","Ethan0@m.co","Ethan4@m.co","Ethan5@m.co"],
+     * ["Gabe","Gabe0@m.co","Gabe1@m.co","Gabe3@m.co"],
+     * ["Hanzo","Hanzo0@m.co","Hanzo1@m.co","Hanzo3@m.co"],
+     * ["Kevin","Kevin0@m.co","Kevin3@m.co","Kevin5@m.co"],
+     * ["Fern","Fern0@m.co","Fern1@m.co","Fern5@m.co"]]
      */
 
     static List<List<String>> accountsMerge(List<List<String>> accounts) {
@@ -66,9 +64,8 @@ public class AccountsMerge {
 
 
         Map<String, List<Integer>> map = new HashMap<>();
-
+// набиваем мапу гле ключ - имейл а значение массив индексов из основновного массива откуда пришел этот имейл
         for (int i = 0; i < accounts.size(); i++) {
-
             List<String> account = accounts.get(i);
             for (int j = 1; j < account.size(); j++) {
                 String email = account.get(j);
@@ -80,12 +77,16 @@ public class AccountsMerge {
 
         }
 
+        //флаги говорящие о том что этот имейл смержен и его не трогать
         Set<String> mergedSet = new HashSet<>();
         for (String email : map.keySet()) {
 
             if (mergedSet.contains(email)) {
                 continue;
             }
+
+            //первый проход рассматриваем только те у кого больше чем 1
+            //тех кого реально надо мержить
             List<Integer> listOfIndexesForMerge = map.get(email);
             if (listOfIndexesForMerge.size() > 1) {
 
@@ -107,16 +108,16 @@ public class AccountsMerge {
         }
 
 
+        //второй проход добавляем те кто остался недомерженным
         for (String email : map.keySet()) {
-
             if (mergedSet.contains(email)) {
                 continue;
             }
+            //а не домерженными остались только элементы с одним имейлом - уникальные
             List<Integer> listOfIndexesForMerge = map.get(email);
-            if (listOfIndexesForMerge.size() == 1) {
-                res.add(accounts.get(listOfIndexesForMerge.get(0)));
-                mergedSet.add(email);
-            }
+            res.add(accounts.get(listOfIndexesForMerge.get(0)));
+            mergedSet.add(email);
+
         }
         return res;
     }
