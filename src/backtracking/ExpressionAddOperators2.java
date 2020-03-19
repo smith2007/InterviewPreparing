@@ -11,8 +11,6 @@ public class ExpressionAddOperators2 {
         for (String string : strings) {
             System.out.println(string);
         }
-
-
     }
 
     static List<String> addOperators(String num, int target) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BinaryTreeRightSideView {
+public class BinaryTreeRightSideViewBFS {
 
 	public static void main(String[] args) {
 		TreeNode root = StringToNodeBuilder.stringToTreeNode("[1,2,3,null,5,null,4]");
