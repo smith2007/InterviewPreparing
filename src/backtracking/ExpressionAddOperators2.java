@@ -29,7 +29,6 @@ public class ExpressionAddOperators2 {
         if (index == num.length()) {
             if (target == eval) {
                 res.add(currStr);
-
             }
         } else {
             for (int i = index; i < num.length(); i++) {
