@@ -21,7 +21,7 @@ public class MissingElementinSortedArrayBinarySearch {
   static int missingElement(int[] nums, int k) {
     int n = nums.length;
     //если катый пропущенный номер больше чем последний элемент массива
-    //тогда просто к последнему прибавляем k
+    //тогда просто к после  днему прибавляем k
     if (k > missing(n - 1, nums)) {
       return nums[n - 1] + k - missing(n - 1, nums);
     }
