@@ -9,6 +9,14 @@ public class WordSearchII {
 
     }
 
+    /**
+     * 1-строим trie наших слов в словаре трие нода это
+     * 2-раскручиваем цикл на матрице по i j и ныряем в бэктрекинг, и пытаемся раскрутить какое то слово начинающися с этой буквы
+     * 3-красим в # уже посещенное слово
+     * 4-ну и по принципу лабиринта мы идем вверх вних вправо влево если это имеет смысл
+     * 5-таскаем с собой массив резов и как только поняли что наткнулись на слово
+     */
+
     public List<String> findWords(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
 
@@ -31,9 +39,9 @@ public class WordSearchII {
             return;
         }
         trieNode = trieNode.next[currLetter - 'a'];
-        if (trieNode.word != null) {   // found one
+        if (trieNode.word != null) {   // вот тут мы нашли слово
             res.add(trieNode.word);
-            trieNode.word = null;     // de-duplicate
+            trieNode.word = null;     // обнуляем это слово для того что бы второй раз на него не придти
         }
 
         //раскрашиваем уже посещенные ноды
