@@ -5,7 +5,7 @@ import static binary_tree.StringToNodeBuilder.stringToTreeNode;
 public class BalancedBinaryTree {
 
     /**
-     * dfs
+     * dive
      *https://leetcode.com/problems/balanced-binary-tree/
      */
     public static void main(String[] args) {

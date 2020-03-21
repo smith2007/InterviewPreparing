@@ -17,7 +17,7 @@ public class LetterCasePermutationRecursiveDFS {
     }
 
     //такой же но рекурсивный подход
-    //он же dfs
+    //он же dive
     static List<String> letterCasePermutation(String str) {
         List<String> ans = new ArrayList<>(); //сразу создадим результирующий
 
