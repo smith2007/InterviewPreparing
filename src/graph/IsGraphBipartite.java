@@ -14,7 +14,6 @@ public class IsGraphBipartite {
      * чтобы у каждого ребра графа был один узел в A и другой узел в B.
      * на картинке два множества красные и синие - граф двудольный
      */
-
     public static void main(String[] args) {
 
     }
