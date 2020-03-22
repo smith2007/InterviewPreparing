@@ -36,7 +36,7 @@ public class MergeIntervalsLists {
 
     static List<List<Integer>> merge(List<List<Integer>> collect) {
 
-        Comparator<List<Integer>> tComparator = (l1, l2) -> l1.get(0) - l2.get(0);
+        Comparator<List<Integer>> tComparator = Comparator.comparingInt(l -> l.get(0));
 
         List<List<Integer>> lists = collect.stream().sorted(tComparator).collect(Collectors.toList());
 
