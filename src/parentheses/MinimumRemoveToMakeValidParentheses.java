@@ -1,4 +1,4 @@
-package stack;
+package parentheses;
 
 import java.util.HashSet;
 import java.util.Set;
