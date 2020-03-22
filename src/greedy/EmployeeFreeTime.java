@@ -36,7 +36,7 @@ public class EmployeeFreeTime {
         List<Interval> intervals3 = employeeFreeTime(schedule);
 
         for (Interval interval : intervals3) {
-            System.out.println(interval.start + " "+interval.end);
+            System.out.println(interval.start + " " + interval.end);
             System.out.println();
         }
 
@@ -57,6 +57,7 @@ public class EmployeeFreeTime {
 
         int i = 0;
 
+        //мержим пересекающиеся интервалы
         Interval temp = null;
         while (i < intervals.size()) {
 
@@ -64,19 +65,19 @@ public class EmployeeFreeTime {
                 temp = intervals.get(i);
             }
 
-            while ( i<intervals.size() && canMerge(temp, intervals.get(i)) ) {
+            while (i < intervals.size() && canMerge(temp, intervals.get(i))) {
                 temp.start = Math.min(temp.start, intervals.get(i).start);
                 temp.end = Math.max(temp.end, intervals.get(i).end);
                 i++;
             }
 
             mergedList.add(temp);
-            if (i< intervals.size() && !canMerge(temp, intervals.get(i))){
+            if (i < intervals.size() && !canMerge(temp, intervals.get(i))) {
                 temp = intervals.get(i);
             }
         }
 
-
+        //ищем разрывы смотря на предыдущий и текущий
         List<Interval> res = new ArrayList<>();
         for (int j = 1; j < mergedList.size(); j++) {
             Interval prev = mergedList.get(j - 1);
