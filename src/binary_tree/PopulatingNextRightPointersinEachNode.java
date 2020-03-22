@@ -24,7 +24,6 @@ public class PopulatingNextRightPointersinEachNode {
         //будем выходить из цикла
         while (leftmost.left != null) {
 
-
             //итерируем линкед лист начиная с головного элемента
             //используем ссылки на некст проставленными ранее
             //другим хэдом этажом выше
