@@ -47,9 +47,9 @@ public class EmployeeFreeTimeEffective {
         public int start;
         public int end;
 
-        Interval(int _start, int _end) {
-            start = _start;
-            end = _end;
+        Interval(int start, int end) {
+            this.start = start;
+            this.end = end;
         }
     }
 }
