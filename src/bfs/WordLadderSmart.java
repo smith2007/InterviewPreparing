@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class WordLadder2 {
+public class WordLadderSmart {
 
     public static void main(String[] args) {
         String beginWord = "hit";
@@ -59,12 +59,13 @@ public class WordLadder2 {
 
         int level = 1;
 
-        //так же делаем технический сет для раскрашивания
+        //так же делаем технический сет для фиксации посещенных слов
         Set<String> visited = new HashSet<>();
         while (!beginSet.isEmpty() && !endSet.isEmpty()) {
 
             //как только кандидатов на чейн становится больше чем размер таргет
-            //свопаем
+            //свопаем их
+            //ВНИМАНИЕ КЛЮЧЕВОЙ МОМЕНТ АЛГОРИТМА
             if (beginSet.size() > endSet.size()) {
                 Set<String> forSwap = beginSet;
                 beginSet = endSet;
@@ -73,25 +74,28 @@ public class WordLadder2 {
 
             Set<String> candidates = new HashSet<>();
             for (String word : beginSet) {
-                char[] chs = word.toCharArray();
-                //двойной цикл по буквами
-                for (int i = 0; i < chs.length; i++) {
-                    //и по алфавиту
+                char[] wordCh = word.toCharArray();
+                //двойной цикл по буквам
+                //первый цикл по буквам в слове
+                for (int i = 0; i < wordCh.length; i++) {
+                    // второй цикл по английскому по алфавиту
                     //пробегаем по всем буквам, пытаемся найти такое слово которое присутсвует в словаре
                     for (char c = 'a'; c <= 'z'; c++) {
                         //запоминаем старый символ
-                        char old = chs[i];
-                        chs[i] = c;
-                        String newWord = String.valueOf(chs);
+                        //что бы потом его вернуть обратно
+                        char old = wordCh[i];
+                        wordCh[i] = c;
+                        String newWord = String.valueOf(wordCh);
                         if (endSet.contains(newWord)) {
                             return level + 1;
                         }
                         //пробегаем по всем буквам, пытаемся найти такое слово которое присутсвует в словаре
+                        //и не было ранее заиспользовано дабы не войти в беск цикл
                         if (!visited.contains(newWord) && dict.contains(newWord)) {
                             candidates.add(newWord);
                             visited.add(newWord);
                         }
-                        chs[i] = old;
+                        wordCh[i] = old;
                     }
                 }
             }
