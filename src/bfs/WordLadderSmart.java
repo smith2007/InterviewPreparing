@@ -53,6 +53,10 @@ public class WordLadderSmart {
         Set<String> endSet = new HashSet<>();
 
         //заряжаем начальное слово в первый сет
+        //далее мы будем накладывать в этот и в beginSet
+        //и потом траверсить их проверять варианты
+        //например у нас два варианта lot и dot
+        //фигачим смотрим что там
         beginSet.add(beginWord);
         //заряжаем финальное слово во второй сет
         endSet.add(endWord);
