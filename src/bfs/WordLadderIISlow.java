@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class WordLadderII {
+public class WordLadderIISlow {
 
   public static void main(String[] args) {
-    WordLadderII ladderII = new WordLadderII();
+    WordLadderIISlow ladderII = new WordLadderIISlow();
     ArrayList<String> wordList = new ArrayList<>();
     wordList.add("hot");
     wordList.add("dot");

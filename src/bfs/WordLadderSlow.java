@@ -2,7 +2,7 @@ package bfs;
 
 import java.util.*;
 
-public class WordLadder {
+public class WordLadderSlow {
 
     /**
      *
