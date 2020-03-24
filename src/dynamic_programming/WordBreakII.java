@@ -1,5 +1,6 @@
 package dynamic_programming;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -10,13 +11,13 @@ public class WordBreakII {
 
   public static void main(String[] args) {
     WordBreakII wordBreakII = new WordBreakII();
-    Set<String> set = new HashSet<>();
-    set.add("cat");
-    set.add("cats");
-    set.add("and");
-    set.add("sand");
-    set.add("dog");
-    List<String> list = wordBreakII.wordBreak("catsanddog", set);
+    List<String> list1 = new ArrayList<>();
+    list1.add("cat");
+    list1.add("cats");
+    list1.add("and");
+    list1.add("sand");
+    list1.add("dog");
+    List<String> list = wordBreakII.wordBreak("catsanddog", list1);
 
     for (String s : list) {
       System.out.println(s);
@@ -45,8 +46,8 @@ public class WordBreakII {
    * <p>
    * круто и намного намного проще и понятно чем с этим массивом dp
    */
-  public List<String> wordBreak(String str, Set<String> wordDict) {
-    return dfs(str, wordDict, 0);
+  public List<String> wordBreak(String str, List<String> wordDict) {
+    return dfs(str, new HashSet<>(wordDict), 0);
   }
 
   HashMap<Integer, List<String>> map = new HashMap<>();
