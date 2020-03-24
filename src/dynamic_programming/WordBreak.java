@@ -50,17 +50,17 @@ public class WordBreak {
             return false;
         }
 
-        int len = s.length();
+        int length = s.length();
         // создали массив булеанов - каждый индекс
         // - как бы говорит о том что слово заканчивающееся на него тут есть
-        boolean[] dp = new boolean[len + 1];
+        boolean[] dp = new boolean[length + 1];
 
         HashSet<String> wordDictSet = new HashSet<>(wordDict);
         // нулевой элемент равен true - это значит что пустая строка епта тут есть уже
         dp[0] = true;
 
         //раскручиваемся
-        for (int i = 1; i < len + 1; i++) {
+        for (int i = 1; i < length + 1; i++) {
 
             // с помощью этого второго массива мы достигаем той гармошки
             //l - le - lee - ee - e - leet
@@ -83,6 +83,6 @@ public class WordBreak {
             }
 
         }
-        return dp[len];
+        return dp[length];
     }
 }
