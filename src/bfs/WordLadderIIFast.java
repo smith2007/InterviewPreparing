@@ -82,7 +82,8 @@ public class WordLadderIIFast {
 
             String newWord = new String(wordCh);
             //если в словаре это слово есть - биго
-
+            //итого найдя какое-то новое слово подбором,
+            // мы аппендим это новое слово во все чейны которое наше текущее слово имеет
             if (dictionary.contains(newWord)) {
               visitedSet.add(newWord);
 
@@ -104,6 +105,9 @@ public class WordLadderIIFast {
             wordCh[i] = oldLetter;
           }
         }
+        //в конце мы удаляем текущее слово из мапы - и соотв чейны которое оно заканчивает
+        //нам больше не интересно текущее слово, нам интересно только нове слова
+        //на которые оканчивается наши чейны
         map.remove(currWord);
       }
       // clear the previous layers words and update
