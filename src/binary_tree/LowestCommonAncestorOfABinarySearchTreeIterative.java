@@ -14,14 +14,23 @@ public class LowestCommonAncestorOfABinarySearchTreeIterative {
      * https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
      */
 
-    static TreeNode lowestCommonAncestor(TreeNode root, TreeNode a, TreeNode b) {
+    static TreeNode lowestCommonAncestor(TreeNode root, TreeNode first, TreeNode second) {
+        //начинаем обход рутовой ноды
         TreeNode curr = root;
+        //бесконечно крутимся в цикле
         while (true) {
-            if (curr.val > a.val && curr.val > b.val) {
+            //надо понять куда дальше идти или это та самая нода что надо
+            //если текущее значение больше чем наша первая И вторая нода
+            //надо уменьшать ОНИ обе меньше епта
+            //а в бинарном дереве поиска где меньшие элементы??
+            //правильно левее - идем левее
+            if (curr.val > first.val && curr.val > second.val) {
                 curr = curr.left;
-            } else if (curr.val < a.val && curr.val < b.val) {
+            } else if (curr.val < first.val && curr.val < second.val) { //вот тут обе больше - идем вправо
                 curr = curr.right;
             } else {
+                //ну а вот тут мы на развилке, кто-то из них меньше кто то больше
+                //все - вот он общий предок
                 return curr;
             }
         }
