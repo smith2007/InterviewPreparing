@@ -42,6 +42,8 @@ public class DesignSearchAutocompleteSystem {
       currNode.children.putIfAbsent(ch, new TrieNode());
       currNode = currNode.children.get(ch);
       //кладем обновленное слово и кол-во раз сколько оно встречалось
+      //тут то вся и фишка что каждая наша нода - тобишь каждый наш символ знает к какому слову он приведет
+      //и сколько раз он встретися
       currNode.countsMap.put(str, currNode.countsMap.getOrDefault(str, 0) + time);
     }
   }
@@ -106,10 +108,8 @@ public class DesignSearchAutocompleteSystem {
 
 
   static class TrieNode {
-
     public Map<Character, TrieNode> children;
     public Map<String, Integer> countsMap;
-
     public TrieNode() {
       children = new HashMap<>();
       countsMap = new HashMap<>();

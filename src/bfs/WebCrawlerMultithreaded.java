@@ -1,6 +1,7 @@
 package bfs;
 
 public class WebCrawlerMultithreaded {
+
 /*
     public List<String> crawl(String startUrl, HtmlParser htmlParser) {
 
