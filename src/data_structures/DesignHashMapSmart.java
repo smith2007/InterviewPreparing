@@ -10,14 +10,14 @@ public class DesignHashMapSmart {
 
 
   private static final double LOAD_FACTOR = 0.75;
-  private LinkedListNode[] linkedListNodes;
+  private Entry[] linkedListNodes;
   private int size; // number of keys
 
   /**
    * Initialize your data structure here.
    */
   public DesignHashMapSmart() {
-    linkedListNodes = new LinkedListNode[5];
+    linkedListNodes = new Entry[5];
     size = 0;
   }
 
@@ -26,13 +26,13 @@ public class DesignHashMapSmart {
    */
   public void put(int key, int value) {
     int idx = hash(key);
-    for (LinkedListNode x = linkedListNodes[idx]; x != null; x = x.next) {
+    for (Entry x = linkedListNodes[idx]; x != null; x = x.next) {
       if (x.key == key) {
         x.value = value;
         return;
       }
     }
-    linkedListNodes[idx] = new LinkedListNode(key, value, linkedListNodes[idx]);
+    linkedListNodes[idx] = new Entry(key, value, linkedListNodes[idx]);
     size++;
 
     double loadFactor = (double) size / linkedListNodes.length;
@@ -47,7 +47,7 @@ public class DesignHashMapSmart {
    */
   public int get(int key) {
     int idx = hash(key);
-    for (LinkedListNode x = linkedListNodes[idx]; x != null; x = x.next) {
+    for (Entry x = linkedListNodes[idx]; x != null; x = x.next) {
       if (x.key == key) {
         return x.value;
       }
@@ -60,8 +60,8 @@ public class DesignHashMapSmart {
    */
   public void remove(int key) {
     int idx = hash(key);
-    LinkedListNode pre = new LinkedListNode(-1, -1, linkedListNodes[idx]); // sentinal node before list head
-    for (LinkedListNode prev = pre; prev.next != null; prev = prev.next) {
+    Entry pre = new Entry(-1, -1, linkedListNodes[idx]); // sentinal node before list head
+    for (Entry prev = pre; prev.next != null; prev = prev.next) {
       if (prev.next.key == key) {
         prev.next = prev.next.next;
         break;
@@ -76,23 +76,23 @@ public class DesignHashMapSmart {
   }
 
   private void rehash() {
-    LinkedListNode[] tmp = linkedListNodes;
-    linkedListNodes = new LinkedListNode[tmp.length * 2];
+    Entry[] tmp = linkedListNodes;
+    linkedListNodes = new Entry[tmp.length * 2];
     size = 0;
-    for (LinkedListNode head : tmp) {
-      for (LinkedListNode x = head; x != null; x = x.next) {
+    for (Entry head : tmp) {
+      for (Entry x = head; x != null; x = x.next) {
         put(x.key, x.value);
       }
     }
   }
 
-  static class LinkedListNode {
+  static class Entry {
 
     int key;
     int value;
-    LinkedListNode next;
+    Entry next;
 
-    public LinkedListNode(int key, int value, LinkedListNode next) {
+    public Entry(int key, int value, Entry next) {
       this.key = key;
       this.value = value;
       this.next = next;
