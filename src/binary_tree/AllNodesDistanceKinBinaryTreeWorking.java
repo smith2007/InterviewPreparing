@@ -10,44 +10,83 @@ import java.util.Set;
 public class AllNodesDistanceKinBinaryTreeWorking {
 
   public static void main(String[] args) {
+    TreeNode root = StringToNodeBuilder.stringToTreeNode("[0,1,null,3,2]");
+    TreeNode target = fourthDfs(root, 2);
 
-
+    AllNodesDistanceKinBinaryTreeWorking inst = new AllNodesDistanceKinBinaryTreeWorking();
+    for (Integer integer : inst.distanceK(root, target, 1)) {
+      System.out.println(integer);
+    }
   }
 
-  public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
+  /**
+   * решать будем через мапу текущего элемента и его родителя интересный подход
+   * принцип dfs с шагом вверх
+   * нифига себе какой красивый солюшн
+   *
+   */
+  //объявили мапу ключ - нода, value - ee родитель
+  Map<TreeNode, TreeNode> map = new HashMap<>();
+  //так же нам понадобится сет визитетов
+  Set<TreeNode> visited = new HashSet<>();
+  //ну и финальный массив резов
+  List<Integer> res = new ArrayList<>();
 
-    Map<TreeNode, TreeNode> map = new HashMap<>();
-    annotateParent(map, root, null);
+  public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
 
-    Set<TreeNode> visited = new HashSet<>();
-    List<Integer> res = new ArrayList<>();
-    find(res, visited, map, target, 0, K);
+    annotateParent(root, null);
+
+    //опускаемся рекурсией начиная с ТАРГЕТА!!!
+    dive(target, 0, k);
     return res;
 
   }
 
-  //dfs find the dist node
-  private void find(List<Integer> res, Set<TreeNode> visited, Map<TreeNode, TreeNode> map,
-      TreeNode cur, int dist, int K) {
-    if (cur == null || visited.contains(cur)) {
+  //начиная с таргета мы опускаемся в вниз а так же на этаж выше
+  //оооочень крутой подход то есть по сути мы расползаемся в разные стороны от нашей ноды
+  //вверх и вниз
+  private void dive(TreeNode currNode, int distance, int k) {
+    //если опустились на дно, либо эту ноду уже посещали
+    //ничего не делаем просто возвращаемся
+    if (currNode == null || visited.contains(currNode)) {
       return;
     }
-    if (dist == K) {
-      res.add(cur.val);
+    //если мы достигли нашей как бы глубины то все вот она наша нода
+    if (distance == k) {
+      res.add(currNode.val);
       return;
     }
-    visited.add(cur);
-    find(res, visited, map, cur.left, dist + 1, K);
-    find(res, visited, map, cur.right, dist + 1, K);
-    find(res, visited, map, map.get(cur), dist + 1, K);
+    //маркируем ноду как посещенную
+    visited.add(currNode);
+    //идем влево
+    dive(currNode.left, distance + 1, k);
+    //вправо
+    dive(currNode.right, distance + 1, k);
+    //а так же - ключевой момент идем на уровень выше для того что бы начать
+    // с нашей родительской ноды снова
+    dive(map.get(currNode), distance + 1, k);
   }
 
-  //annotate parent
-  private void annotateParent(Map<TreeNode, TreeNode> map, TreeNode cur, TreeNode parent) {
+  //опускаемся через dfs
+  private void annotateParent(TreeNode cur, TreeNode parent) {
+    //ключ - нода, value - ee родитель
     if (cur != null) {
       map.put(cur, parent);
-      annotateParent(map, cur.left, cur);
-      annotateParent(map, cur.right, cur);
+      annotateParent(cur.left, cur);
+      annotateParent(cur.right, cur);
     }
+  }
+
+  private static TreeNode fourthDfs(TreeNode curr, int n) {
+    if (curr == null) {
+      return null;
+    }
+
+    if (curr.val == n) {
+      return curr;
+    }
+    TreeNode rightRes = fourthDfs(curr.right, n);
+    TreeNode leftRes = fourthDfs(curr.left, n);
+    return rightRes != null ? rightRes : leftRes;
   }
 }
