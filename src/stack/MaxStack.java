@@ -19,6 +19,10 @@ public class MaxStack {
 
     }
 
+    /**
+     * задача похожа на LRU кэш так же используем двухсвязный список и TreeMap для того что бы трекать максимум
+     * в качестве ключа будет значение - максимальное
+     */
     Node top;
 
     TreeMap<Integer, List<Node>> map = new TreeMap<>();
@@ -35,10 +39,6 @@ public class MaxStack {
     //и на предыдущий
     //а максимум держать в какой либо структуре данных
     //например в куче
-
-    public MaxStack() {
-
-    }
 
     public void push(int x) {
 
