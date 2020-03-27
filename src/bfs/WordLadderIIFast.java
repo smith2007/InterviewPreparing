@@ -39,6 +39,9 @@ public class WordLadderIIFast {
     List<List<String>> res = new ArrayList<>();
     Set<String> dictionary = new HashSet<>(wordList);
 
+    //нам надо как то еще не закрутится в бес цикле
+    //для этого сделаем сет из слов к посещению то есть что бы не возвращаться к уже текущим словам
+    //значения этого сета будем удалять из словаря
     Set<String> beginSet = new HashSet<>();
     beginSet.add(beginWord);
 
@@ -59,10 +62,15 @@ public class WordLadderIIFast {
     while (!dictionary.isEmpty() && !foundFlag && !beginSet.isEmpty()) {
       // удаляем все текущие слова из нашего словаря
       dictionary.removeAll(beginSet);
-      // use another set to record next layers' words
-      Set<String> visitedSet = new HashSet<>();
 
-      // iterate through all new starts
+      // вот тут мы будем формировать слои для посещения
+      //нам нужен такой сет - коллектор из сформированных на текущем шаге новых слов
+      //которые есть в словаре - значение этого сета мы будем исп на сл шаге как отправную точку
+      Set<String> newBeginSet = new HashSet<>();
+
+      // раскручиваем цикл по все возможным началам нашего сета
+      //а все возможные началы - это будут слова которые мы на предыдущем шаге
+      //сформировали и добавли в сет visited
       for (String currWord : beginSet) {
 
         char[] wordCh = currWord.toCharArray();
@@ -85,7 +93,7 @@ public class WordLadderIIFast {
             //итого найдя какое-то новое слово подбором,
             // мы аппендим это новое слово во все чейны которое наше текущее слово имеет
             if (dictionary.contains(newWord)) {
-              visitedSet.add(newWord);
+              newBeginSet.add(newWord);
 
               for (List<String> chain : currWordChains) {
 
@@ -110,9 +118,10 @@ public class WordLadderIIFast {
         //на которые оканчивается наши чейны
         map.remove(currWord);
       }
-      // clear the previous layers words and update
+      // очищаем все предыдушие слова из сета
       beginSet.clear();
-      beginSet.addAll(visitedSet);
+      //и добавляем все новые слова
+      beginSet.addAll(newBeginSet);
 
     }
 

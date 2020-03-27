@@ -74,15 +74,14 @@ public class BinaryTreeZigzagLevelOrderTraversal {
 
             int[] floor = new int[queue.size()];
 
-            int phantomQueueSize = queue.size();
+            int size = queue.size();
 
-            int i = isLeftNext ? 0 : phantomQueueSize - 1;
+            int i = isLeftNext ? 0 : size - 1;
 
-
-            while (phantomQueueSize != 0) {
+            while (size != 0) {
                 TreeNode elm = queue.poll();
                 floor[i] = elm.val;
-                phantomQueueSize--;
+                size--;
                 if (elm.left != null) {
                     queue.add(elm.left);
                 }

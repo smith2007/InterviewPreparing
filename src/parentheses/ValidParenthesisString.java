@@ -1,6 +1,7 @@
 package parentheses;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class ValidParenthesisString {
 
@@ -43,32 +44,46 @@ public class ValidParenthesisString {
             return true;
         }
 
-        LinkedList<Integer> stackLeft = new LinkedList<>();
+        Stack<Integer> stackLeft = new Stack<>();
 
-        LinkedList<Integer> stackStar = new LinkedList<>();
+        Stack<Integer> stackStar = new Stack<>();
 
-
+        //двух стеков за линейное время, первый стек у нас фиксирует
+        //     левый скобки, второй фиксируем звездочки
         for (int i = 0; i < s.length(); i++) {
 
             char ch = s.charAt(i);
-
+            //если открытиая скобка кладем на стек с откр скобками
             if ('(' == ch) {
                 stackLeft.push(i);
             } else if ('*' == ch) {
+                //если звездочка то кладем на второй стек
                 stackStar.push(i);
             } else if (')' == ch) {
+                //а вот если закр скобка надо понимать что делать
+                //если оба стека пустые - то все ситуация не валидна
+                //мы не можем никак компенсировать эту закрытую скобку
                 if (stackLeft.isEmpty() && stackStar.isEmpty()) {
                     return false;
-                } else if (stackLeft.isEmpty() && !stackStar.isEmpty()) {
+                } else if (stackLeft.isEmpty()) {
+                    //в первую очередь компенсируем закрытые скобки - звездочками если он есть
                     stackStar.pop();
-                } else if (!stackLeft.isEmpty() && stackStar.isEmpty()) {
+                } else if (stackStar.isEmpty()) {
+                    //если есть левые скобки - компенсируем левыми скобками
                     stackLeft.pop();
                 } else if (!stackLeft.isEmpty() && !stackStar.isEmpty()) {
+                    //если оба не пустые то компенсируем левыми скобками
                     stackLeft.pop();
                 }
             }
         }
 
+        /**
+         * и далее после пробега смотрим на то что осталось на руках, если оба стека не пустых
+         *      пробуем еще разок их закрыть для попаем из обоих стеков и ОЧЕНЬ ВАЖНО смотрим что индекс
+         *      скобки был меньше чем звездочки, иначе хана не правильно, наша звездочка не поможет она
+         *      теоретически не сможет закрыть скобку
+         */
         if (stackStar.isEmpty() && stackLeft.isEmpty()) {
             return true;
         } else if (stackLeft.isEmpty() && !stackStar.isEmpty()) {
@@ -85,6 +100,5 @@ public class ValidParenthesisString {
             }
         }
         return stackLeft.isEmpty();
-
     }
 }

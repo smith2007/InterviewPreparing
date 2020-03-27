@@ -45,6 +45,8 @@ public class TrappingRainWater {
         int localWater = localMaxi - height[i];
         //если кол-во воды не отрицательное
         //обновляем общий каунтер воды
+        //воду скидываем тогда и только тогда когда она не ухудшит конечный результат то есть
+        //не будет отрицательной
         if (localWater > 0) {
           water += localWater;
         }
