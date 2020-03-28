@@ -5,15 +5,22 @@ import java.util.*;
 public class AlienDictionaryBFS {
 
 	public static void main(String[] args) {
-        String[] arr = {"za", "zb", "ca", "cb"};
+        String[] arr = {"abc", "ab"};
 		System.out.println(alienOrder(arr));
 	}
 
-	//решаем с помощью bfs
+	//необходимо получить на выходе порядок букв в этом алфавите
+	//решаем с помощью topological sort и bfs
 	static String alienOrder(String[] words) {
 
 		//две мапы
+		// нужна для хранения как бы напротив буквы как бы возможных следующих букв
+		//то есть текущаябуква -> кто вставал за ней
 		Map<Character, Set<Character>> letterToChain = new HashMap<>();
+
+		//будет служить неким каунтером для букв сколько раз конкрентная буква вставала за кем то
+		//логично что для того что бы взять например первую букву алфавита надо взять ключи со значением == 0
+		//потому что они ни за кем не вставали
 		Map<Character, Integer> letterToCounterMap = new HashMap<>();
 
 		//результирующий стринг билдер
@@ -51,7 +58,12 @@ public class AlienDictionaryBFS {
 			//берем минимальную длинну из этих двух слов
 			int minLength = Math.min(cur.length(), next.length());
 
-			//раскручиваем цикл что бы буквы посимвольно
+			/**
+			 * в цикле берем по букве из первого curr слова и второго next слова,
+			 * если они равны скипаем, если они не равны - это повод добавить
+			 * одну из этих букв как главу чейна (ключ) в letterToChain
+			 * и вторую как возможное продолжение
+			 */
 			for (int j = 0; j < minLength; j++) {
 
 				//берем две паралельные буквы
@@ -76,8 +88,8 @@ public class AlienDictionaryBFS {
 			}
 		}
 
-		//мапы на руках
-		//начинаем бфс - иницализируем очередь каунтами из letterToCounterMap
+		//мапы на руках - начинаем бфс - иницализируем очередь каунтами из letterToCounterMap
+		//ТО ЕСТЬ ТОЛЬКО БУКВЫ КОТОРОЫЕ НЕ ПЕРЕД КЕМ НЕ СТОЯЛИ НИКОГДА
 		Queue<Character> queue = new LinkedList<>();
 		for (char c : letterToCounterMap.keySet()) {
 			//добавляем только те буквы у которых каунт == 0
