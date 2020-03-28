@@ -1,11 +1,6 @@
 package dynamic_programming;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class WordBreakII {
 
@@ -50,7 +45,7 @@ public class WordBreakII {
     return dfs(str, new HashSet<>(wordDict), 0);
   }
 
-  HashMap<Integer, List<String>> map = new HashMap<>();
+  HashMap<Integer, List<String>> map = new HashMap<>(); // мапа с возможными вариантами продолжения
 
   public List<String> dfs(String str, Set<String> dictionary, int start) {
     if (map.containsKey(start)) {
