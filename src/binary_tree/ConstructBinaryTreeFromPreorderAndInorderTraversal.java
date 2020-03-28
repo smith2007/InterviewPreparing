@@ -1,81 +1,92 @@
 package binary_tree;
 
+import java.util.HashMap;
+
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        /**
-         * [1,2,3]
-         * [3,2,1]
-         */
-        int[] preorder = {1, 2, 3};
-        int[] inorder = {3, 2, 1};
+    /**
+     * [1,2,3] - preorder
+     * [3,2,1] - inorder
+     *
+     */
+    int[] preorder = {1, 2, 3};
+    int[] inorder = {3, 2, 1};
+    ConstructBinaryTreeFromPreorderAndInorderTraversal ins = new ConstructBinaryTreeFromPreorderAndInorderTraversal();
+    TreeNode treeNode = ins.buildTree(preorder, inorder);
+    System.out.println(treeNode);
 
-        TreeNode treeNode = build(preorder, inorder);
-        System.out.println(treeNode);
-/*
-        int[] preorder1 = {3, 20, 15, 7};
-        int[] inorder1 = {3, 15, 20, 7};
+  }
 
-        TreeNode treeNode1 = build(preorder1, inorder1);
-        System.out.println(treeNode1);
+    /**
+     * [3,9,20,15,7] - preorder
+     * [9,3,15,20,7] - inorder
+     *
 
+     * здесь надо работать через рекурсию и мапу индексов от inorder,
+     * наш метод dive будет принимать на вход границы нашего дерева то есть нашего массива inorder,
+     * смотри пример на картинку и на массивы - границы inorder для всего дерева 9 и 7 потом их голова это 3
+     * трешка находится в preorder на 3 месте соотв надо
+     *
+     * 1 - подготовить мапу из значений inorder -> index
+     * 2 - в методе dive работаем по границам из inorder - как найти рут в методе dive?
+     * надо его взять из preOrder через глобальный каунтер
+     * делаем глобальный каунтер в виде int preIdx = 0; - и будем каждый раз внутри рекурсии
+     * его инкрементить что бы найти корректный рут
+     *
+     * 3-берем маппинг нашего рута в массиве inorder - тут то нам и понадобится наша мапа
+     * 4-запускаем построение дерева левой и правой ее подчасти на обновленных границах
+     */
 
-        int[] preorder2 = {3, 9, 10, 11, 20, 15, 7};
-        int[] inorder2 = {10, 9, 11, 3, 15, 20, 7};
+    int preIdx = 0;
+    int[] preorder;
+    int[] inorder;
+    HashMap<Integer, Integer> indexInorderMap = new HashMap<>();
 
-        TreeNode treeNode2 = build(preorder2, inorder2);
-        System.out.println(treeNode2);*/
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        this.preorder = preorder;
+        this.inorder = inorder;
+
+        //вот тут строим хэшмапу из значений -> на ее индекс
+        int index = 0;
+        for (Integer val : inorder){
+            indexInorderMap.put(val, index++);
+        }
+        //и сваливаемся в рекурсию беря в расчет
+        return dive(0, inorder.length);
     }
 
-    static TreeNode build(int[] preorder, int[] inorder) {
-        if (preorder.length == 0 || inorder.length == 0) {
+
+    public TreeNode dive(int inorderLeft, int inorderRight) {
+        //если нет элементов для построение поддерева
+        if (inorderLeft == inorderRight){
             return null;
         }
-        return build(preorder, 0, inorder, -1, inorder.length - 1);
+
+        //preorder - будет помогать нам строить рутовый элемент
+        //берем preIndex - как рутовый элемент
+        int rootVal = preorder[preIdx];
+
+        //создаем его - рутовый элемент
+        TreeNode root = new TreeNode(rootVal);
+
+        //рутовый элемент как бы делит наш inorder list
+        //на два поддерева - левый и правый
+        //вот теперь самый ключевой момент - это взять
+        //индекс рутового из preorder в inorder
+        int rootIndexInInorder = indexInorderMap.get(rootVal);
+
+        // рекурсия
+        preIdx++;
+
+        // билдим левое поддерево
+        //при этом падаем в рексрию с двух границ левой краней гарницы и индекс того рутового в inorder
+        root.left = dive(inorderLeft, rootIndexInInorder);
+        // билдим правое поддерево
+        root.right = dive(rootIndexInInorder + 1, inorderRight);
+        return root;
     }
 
-    static TreeNode build(int[] preorder, int preorderStart, int[] inorder, int inorderStart, int inorderEnd) {
 
-        int rootVal = preorder[preorderStart];
-        TreeNode treeNode = new TreeNode(rootVal);
-
-
-        //если надо тогда надо посчитать границы этого треугольника
-        //считаем i
-        int i = inorderEnd;
-        while (inorder[i] != preorder[preorderStart] && i > inorderStart + 1) {
-            i--;
-        }
-
-        if (i == inorderStart + 1) {
-            treeNode.left = null;
-        } else {
-
-            int mid = (inorderStart + i) / 2;
-            int j = 0;
-            for (; j < preorder.length; j++) {
-                if (inorder[mid] == preorder[j]) {
-                    break;
-                }
-            }
-
-            treeNode.left = build(preorder, j, inorder, inorderStart, i - 1);
-        }
-
-        if (i == inorderEnd) {
-            treeNode.right = null;
-        } else {
-            int mid = (i + inorderEnd + 1) / 2;
-            int j = 0;
-            for (; j < preorder.length; j++) {
-                if (inorder[mid] == preorder[j]) {
-                    break;
-                }
-            }
-            treeNode.right = build(preorder, j, inorder, i, inorderEnd);
-
-        }
-        return treeNode;
-    }
 }

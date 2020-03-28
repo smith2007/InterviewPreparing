@@ -15,15 +15,20 @@ public class ContainerWithMostWater {
      */
 
     static int maxArea(int[] arr) {
+        //делаем два указателя слева и справа
         int left = 0;
         int right = arr.length - 1;
-
+        //ну и максимум
         int maxArea = 0;
+        //работаем по принципу сжатия
         while (left < right) {
-            int size = right - left;
-            int localArea = size * Math.min(arr[left], arr[right]);
+            //считаем
+            int countOfBlocks = right - left;
+            //и считаем площадь опираясь на минимальную гранб
+            int localArea = countOfBlocks * Math.min(arr[left], arr[right]);
+            //обновляем максимум если надо
             maxArea = Math.max(maxArea, localArea);
-
+            // ну и двигаем указатель левый или правый в зависимости от того что меньше
             if (arr[left] < arr[right]) {
                 left++;
             } else {
