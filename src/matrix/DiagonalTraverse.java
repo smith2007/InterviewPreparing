@@ -37,6 +37,8 @@ public class DiagonalTraverse {
     List<Integer> res = new ArrayList<>();
     boolean up = true;
 
+    //короче я делал в тупую, а именно брал пластами и обходил, смотри картинку сначала обход по столбцам
+    //затем обход по строкам
     for (int j = 0; j < matrix[0].length; j++) {
 
       int col = j;
