@@ -15,19 +15,19 @@ public class MaximalSquareSlidingWindow {
    *
    */
   public int maximalSquare(char[][] matrix) {
-    int size = 0;
+    int rebroLenght = 0;
     for (int i = 0; i < matrix.length; i++) {
       for (int j = 0; j < matrix[0].length; j++) {
         //обходим каждый элемент и рассматриваем его как
         //потенциальный край нашего квадрата
-        while (isSquare(matrix, i, j, size)) {
+        while (isSquare(matrix, i, j, rebroLenght)) {
           //если это квадрат - то это повод увеличить размеры - может быть там лежит что то большее
           //именно по этому цикл вайл
-          size++;
+          rebroLenght++;
         }
       }
     }
-    return size * size;
+    return rebroLenght * rebroLenght;
   }
 
   private boolean isSquare(char[][] matrix, int startI, int startJ, int size) {
