@@ -29,9 +29,13 @@ public class JumpGameII {
 
         // реализация очень простая
         //мы вводим с
-        int jumps = 0, curEnd = 0, curLongest = 0;
+        int jumps = 0;
+        int curEnd = 0; // это конец нашего самого дальнего прыжка
+        int curLongest = 0; //длинна нашего самого дальнего прыжка
 
         for (int i = 0; i < arr.length - 1; i++) {
+            // соотв мы как бы бежим вперед на сколько нам позволяет наш первый прыжок
+            //и попутно смотрим, так а есть ли более выгодные если есть фиксируем
             curLongest = Math.max(curLongest, i + arr[i]);
             if (i == curEnd) {
                 jumps++;

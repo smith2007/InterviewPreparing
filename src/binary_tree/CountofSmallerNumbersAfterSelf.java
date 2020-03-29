@@ -73,10 +73,8 @@ public class CountofSmallerNumbersAfterSelf {
     }
 
     private static class TreeNode {
-
         int numberOfNodesSmaller;
         int val;
-
         TreeNode left;
         TreeNode right;
 
