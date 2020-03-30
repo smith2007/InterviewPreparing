@@ -10,6 +10,19 @@ public class PacificAtlanticWaterFlow {
 
     }
 
+    /**
+     *
+     еще раз, на будущее если вернешься сюда - верхняя и нижняя часть матрицы - это наш как бы края океанов
+     -  а матрица это перешеек через который протекает вода - найди такой вот переешеек - его координаты верни
+     задача решается через dfs и через bfs
+
+     если через dfs то суть в том что мы начинаем обход со всех 4 сторон сразу в попытке пробить путь как бы
+
+     для этого мы делаем 2 рабочие матрицы atlantic и pacific и будем заполять единицами как бы возможные варианты
+
+     потом траверсим обе матрицы и складываем воедино то что у нас получилось
+
+     */
     public List<List<Integer>> pacificAtlantic(int[][] matrix) {
         if (matrix.length == 0) {
             return new ArrayList<>();
@@ -27,7 +40,7 @@ public class PacificAtlanticWaterFlow {
 
         }
 
-        //со потолка и с пола
+        //с потолка и с пола
         for (int j = 0; j < matrix[0].length; j++) {
             dfsMarking(0, j, Integer.MIN_VALUE, pacific, matrix);
             dfsMarking(matrix.length - 1, j, Integer.MIN_VALUE, atlantic, matrix);
