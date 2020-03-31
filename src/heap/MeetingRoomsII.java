@@ -14,8 +14,8 @@ public class MeetingRoomsII {
         System.out.println(minMeetingRooms(arr));
     }
 
-    static int minMeetingRooms(int[][] arr) {
-        if (arr.length == 0 || arr[0].length == 0) {
+    static int minMeetingRooms(int[][] intervals) {
+        if (intervals.length == 0 || intervals[0].length == 0) {
             return 0;
         }
 
@@ -25,14 +25,16 @@ public class MeetingRoomsII {
         // и при наступлении следующего доклада - смотреть, а идет ли сейчас доклад?
         // если идет - взять новую
 
-        Arrays.sort(arr, Comparator.comparingInt(o -> o[0]));
+        //сортируем по времени начала
+        Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
 
+        //сортировать будем по времени окончания
         PriorityQueue<Event> meetingRooms = new PriorityQueue<>(Comparator.comparingInt(e -> e.end));
 
         int currCount = 0;
 
-        for (int[] ints : arr) {
-            Event event = new Event(ints[0], ints[1]);
+        for (int[] interval : intervals) {
+            Event event = new Event(interval[0], interval[1]);
 
             while (!meetingRooms.isEmpty() && meetingRooms.peek().end <= event.start) {
                 meetingRooms.poll();
