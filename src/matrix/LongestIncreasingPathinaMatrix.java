@@ -42,6 +42,8 @@ public class LongestIncreasingPathinaMatrix {
         } else {
             int cur = matrix[i][j];
             int tempMax = 0;
+            //вот тут внимание - важный момент - там могут стоять отрицательные элементы
+            //отрицательные элементы нам не нужны по этому мы используем Math.max
             tempMax = Math.max(dfs(i - 1, j, matrix, cache, cur), tempMax);
             tempMax = Math.max(dfs(i + 1, j, matrix, cache, cur), tempMax);
             tempMax = Math.max(dfs(i, j - 1, matrix, cache, cur), tempMax);
