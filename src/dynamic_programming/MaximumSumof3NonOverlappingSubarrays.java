@@ -9,6 +9,15 @@ public class MaximumSumof3NonOverlappingSubarrays {
   /**
    * и так идея в том что мы берем окно размером k от самого левого края до самого правого ну и
    * через слайдинг двигаем это окно суммируя и определяем максимум
+   *
+   *
+   * The pain point of this one is actually indexing...
+   *
+   * Create cumulative sum array so that when we search for the sum of a certain subarray it is O(1);
+   * Create leftVal[i] which is the max sum of subarray from nums[0] to nums[i].
+   * Create rightVal[i] which is the max sum of subarray from nums[i] to nums[n - 1].
+   * Use a sliding window with length k to scan the middle part. The index is from i to i + k - 1.
+   * The left part and right part can be easily fetched by using leftVal[i - 1] and rightVal[i + k].
    */
   public int[] maxSumOfThreeSubarrays(int[] nums, int k) {
     int n = nums.length;
