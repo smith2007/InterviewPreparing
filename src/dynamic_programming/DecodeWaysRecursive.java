@@ -12,9 +12,9 @@ public class DecodeWaysRecursive {
 
 
     static int getAll(String str) {
-        int[] mem = new int[str.length() + 1];
-        Arrays.fill(mem, -1);
-        return decode(str, 0, mem);
+        int[] dp = new int[str.length() + 1];
+        Arrays.fill(dp, -1);
+        return decode(str, 0, dp);
     }
 
     static int decode(String m, int i, int[] mem) {
