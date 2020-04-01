@@ -1,6 +1,7 @@
 package dynamic_programming;
 
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SubarraySumEqualsK {
 
@@ -50,7 +51,6 @@ public class SubarraySumEqualsK {
             if (map.containsKey(neededSum)) {
                 count += map.get(neededSum);
             }
-
             /**
              * были некоторые сложности с понимаением,
              * представь что у нас есть массив int[] arr = {5, 10, 12, 1, 3, 4, 2, 8}; и k=4

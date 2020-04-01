@@ -6,6 +6,10 @@ import java.util.List;
 
 public class CombinationSumII {
 
+    /**
+     * тут тоже самое только не надо перепосылать тот же самый индекс
+     * в рекурсивной бэктрекинговом методе, надо пересылать всегда i+1 то есть следующий элемент
+     */
     static List<List<Integer>> combinationSum2(int[] arr, int target) {
         if (arr.length == 0) {
             return null;
