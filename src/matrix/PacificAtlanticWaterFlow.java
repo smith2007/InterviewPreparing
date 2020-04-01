@@ -62,7 +62,7 @@ public class PacificAtlanticWaterFlow {
 
     //запускаем дфс и добавляем все ячейки которые достигаются с определенного океана
     //ocean - он же массив visited
-    private static void dfsMarking(int i, int j, int prevVal, int[][] ocean, int[][] matrix) {
+    private static void dfsMarking(int i, int j, int prevVal, int[][] pacificOrAtlantic, int[][] matrix) {
 
         //out of bounds
         if (i < 0 || i > matrix.length - 1 || j < 0 || j > matrix[0].length - 1) {
@@ -70,19 +70,19 @@ public class PacificAtlanticWaterFlow {
         }
 
         //already visited
-        if (ocean[i][j] == 1) {
+        if (pacificOrAtlantic[i][j] == 1) {
             return;
         }
 
         //если текущая ячейка может быть продолжением чейна - помечаем ее как результатативную
         if (matrix[i][j] >= prevVal) {
-            ocean[i][j] = 1;
+            pacificOrAtlantic[i][j] = 1;
 
             //и смотрим ее соседей
-            dfsMarking(i + 1, j, matrix[i][j], ocean, matrix);
-            dfsMarking(i - 1, j, matrix[i][j], ocean, matrix);
-            dfsMarking(i, j + 1, matrix[i][j], ocean, matrix);
-            dfsMarking(i, j - 1, matrix[i][j], ocean, matrix);
+            dfsMarking(i + 1, j, matrix[i][j], pacificOrAtlantic, matrix);
+            dfsMarking(i - 1, j, matrix[i][j], pacificOrAtlantic, matrix);
+            dfsMarking(i, j + 1, matrix[i][j], pacificOrAtlantic, matrix);
+            dfsMarking(i, j - 1, matrix[i][j], pacificOrAtlantic, matrix);
         }
     }
 }

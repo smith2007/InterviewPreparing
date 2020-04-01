@@ -47,6 +47,7 @@ public class OneEditDistance {
     //апдейт считается еще проще - надо всего лишь посмотреть сколько символ различны
     for (int i = 0; i < s.length(); i++) {
       if (s.charAt(i) != t.charAt(i)) {
+        //каунтим различные символы
         diff++;
       }
     }
