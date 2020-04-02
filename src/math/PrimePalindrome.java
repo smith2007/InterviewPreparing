@@ -8,22 +8,26 @@ public class PrimePalindrome {
 
 
   /**
-   *
-   * For each palindromic root, let's find the two associated palindromes (one with an odd number of digits, and one with an even number.)
-   *
+   * For each palindromic root, let's find the two associated palindromes (one with an odd number of
+   * digits, and one with an even number.)
+   * <p>
    * https://leetcode.com/problems/prime-palindrome/solution/
    *
+   * проверям для четной длинный палиндрома и не четной длинны палиндрома
+   * идея близкая к тому что мы делалил с reverse integer
    */
-  public int primePalindrome(int N) {
-    for (int L = 1; L <= 5; ++L) {
+  public int primePalindrome(int n) {
+
+    for (int l = 1; l <= 5; ++l) {
       //Check for odd-length palindromes
-      for (int root = (int) Math.pow(10, L - 1); root < (int) Math.pow(10, L); ++root) {
+      //проверяем для не четной длинны палиндром
+      for (int root = (int) Math.pow(10, l - 1); root < (int) Math.pow(10, l); ++root) {
         StringBuilder sb = new StringBuilder(Integer.toString(root));
-        for (int k = L - 2; k >= 0; --k) {
+        for (int k = l - 2; k >= 0; --k) {
           sb.append(sb.charAt(k));
         }
-        int x = Integer.valueOf(sb.toString());
-        if (x >= N && isPrime(x)) {
+        int x = Integer.parseInt(sb.toString());
+        if (x >= n && isPrime(x)) {
           return x;
         }
         //If we didn't check for even-length palindromes:
@@ -31,28 +35,28 @@ public class PrimePalindrome {
       }
 
       //Check for even-length palindromes
-      for (int root = (int) Math.pow(10, L - 1); root < (int) Math.pow(10, L); ++root) {
+      //проверяем для четной длинны палиндрома
+      for (int root = (int) Math.pow(10, l - 1); root < (int) Math.pow(10, l); ++root) {
         StringBuilder sb = new StringBuilder(Integer.toString(root));
-        for (int k = L - 1; k >= 0; --k) {
+        for (int k = l - 1; k >= 0; --k) {
           sb.append(sb.charAt(k));
         }
-        int x = Integer.valueOf(sb.toString());
-        if (x >= N && isPrime(x)) {
+        int x = Integer.parseInt(sb.toString());
+        if (x >= n && isPrime(x)) {
           return x;
         }
       }
     }
-
-    throw null;
+    return -1;
   }
 
-  public boolean isPrime(int N) {
-    if (N < 2) {
+  public boolean isPrime(int n) {
+    if (n < 2) {
       return false;
     }
-    int R = (int) Math.sqrt(N);
-    for (int d = 2; d <= R; ++d) {
-      if (N % d == 0) {
+    int r = (int) Math.sqrt(n);
+    for (int d = 2; d <= r; ++d) {
+      if (n % d == 0) {
         return false;
       }
     }
