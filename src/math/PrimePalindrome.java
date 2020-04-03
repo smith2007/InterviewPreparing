@@ -17,7 +17,6 @@ public class PrimePalindrome {
    * идея близкая к тому что мы делалил с reverse integer
    */
   public int primePalindrome(int n) {
-
     for (int l = 1; l <= 5; ++l) {
       //Check for odd-length palindromes
       //проверяем для не четной длинны палиндром
