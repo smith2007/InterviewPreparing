@@ -3,24 +3,27 @@ package binary_tree;
 public class ClosestBinarySearchTreeValue {
 
     public int closestValue(TreeNode root, double target) {
-        TreeNode node;
-        if (root.val > target) {
-            node = root.left;
-        } else {
-            node = root.right;
-        }
 
-        if (node == null) {
-            return root.val;
-        }
+        int val;
+        int closest = root.val;
 
-        int value = closestValue(node, target);
+        while (root != null) {
+            val = root.val;
 
-        if (Math.abs(root.val - target) > Math.abs(value - target)) {
-            return value;
-        } else {
-            return root.val;
+            //крутимся в цикле и  Math.abs(val - target) < Math.abs(closest - target)
+            //если да - обновляем closest
+            if (Math.abs(val - target) < Math.abs(closest - target)) {
+                closest = val;
+            }
+
+            //дальше надо смотреть куда идти влево или вправо
+            if (target < root.val) {
+                root = root.left;
+            } else {
+                root = root.right;
+            }
         }
+        return closest;
     }
 
 }
