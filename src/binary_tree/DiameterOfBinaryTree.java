@@ -31,14 +31,38 @@ public class DiameterOfBinaryTree {
      * / \
      * 4   5
      */
+
+    /**
+     * РЕШАЕМ ПО ПРИНЦИПУ ДУГИ
+     *
+     * дано дерево надо найти как бы диаметр его ветвей - по сути макисимальную глубину слева и справа
+     * <p>
+     * надо решать через DFS и нырять на кажду ветвь и понимать какая максимальная глубина,
+     * затем возвращать максимальный диаметр  через сумму левой и правой глубины    ans = Math.max(ans, L+R+1);
+     * <p>
+     * что такое диаметр - максимальная глубина слева
+     * плюс максимальная глубина справа
+     * <p>
+     * int diametr = dive(root.left, 0) + dive(root.right, 0);
+     * <p>
+     * и самое хитрое надо понять что все таки выгоднее, включать текущую головную ноду
+     * или не включать ее? может быть левое поддерево само собой содержит
+     * максимальный диаметр??
+     * для этой гипотезы мы рекурсивно так же вызываем наш основной метод на левом и правом поддереве
+     * и смотрим что выгоднее
+     * <p>
+     * int left = diameterOfBinaryTree(root.left);
+     * int right = diameterOfBinaryTree(root.right);
+     * return Math.max(diametr,Math.max(left,right));
+     */
     static int diameterOfBinaryTree(TreeNode root) {
-        if (root==null){
+        if (root == null) {
             return 0;
         }
         int diametr = dive(root.left, 0) + dive(root.right, 0);
         int left = diameterOfBinaryTree(root.left);
         int right = diameterOfBinaryTree(root.right);
-        return Math.max(diametr,Math.max(left,right));
+        return Math.max(diametr, Math.max(left, right));
     }
 
     static int dive(TreeNode node, int currLevel) {
