@@ -60,8 +60,6 @@ public class TheSkylineProblem {
     // до старта предыдущая макс высота как бы полагаем что она равна 0
     int prev = 0;
 
-
-
     // посещаем все точки по порядку
     // суть этого цикла в следущем - берем prev и current
     for (int[] column : columns) {
