@@ -1,6 +1,6 @@
 package bfs;
 
-public class BattleshipsInABoard {
+public class BattleshipsInABoardIterative {
 
   public int countBattleships(char[][] board) {
     int m = board.length;
