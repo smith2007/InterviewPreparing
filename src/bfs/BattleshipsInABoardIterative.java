@@ -2,6 +2,10 @@ package bfs;
 
 public class BattleshipsInABoardIterative {
 
+  /**
+   * решается через простой БФС - причем итеративный, нам надо следить так что бы мы искали как бы
+   * хвост этого корабля, ну и голову
+   */
   public int countBattleships(char[][] board) {
     int m = board.length;
     if (m == 0) {
@@ -26,7 +30,7 @@ public class BattleshipsInABoardIterative {
           continue;
         }
         //а вот если мы пришли сюда, значит не точка и предыдущий не Х
-        //значит - вот он наш корабль
+        //значит - вот он наш корабль - это его хвост, ну или голова
         count++;
       }
     }
