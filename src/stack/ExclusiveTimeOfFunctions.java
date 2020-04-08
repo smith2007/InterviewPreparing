@@ -6,13 +6,11 @@ import java.util.Stack;
 public class ExclusiveTimeOfFunctions {
 
   public static void main(String[] args) {
-
     int[] ints = exclusiveTime(1,
         List.of("0:start:0", "0:start:2", "0:end:5", "0:start:6", "0:end:6", "0:end:7"));
     for (int anInt : ints) {
       System.out.println(anInt);
     }
-
   }
 
   /**
