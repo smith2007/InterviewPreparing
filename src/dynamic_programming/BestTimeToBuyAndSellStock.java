@@ -18,7 +18,7 @@ public class BestTimeToBuyAndSellStock {
             return 0;
         }
         if (prices.length == 1) {
-            return prices[0];
+            return 0; //no profit
         }
 
 
