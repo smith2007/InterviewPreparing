@@ -10,6 +10,12 @@ public class MinimumRemoveToMakeValidParentheses {
         System.out.println(minRemoveToMakeValid("lee(t(c)o)de)"));
     }
 
+    /**
+     * решаем через стек, создаем стек который будет напонен парами - каждая пара это тюпл из чара скобки и индекса
+     * соответсвенно траверсим строчку набиваем стек открытыми скобками, как только встретили закрытую попаем из стека
+     * <p>
+     * на выходе если стек не пустой то вытаскиваем элементы из стека и удаляем соотв индексы тех скобок что в находятся в строке под этими индексами
+     */
     static String minRemoveToMakeValid(String s) {
         if (s == null) {
             return null;
@@ -33,7 +39,7 @@ public class MinimumRemoveToMakeValidParentheses {
                     pair.symb = curr;
                     pair.index = i;
                     stack.push(pair);
-                } else if(stack.peek().symb == '('){
+                } else if (stack.peek().symb == '(') {
                     stack.pop();
                 }
             }
@@ -48,12 +54,13 @@ public class MinimumRemoveToMakeValidParentheses {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < chars.length; i++) {
 
-            if (!set.contains(i)){
+            if (!set.contains(i)) {
                 sb.append(chars[i]);
             }
         }
         return sb.toString();
     }
+
     static class Pair {
         char symb;
         int index;

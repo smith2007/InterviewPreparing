@@ -1,7 +1,5 @@
 package trie;
 
-import java.util.HashMap;
-
 public class AddAndSearchWordDataStructureDesign2 {
 
   public static void main(String[] args) {
@@ -19,12 +17,9 @@ public class AddAndSearchWordDataStructureDesign2 {
 
   }
 
-  HashMap<Character, TrieNode> roots = new HashMap<>();
-
-  public AddAndSearchWordDataStructureDesign2() {
-
-  }
-
+    /**
+     * решаем через префиксное дерево, если итый символ равен точки то запускаем на всех элементах этой преф дерева и ждем что кто-то из них выстрелит
+     */
   static class TrieNode {
 
     public TrieNode[] children = new TrieNode[26];
@@ -35,11 +30,11 @@ public class AddAndSearchWordDataStructureDesign2 {
 
   public void addWord(String word) {
     TrieNode node = root;
-    for (char c : word.toCharArray()) {
-      if (node.children[c - 'a'] == null) {
-        node.children[c - 'a'] = new TrieNode();
+    for (char ch : word.toCharArray()) {
+      if (node.children[ch - 'a'] == null) {
+        node.children[ch - 'a'] = new TrieNode();
       }
-      node = node.children[c - 'a'];
+      node = node.children[ch - 'a'];
     }
     node.item = word;
   }
@@ -54,6 +49,7 @@ public class AddAndSearchWordDataStructureDesign2 {
     }
 
     char firstLetter = chars[startIndex];
+    //запускаем на всех элементах этой преф дерева и ждем что кто-то из них выстрелит
     if (firstLetter == '.') {
       for (int i = 0; i < node.children.length; i++) {
         if (node.children[i] != null) {
