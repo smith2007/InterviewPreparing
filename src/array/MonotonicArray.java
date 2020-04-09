@@ -2,6 +2,9 @@ package array;
 
 public class MonotonicArray {
 
+    /**
+     * простой проход по массиву
+     */
     public boolean isMonotonic(int[] arr) {
 
         if (arr.length < 2) {
