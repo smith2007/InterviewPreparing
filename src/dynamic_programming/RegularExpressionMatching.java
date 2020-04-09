@@ -9,21 +9,27 @@ public class RegularExpressionMatching {
     /**
      * решаем через рекурсию. а как??
      * ну есть вариант
+     *
+     * суть идем по паттерну и сводим нашу строку к подстроке
+     * проверяя разные гипотезы - откусываем от паттерна как бы провалидированные
+     * кусочки
+     *
+     * и пробуем разные варианты - проверяем разные гипотезы - авось чтото выстрелит
      */
-    static boolean isMatch(String s, String p) {
+    static boolean isMatch(String str, String pattern) {
         //успех является то что мы дошли до конца нашей строки p - то есть наш паттерн кончился
         //далее нам необходимо проверить - а мы вообще дошли до конца основной строки s??
-        if (p.length() == 0) {
-            return s.length() == 0;
+        if (pattern.length() == 0) {
+            return str.length() == 0;
         }
         //если паттерн еще есть то нам надо проверить то что следующий символ звездочка
-        if (p.length() > 1 && p.charAt(1) == '*') {
+        if (pattern.length() > 1 && pattern.charAt(1) == '*') {
             //если да делаем гипотезу что мы скипаем
             //первые два символа из паттерна будто опускаем их
             // например у нас вот такая ситуация
             //s = "aab" p = "c*a*b" - в этой ситуации с может повторяться 0 раз и более потому что *
             // вот мы и как раз проверим это откусив два первых символа
-            if (isMatch(s, p.substring(2))) {
+            if (isMatch(str, pattern.substring(2))) {
                 return true;
             }
             //а вот если у нас еще и два символа одинаковые стоят или точка (а точка это любой единичный)
@@ -32,18 +38,18 @@ public class RegularExpressionMatching {
             // то вот тогда надо убрать первую букву уже у основной строки!!
             //внимание У ОСНОВНОЙ строки так как в паттерне звездочка стоит
             //и запускаем рекурсию тут
-            if (isDotOrSameLetters(s, p)) {
-                return isMatch(s.substring(1), p);
+            if (isDotOrSameLetters(str, pattern)) {
+                return isMatch(str.substring(1), pattern);
             }
             return false;
         } else {
             //а тут ситуация когда второй символ не звездочка
             //вот тут нам уже просто надо проверить что символы равны или в паттерне стоит точка
-            if (isDotOrSameLetters(s, p)) {
+            if (isDotOrSameLetters(str, pattern)) {
                 //если да откусываем от паттерна
                 //и откусываем от основной строки
                 //внимание У ОБОИХ! так как звездочки там нет
-                return isMatch(s.substring(1), p.substring(1));
+                return isMatch(str.substring(1), pattern.substring(1));
             }
             return false;
         }
