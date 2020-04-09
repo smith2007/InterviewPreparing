@@ -6,10 +6,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import binary_tree.TreeNode;
+import java.util.Stack;
 
 public class BinarySearchTreeIterator2 {
 
-	private LinkedList<TreeNode> stack = new LinkedList<>();
 
 	public static void main(String[] args) {
 		TreeNode root = new TreeNode(5);
@@ -58,6 +58,13 @@ public class BinarySearchTreeIterator2 {
 
 	}
 
+	private Stack<TreeNode> stack = new Stack<>();
+
+	/**
+	 * этот вариант решается так же через стек
+	 * тут немножко по памяти лучше выйдет за счет того что мы будем докладывать по мере
+	 * необходимости
+	 */
 	public BinarySearchTreeIterator2(TreeNode root) {
 		TreeNode cur = root;
 		while (cur != null) {

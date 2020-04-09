@@ -9,8 +9,7 @@ import java.util.List;
 
 public class BinarySearchTreeIterator {
 
-	private List<Integer> list = new ArrayList<>();
-	private Iterator<Integer> iterator = list.iterator();
+
 
 	/**
 	 * 160.BinarySearchTreeIterator
@@ -66,11 +65,16 @@ public class BinarySearchTreeIterator {
 
 	}
 
+	private List<Integer> list = new ArrayList<>();
+	private Iterator<Integer> iterator = list.iterator();
+	/**
+	 * этот вариант решается за дфс inorder traversal
+	 * накладываем элементы в лист и траверсим
+	 */
 	public BinarySearchTreeIterator(TreeNode root) {
 		if (root == null) {
 			return;
 		}
-
 		LinkedList<TreeNode> stack = new LinkedList<>();
 		TreeNode curr = root;
 		while (curr != null || !stack.isEmpty()) {
