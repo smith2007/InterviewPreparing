@@ -4,6 +4,9 @@ import java.util.Arrays;
 
 public class PartitionEqualSubsetSumDP {
 
+    public static void main(String[] args) {
+
+    }
     //
     public boolean canPartition(int[] nums) {
         int sum = 0;
