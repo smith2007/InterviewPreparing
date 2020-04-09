@@ -6,7 +6,6 @@ public class PrimePalindrome {
 
   }
 
-
   /**
    * For each palindromic root, let's find the two associated palindromes (one with an odd number of
    * digits, and one with an even number.)
