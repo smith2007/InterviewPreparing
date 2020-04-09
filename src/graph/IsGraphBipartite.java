@@ -35,14 +35,14 @@ public class IsGraphBipartite {
         int[] colors = new int[graph.length];
 
         for (int i = 0; i < graph.length; i++) { //This graph might be a disconnected graph. So check each unvisited node.
-            if (colors[i] == 0 && !validColor(graph, colors, 1, i)) {
+            if (colors[i] == 0 && !isValidColor(graph, colors, 1, i)) {
                 return false;
             }
         }
         return true;
     }
 
-    private boolean validColor(int[][] graph, int[] colors, int colorForColoring, int node) {
+    private boolean isValidColor(int[][] graph, int[] colors, int colorForColoring, int node) {
         //сразу првоеряем раскрашена ли наша текущая нода
         //если она раскрашена то есть не равна нулю!!
         //то надо проверить что она раскрашена тем чем мы хотели бы ее раскрасить
@@ -54,7 +54,7 @@ public class IsGraphBipartite {
         for (int next : graph[node]) {
             //ну и далее берем соседей этой ноды
             //далее проверяем всех соседей что они раскрашены правильно в праралельный цвет
-            if (!validColor(graph, colors, -1 * colorForColoring, next)) {
+            if (!isValidColor(graph, colors, -1 * colorForColoring, next)) {
                 return false;
             }
         }
