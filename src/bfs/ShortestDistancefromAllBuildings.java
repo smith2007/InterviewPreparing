@@ -6,14 +6,19 @@ import java.util.Queue;
 public class ShortestDistancefromAllBuildings {
 
     /**
-     * Step 1: start from every point 1 (building point), doing BFS traversal to fill out (or accumulate) distance array
+     * Step 1: start from every point 1 (building point),
+     * doing BFS traversal to fill out (or accumulate) distance array
      * (MUST start over and doing every BFS traversal individually)
      * <p>
      * Step 2: find minimum distance from dp array
      *
-     * @param dp: store distance sum to all building for every point 0. Update values when we do BFS traversal
-     * @param reach: store number of buildings that every point 0 can reach. Used for checking if current point is valid
+     * @param dp: store distance sum to all building for every point 0.
+     *         Update values when we do BFS traversal
+     *
+     * @param reach: store number of buildings that every point 0 can reach.
+     *             Used for checking if current point is valid
      * while we want to find final result
+     *
      * @param countBuilding: count total number of point 1
      */
     final int[][] dir = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
@@ -52,7 +57,8 @@ public class ShortestDistancefromAllBuildings {
 
     public void bfs(Queue<int[]> queue, int[][] grid, int[][] dp, int[][] reach, int n, int m) {
         int level = 1;
-        // DO NOT USE hashset, since hashset cannot determine whether it contains an array (coordinate)
+        // DO NOT USE hashset,
+        // since hashset cannot determine whether it contains an array (coordinate)
         boolean[][] visited = new boolean[n][m];
         while (!queue.isEmpty()) {
             int size = queue.size();
