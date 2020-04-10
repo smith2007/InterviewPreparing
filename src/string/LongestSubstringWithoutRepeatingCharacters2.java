@@ -44,10 +44,7 @@ public class LongestSubstringWithoutRepeatingCharacters2 {
                 }
             }
             max = Math.max(max, j - i + 1);
-
             j++;
-
-
         }
 
 
