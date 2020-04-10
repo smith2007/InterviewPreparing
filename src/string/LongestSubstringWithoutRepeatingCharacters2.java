@@ -24,7 +24,7 @@ public class LongestSubstringWithoutRepeatingCharacters2 {
 
         while (j < str.length()) {
 
-            Integer newCount = map.getOrDefault(str.charAt(j), 0) + 1;
+            int newCount = map.getOrDefault(str.charAt(j), 0) + 1;
 
             map.put(str.charAt(j), newCount);
 
