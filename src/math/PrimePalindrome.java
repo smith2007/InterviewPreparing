@@ -12,8 +12,11 @@ public class PrimePalindrome {
    * <p>
    * https://leetcode.com/problems/prime-palindrome/solution/
    *
-   * проверям для четной длинный палиндрома и не четной длинны палиндрома
    * идея близкая к тому что мы делалил с reverse integer
+   *
+   * надо сделать метод который проверяет что это число простое, это перво наперво, а затем
+   * уже в основном кейсе, мы будем рассматривать два сценария - первый это что палиндром четный
+   * второй кейс - палиндром не четный - делаем это набивая стринг билдер
    */
   public int primePalindrome(int n) {
     for (int l = 1; l <= 5; ++l) {
@@ -48,6 +51,8 @@ public class PrimePalindrome {
     return -1;
   }
 
+  //проверяем что это число простое
+  //Например, 2,3,5,7,11 и 13 простые числа.
   public boolean isPrime(int n) {
     if (n < 2) {
       return false;

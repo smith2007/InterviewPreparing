@@ -36,7 +36,6 @@ public class LongestSubstringWithoutRepeatingCharacters2 {
                     } else {
                         map.put(str.charAt(i), counti - 1);
                     }
-
                     i++;
                     if (i == j) {
                         break;

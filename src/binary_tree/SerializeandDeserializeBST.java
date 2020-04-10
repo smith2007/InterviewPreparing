@@ -2,6 +2,18 @@ package binary_tree;
 
 public class SerializeandDeserializeBST {
 
+
+  public static void main(String[] args) {
+    TreeNode root = StringToNodeBuilder.stringToTreeNode("[3,1,4,null,null,2]");
+
+    SerializeandDeserializeBST ins = new SerializeandDeserializeBST();
+    String serialize = ins.serialize(root);
+    System.out.println(serialize);
+
+    TreeNode deserialize = ins.deserialize(serialize);
+    System.out.println(deserialize);
+
+  }
   /**
    * среиализуем через дфс через запяту/
    * сначала рут - затем левую ветвь
@@ -13,17 +25,21 @@ public class SerializeandDeserializeBST {
   // Encodes a tree to a single string.
   public String serialize(TreeNode root) {
     StringBuilder sb = new StringBuilder();
-    dfs(root, sb);
+    serializeDFS(root, sb);
     return sb.toString();
   }
 
-  private void dfs(TreeNode root, StringBuilder sb) {
+  //обогощаем нашу sb
+  //root left1 left2 leftX right1 right2 rightX
+  //[3,1,4,null,null,2] - для такого дерева
+  //получится вот так 3,1,4,2,
+  private void serializeDFS(TreeNode root, StringBuilder sb) {
     if (root == null) {
       return;
     }
     sb.append(root.val).append(",");
-    dfs(root.left, sb);
-    dfs(root.right, sb);
+    serializeDFS(root.left, sb);
+    serializeDFS(root.right, sb);
   }
 
   // Decodes your encoded data to tree.
@@ -31,24 +47,28 @@ public class SerializeandDeserializeBST {
   public TreeNode deserialize(String strRepresentation) {
     String[] arr = strRepresentation.split(",");
     TreeNode root = null;
-    for (String nodeVal : arr) {
-      if (nodeVal.length() > 0) {
-        root = buildBST(root, Integer.parseInt(nodeVal));
+    for (String nodeValStr : arr) {
+      if (nodeValStr.length() > 0) {
+        root = deserializeDFS(root, Integer.parseInt(nodeValStr));
       }
     }
     return root;
   }
 
-  public TreeNode buildBST(TreeNode node, int nodeVal) {
-    if (node == null) {
+  public TreeNode deserializeDFS(TreeNode prevRoot, int nodeVal) {
+    if (prevRoot == null) {
       return new TreeNode(nodeVal);
     }
-    if (nodeVal < node.val) {
-      node.left = buildBST(node.left, nodeVal);
+    //если наша текущая новая как бы нода она меньше чем наша предыдущая рутовая
+    //то надо присабачивать ее к левому потомку
+    //иначе к правому
+    if (nodeVal < prevRoot.val) {
+      //падаем сюда передаем наш левый, он нулл, соотв кондишен на входе нам вернет
+      prevRoot.left = deserializeDFS(prevRoot.left, nodeVal);
     } else {
-      node.right = buildBST(node.right, nodeVal);
+      prevRoot.right = deserializeDFS(prevRoot.right, nodeVal);
     }
-    return node;
+    return prevRoot;
   }
 
 }
