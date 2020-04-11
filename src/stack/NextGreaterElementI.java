@@ -14,11 +14,12 @@ public class NextGreaterElementI {
         for (int i : nextGreaterElement(nums1, nums2)) {
             System.out.println(i);
         }
-
-
     }
 
-
+    /**
+     * работаем через стек по принципу daily temperatures
+     *
+     */
     static int[] nextGreaterElement(int[] nums1, int[] nums2) {
 
         if (nums1.length == 0 || nums2.length == 0) {
