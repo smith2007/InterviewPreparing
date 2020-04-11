@@ -6,6 +6,13 @@ public class IntersectionofTwoLinkedLists {
 
   }
 
+  /**
+   * можно пробежать по обоим листам, выяснитьь их длины, понять кто длинее, и затем второй как бы
+   * проход обходить и начинать сканировать с самого длинного, а не достающий заполнять нулем, как
+   * только оба не нулы начинаем попарное сканикрование, как только нада из а equals b - вот оно
+   * наше пересечение
+
+   */
   public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
     int lenA = getLength(headA);
     int lenB = getLength(headB);
