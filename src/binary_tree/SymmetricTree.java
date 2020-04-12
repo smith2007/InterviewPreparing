@@ -1,87 +1,68 @@
 package binary_tree;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class SymmetricTree {
 
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(2);
+  public static void main(String[] args) {
+    TreeNode root = new TreeNode(2);
 
-        TreeNode rootLeft = new TreeNode(3);
+    TreeNode rootLeft = new TreeNode(3);
 
-        TreeNode rootRight = new TreeNode(4);
+    TreeNode rootRight = new TreeNode(4);
 
-        root.left = rootLeft;
-        root.right = rootRight;
+    root.left = rootLeft;
+    root.right = rootRight;
 
+    TreeNode root2 = new TreeNode(2);
 
-        TreeNode root2 = new TreeNode(2);
+    TreeNode rootLeft2 = new TreeNode(3);
 
-        TreeNode rootLeft2 = new TreeNode(3);
+    TreeNode rootRight2 = new TreeNode(4);
 
-        TreeNode rootRight2 = new TreeNode(4);
+    root2.left = rootLeft2;
+    root2.right = rootRight2;
 
-        root2.left = rootLeft2;
-        root2.right = rootRight2;
+    TreeNode zero = new TreeNode(1);
+    zero.left = root;
+    zero.right = root2;
 
-        TreeNode zero = new TreeNode(1);
-        zero.left = root;
-        zero.right = root2;
+    System.out.println(isSymmetric(zero));
+  }
 
-        System.out.println(isSymmetric(zero));
-    }
+  /**
+   * дано дерево - надо понять его левое и правое поддерево симетричны ли
+   * <p>
+   * тупо идем бфс-ом через очередь сравниваем каждый из элементов, если симетричны - то деревья
+   * равны, я сначало сделал через две очереди, клал в первую и во вторую, затем брал из них и
+   * сравнивал
+   * <p>
+   * но можно сделать через одну очередь, и просто два раза вынимать из нее
+   */
 
-    static boolean isSymmetric(TreeNode root) {
-        if (root == null) {
+  static boolean isSymmetric(TreeNode root) {
+    Queue<TreeNode> q = new LinkedList<>();
+    q.add(root);
+    q.add(root);
+    while (!q.isEmpty()) {
+      TreeNode t1 = q.poll();
+      TreeNode t2 = q.poll();
+        if (t1 == null && t2 == null) {
+            continue;
+        }
+        if (t1 == null || t2 == null) {
             return false;
         }
-
-        return isSameTree(root.left, root.right);
-    }
-
-    static boolean isSameTree(TreeNode first, TreeNode second) {
-
-        if (first == null && second == null) {
-            return true;
-        }
-
-        if (first == null || second == null) {
+        if (t1.val != t2.val) {
             return false;
         }
-
-
-        LinkedList<TreeNode> firstQueue = new LinkedList<>();
-        firstQueue.add(first);
-
-        LinkedList<TreeNode> secondQueue = new LinkedList<>();
-        secondQueue.add(second);
-
-        while (!firstQueue.isEmpty() && !secondQueue.isEmpty()) {
-
-            TreeNode firstElm = firstQueue.poll();
-            TreeNode secondElm = secondQueue.poll();
-
-            if (firstElm.val != secondElm.val) {
-                return false;
-            }
-
-            if (firstElm.left != null && secondElm.left != null) {
-                firstQueue.add(firstElm.left);
-                secondQueue.add(secondElm.left);
-            } else if (firstElm.left != null || secondElm.left != null) {
-                return false;
-            }
-
-
-            if (firstElm.right != null && secondElm.right != null) {
-                firstQueue.add(firstElm.right);
-                secondQueue.add(secondElm.right);
-            } else if (firstElm.right != null || secondElm.right != null) {
-                return false;
-            }
-        }
-
-        return firstQueue.isEmpty() && secondQueue.isEmpty();
+      q.add(t1.left);
+      q.add(t2.right);
+      q.add(t1.right);
+      q.add(t2.left);
     }
+    return true;
+  }
 
 }
