@@ -7,6 +7,14 @@ public class SnakesandLadders {
 
   /**
    * решаем через бфс
+   *
+   * конвертируя нашу матрицу в массив просто для того что бы процессинг был более простым
+   *
+   * основной принцип мы пытаемся добавить всевозможные варианты развития событий
+   * с каждой итой точки мы рассматриваем все ходы от 1 до 6 - что бы просмотреть то к чему
+   * они приведут
+   *
+   * такой некий аналог левел ордер траверсал
    */
   public int snakesAndLadders(int[][] board) {
     int n = board.length;
@@ -14,6 +22,7 @@ public class SnakesandLadders {
     //конвертим из матрицы в массив
     int[] flatten = convert2DTo1D(board);
 
+    //наша цель - достигнуть конечной точки матрицы
     int targetIdx = n * n - 1; // target index to try to reach
     Queue<Integer> queue = new ArrayDeque<>();  // queue for BFS
     boolean[] visited = new boolean[n * n]; // keep track of which node has been visited
@@ -23,9 +32,10 @@ public class SnakesandLadders {
     int start = flatten[0] == -1 ? 0 : flatten[0] - 1;
     queue.offer(start);
     visited[start] = true;
-    // BFS:
+    // BFS: такой некий аналог левел ордер траверсал
     while (!queue.isEmpty()) {
       int size = queue.size();
+
       while (size-- > 0) {
         int currIdx = queue.poll();
         // in case the current index is the index we are looking for
@@ -33,6 +43,8 @@ public class SnakesandLadders {
         if (currIdx == targetIdx) {
           return steps;
         }
+        //рассматриваем все варианты подброса кубика - от 1 до 6
+        //так же нам нельзя вывалится за пределы массива
         // consider all numbers from +1 to +6, note that don't go out of bound
         int upper = Math.min(targetIdx, currIdx + 6);
         for (int nextIdx = currIdx + 1; nextIdx <= upper; nextIdx++) {
@@ -48,6 +60,7 @@ public class SnakesandLadders {
           visited[dest] = true;
         }
       }
+
       steps++;
     }
     return -1;

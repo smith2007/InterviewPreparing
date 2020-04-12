@@ -15,10 +15,16 @@ public class WordBreak1DFS {
         System.out.println(wordBreak(s, dict));
     }
 
+    /**
+     * но гораздо проще тут решается через дфс с мемоизацией,
+     * принцип - ныряние от буквы с мапой под мышкой
+     *
+     *
+     */
+
     static boolean wordBreak(String s, List<String> dict) {
         // DFS
         Set<Integer> set = new HashSet<>();
-
         return dfs(s, 0, new HashSet<>(dict), set);
     }
 
