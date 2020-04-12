@@ -15,29 +15,26 @@ public class MinimumWindowSubstring {
         System.out.println(minWindow);
     }
 
+    /**
+     * тут принцип окна
+     *
+     * sliding window + 2 pointers + method isAllZeroOrLess
+     */
     static String minWindow(String s, String t) {
-
-
         if (s == null || t == null || s.isEmpty() || t.isEmpty()) {
             return "";
         }
-
 
         if (s.length() < t.length()) {
             return "";
         }
 
-
         // грубо говоря мапа в ней чар - напротив в ней кол-во символов
+        Map<Character, Integer> charCountMap = new HashMap<>();
 
-        Map<Character, Integer> tmap = new HashMap<>();
-
-
-        for (char c : t.toCharArray()) {
-            tmap.put(c, tmap.getOrDefault(c, 0) + 1);
+        for (char ch : t.toCharArray()) {
+            charCountMap.put(ch, charCountMap.getOrDefault(ch, 0) + 1);
         }
-
-
         int start = 0;
         int end = 0;
         int strLen = s.length();
@@ -47,16 +44,14 @@ public class MinimumWindowSubstring {
         boolean flag = false;
 
         while (j < s.length()) {
-
             int currLen = (j - i) + 1;
-
-            Integer count = tmap.get(s.charAt(j));
+            Integer count = charCountMap.get(s.charAt(j));
             if (count != null) {
-                tmap.put(s.charAt(j), count - 1);
+                charCountMap.put(s.charAt(j), count - 1);
             }
 
             if (currLen >= t.length()) {
-                while (isAllZeroOrLess(tmap)) {
+                while (isAllZeroOrLess(charCountMap)) {
                     currLen = (j - i) + 1;
                     if (currLen <= strLen) {
                         start = i;
@@ -65,16 +60,15 @@ public class MinimumWindowSubstring {
                         flag = true;
                     }
 
-                    Integer counti = tmap.get(s.charAt(i));
+                    Integer counti = charCountMap.get(s.charAt(i));
                     if (counti != null) {
-                        tmap.put(s.charAt(i), counti + 1);
+                        charCountMap.put(s.charAt(i), counti + 1);
                     }
                     i++;
                 }
             }
             j++;
         }
-
 
         if (start == 0 && end == 0 && strLen == s.length() && !flag) {
             return "";
