@@ -17,17 +17,17 @@ public class LongestPalindrome {
     }
 
     int res = 0;
-    boolean oddAvail = false;
+    boolean oddFound = false;
     for (Integer count : hm.values()) {
       if (count % 2 == 1) {
-        oddAvail = true;
+        oddFound = true;
         res += (count - 1);
       } else {
         res += count;
       }
 
     }
-    return oddAvail ? (res + 1) : res;
+    return oddFound ? (res + 1) : res;
   }
 
 }
