@@ -62,7 +62,7 @@ public class VowelSpellchecker {
     }
 
     String res = findCap(node.list, word); // Search for the first capitalized match
-    if (res != "") {
+    if (!res.equals("")) {
       return res;
     }
 
