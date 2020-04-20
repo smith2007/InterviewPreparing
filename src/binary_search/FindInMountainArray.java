@@ -37,9 +37,11 @@ public class FindInMountainArray {
   }
 
   private int leftBinarySearch(MountainArray a, int left, int right, int target) {
+    //если не нашли такой как бы пик индекс который равен таргету
     if (left > right) {
       return -1;
     }
+    //если указатели встретились
     if (left == right) {
       if (a.get(left) == target) {
         return left;
