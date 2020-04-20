@@ -2,39 +2,24 @@ package binary_search;
 
 public class FindPeakElementRecursive {
 
-    /**
-     *
-     здесь надо решать через бинарный поиск причем хитрый бинарный поиск,
-     в чем же его хитрость, во первых, мы так же берем два указателя на начало и на конец,
-     крутимся в цикле считаем миддл через стандартную формулу
-     хитрость в том как мы апдейтим индексы,
-     */
     public static void main(String[] args) {
-        int[] nums = {3, 4, 3, 2, 1};
-        System.out.println(find(nums));
+        int[] arr = {3, 4, 3, 2, 1};
+        System.out.println(findPeakElement(arr));
     }
 
-    static int find(int[] arr) {
-        if (arr.length < 2) {
-            return 0;
+    static int findPeakElement(int[] arr) {
+        return search(arr, 0, arr.length - 1);
+    }
+
+    static int search(int[] arr, int left, int right) {
+        if (left == right) {
+            return left;
         }
-
-        if (arr.length == 2) {
-            return arr[0] > arr[1] ? 0 : 1;
+        int mid = (left + right) / 2;
+        if (arr[mid] > arr[mid + 1]) {
+            return search(arr, mid + 1, right);
+        } else {
+            return search(arr, left, mid);
         }
-
-        int i = 0;
-        int j = arr.length - 1;
-
-        while (i < j) {
-            int mid = (i + j) / 2;
-            if (arr[mid] > arr[mid + 1]) {
-                j = mid;
-            } else {
-                i = mid + 1;
-            }
-        }
-
-        return i;
     }
 }
