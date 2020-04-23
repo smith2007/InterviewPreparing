@@ -22,18 +22,20 @@ public class MajorityElement {
     static int majorityElement(int[] arr) {
 
         int count = 0;
-        int major = arr[0];
+        int majorCandidate = arr[0];
 
         for (int elm : arr) {
+            //как только каунтер стал равен 0 - сбрасываем
+            //и переназначаем мажорный элемент
             if (count == 0) {
-                major = elm;
+                majorCandidate = elm;
                 count++;
-            } else if (elm == major) {
+            } else if (elm == majorCandidate) {
                 count++;
             } else {
                 count--;
             }
         }
-        return major;
+        return majorCandidate;
     }
 }
