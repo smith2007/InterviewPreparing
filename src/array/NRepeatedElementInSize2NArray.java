@@ -11,6 +11,7 @@ public class NRepeatedElementInSize2NArray {
 		System.out.println(repeatedNTimes(arr));
 	}
 
+	//простое решение через хешсет
 	static int repeatedNTimes(int[] a) {
 
 		Set<Integer> set = new HashSet<>();
