@@ -10,6 +10,7 @@ public class BasicCalculatorIII {
   }
 
   /**
+   * основная идея - свернуть скобки и результат вернуть на стек
    * тут используется тот же принцип что и в BasicCalculatorII а именно стек
    */
   public int calculate(String s) {
