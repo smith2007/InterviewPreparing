@@ -41,26 +41,36 @@ public class MaximumFrequencyStack {
    *
    * push(x) will push x tom[++freq[x]]
    * pop() will pop from the m[maxfreq]
+   *
+   * решаем через стек стеков, а именно через две мапы
    */
-  HashMap<Integer, Integer> freq = new HashMap<>();
-  HashMap<Integer, Stack<Integer>> map = new HashMap<>();
-  int maxfreq = 0;
+  HashMap<Integer, Integer> elmToFreq = new HashMap<>();
+  HashMap<Integer, Stack<Integer>> freqToStack = new HashMap<>();
+  int maxFreq = 0;
 
   public void push(int x) {
-    int f = freq.getOrDefault(x, 0) + 1;
-    freq.put(x, f);
-    maxfreq = Math.max(maxfreq, f);
-    if (!map.containsKey(f)) {
-      map.put(f, new Stack<>());
+    int newFreqForElm = elmToFreq.getOrDefault(x, 0) + 1;
+    elmToFreq.put(x, newFreqForElm);
+
+    //обновляем максимальную частоту если надо
+    maxFreq = Math.max(maxFreq, newFreqForElm);
+    //третий шаг это добавить в нашу вторую мапу
+    //новый стек если там такого не было
+    if (!freqToStack.containsKey(newFreqForElm)) {
+      freqToStack.put(newFreqForElm, new Stack<>());
     }
-    map.get(f).add(x);
+    //ну и добавляем
+    freqToStack.get(newFreqForElm).add(x);
   }
 
   public int pop() {
-    int x = map.get(maxfreq).pop();
-    freq.put(x, maxfreq - 1);
-    if (map.get(maxfreq).size() == 0) {
-      maxfreq--;
+    //метод поп
+    //берем максималку, попаем из стека
+    int x = freqToStack.get(maxFreq).pop();
+    elmToFreq.put(x, maxFreq - 1);
+    //если стек оказывается пустым, то уменьшаем maxFreq
+    if (freqToStack.get(maxFreq).size() == 0) {
+      maxFreq--;
     }
     return x;
   }
