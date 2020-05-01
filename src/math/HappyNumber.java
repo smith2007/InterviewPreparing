@@ -24,6 +24,10 @@ public class HappyNumber {
     }
 
     /**
+     *
+     * нам надо свести наше число к 1
+     * что нам может помешать? только цикл
+     *
      * проблема решается путем решение проблемы цикла в массиве
      * она как ты помнишь решается через 2 указателя slow и fast
      * один из них ходит на два шага, второй на один шаг,
@@ -40,6 +44,8 @@ public class HappyNumber {
     static boolean isHappy(int n) {
         int slowRunner = n;
         int fastRunner = getNext(n);
+        //пока быстрый указатель не придет к 1
+        //либо медленный и быстрый не встретятся
         while (fastRunner != 1 && slowRunner != fastRunner) {
             slowRunner = getNext(slowRunner);
             fastRunner = getNext(getNext(fastRunner));
@@ -47,10 +53,10 @@ public class HappyNumber {
         return fastRunner == 1;
     }
 
-    // вспомогательный метод
+    //РАСКЛАДЫВАЕМ НА РАЗРЯДЫ
+    //вспомогательный метод
     //который берет число, раскладывает его на разряды
     //и возводит в степень
-
     static int getNext(int n) {
         int totalSum = 0;
         //как разложить в джаве число на разряды???

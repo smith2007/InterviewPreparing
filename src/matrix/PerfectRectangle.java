@@ -1,14 +1,23 @@
 package matrix;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 public class PerfectRectangle {
 
   /**
-   * The right answer must satisfy two conditions:
+   * БУДЕМ РЕШАТЬ ЭТУ ЗАДАЧА ПУТЕМ НАБИВАНИЯ ПЛОЩАДИ КАЖДОГО МАЛЕНЬКОГО
+   * ПРЯМОУГОЛЬНИКА
    *
-   * the large rectangle area should be equal to the sum of small rectangles
-   * count of all the points should be even, and that of all the four corner points should be one
+   * затем найдем две точки - самый самый левый
+   *
+   * и самый самый правый - перемножим их и сравним эти две площади
    */
   public boolean isRectangleCover(int[][] rectangles) {
 
@@ -16,47 +25,60 @@ public class PerfectRectangle {
       return false;
     }
 
-    int x1 = Integer.MAX_VALUE;
-    int x2 = Integer.MIN_VALUE;
-    int y1 = Integer.MAX_VALUE;
-    int y2 = Integer.MIN_VALUE;
+    int bigRectBottomLeft = Integer.MAX_VALUE;
+    int bigRectBottomRight = Integer.MIN_VALUE;
+    int bigRectTopLeft = Integer.MAX_VALUE;
+    int bigRectTopRight = Integer.MIN_VALUE;
 
     HashSet<String> set = new HashSet<>();
-    int area = 0;
 
-    for (int[] rect : rectangles) {
-      x1 = Math.min(rect[0], x1);
-      y1 = Math.min(rect[1], y1);
-      x2 = Math.max(rect[2], x2);
-      y2 = Math.max(rect[3], y2);
+    int cumulativeArea = 0;
 
-      area += (rect[2] - rect[0]) * (rect[3] - rect[1]);
+    for (int[] rectangle : rectangles) {
+      //самая левая нижняя точка
+      bigRectBottomLeft = Math.min(rectangle[0], bigRectBottomLeft);
+      bigRectTopLeft = Math.min(rectangle[1], bigRectTopLeft);
 
-      String s1 = rect[0] + " " + rect[1];
-      String s2 = rect[0] + " " + rect[3];
-      String s3 = rect[2] + " " + rect[3];
-      String s4 = rect[2] + " " + rect[1];
+      //самая правая верхняя точка
+      bigRectBottomRight = Math.max(rectangle[2], bigRectBottomRight);
+      bigRectTopRight = Math.max(rectangle[3], bigRectTopRight);
 
-      if (!set.add(s1)) {
-        set.remove(s1);
+      cumulativeArea += (rectangle[2] - rectangle[0]) * (rectangle[3] - rectangle[1]);
+
+      //добавлять будем координату
+      String bottomLeft = rectangle[0] + " " + rectangle[1];
+      String bottomRight = rectangle[0] + " " + rectangle[3];
+      String topLeft = rectangle[2] + " " + rectangle[3];
+      String topRight = rectangle[2] + " " + rectangle[1];
+
+
+      //вот тут проверяем оверлап
+      //метод add - возвращает true - если сет раньше не содержал этот элемент
+      //то есть не было реплейса
+      if (!set.add(bottomLeft)) {
+        set.remove(bottomLeft); //если содержал - удаляем
       }
-      if (!set.add(s2)) {
-        set.remove(s2);
+      if (!set.add(bottomRight)) {
+        set.remove(bottomRight);
       }
-      if (!set.add(s3)) {
-        set.remove(s3);
+      if (!set.add(topLeft)) {
+        set.remove(topLeft);
       }
-      if (!set.add(s4)) {
-        set.remove(s4);
+      if (!set.add(topRight)) {
+        set.remove(topRight);
       }
     }
 
-    if (!set.contains(x1 + " " + y1) || !set.contains(x1 + " " + y2) || !set.contains(x2 + " " + y1)
-        || !set.contains(x2 + " " + y2) || set.size() != 4) {
+    //проверка на оверлап
+    if (!set.contains(bigRectBottomLeft + " " + bigRectTopLeft)
+        || !set.contains(bigRectBottomLeft + " " + bigRectTopRight)
+        || !set.contains(bigRectBottomRight + " " + bigRectTopLeft)
+        || !set.contains(bigRectBottomRight + " " + bigRectTopRight)
+        || set.size() != 4) {
       return false;
     }
 
-    return area == (x2 - x1) * (y2 - y1);
+    return cumulativeArea == (bigRectBottomRight - bigRectBottomLeft) * (bigRectTopRight - bigRectTopLeft);
   }
-
 }
+
