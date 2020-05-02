@@ -19,24 +19,22 @@ public class DecodeString {
 
     static String transform(String str) {
         char[] chars = str.toCharArray();
-        String result = "";
+        StringBuilder result = new StringBuilder();
         int i = 0;
 
-        String strCount = "";
+        StringBuilder strCount = new StringBuilder();
 
         while (true) {
             if (chars[i] != '[') {
                 if (chars[i] != ']') {
-                    strCount += chars[i];
+                    strCount.append(chars[i]);
                 }
                 i = i + 1;
             } else {
-                Integer count = Integer.parseInt(strCount);
-                strCount = "";
+                int count = Integer.parseInt(strCount.toString());
+                strCount = new StringBuilder();
 
-                for (int j = 0; j < count; j++) {
-                    result += chars[i + 1];
-                }
+                result.append(String.valueOf(chars[i + 1]).repeat(Math.max(0, count)));
                 i = i + 2;
             }
 
@@ -44,7 +42,7 @@ public class DecodeString {
                 break;
             }
         }
-        return result;
+        return result.toString();
 
     }
 

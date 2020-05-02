@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CherryPickup {
 
-  /*
+  /**
   When user goes forward, collects maximum cherries, there is a possibility that the return path may not cover a total of maximum cherries. We may hve to find a way to optimize the COMBINED paths of forward and backward.
 
   This can be done by moving forward together as 2 users from beginning to end.
@@ -13,7 +13,28 @@ public class CherryPickup {
 
   Caveat : return 1 user's exit and not both's ( thats not even possible )
   > When they are in the same point, cover just 1 cherry, meaning the other won't get it.
+
+
+   дана матрица размера n x n - которая представляет собой поля с вишнями - каждая ячейка
+   - представляет собой одно из трех возможных значений
+
+   * 0 означает, что клетка пуста, так что вы можете пройти;
+   * 1 означает, что клетка содержит вишню, которую вы можете взять и пройти;
+   * -1 означает, что клетка содержит шип, который блокирует ваш путь.
+    
+   наша задача - собрать максимальное число вишен возможных согласно следующим правилам:
+
+
+
+   задача напоминает робота, решаем через динамическое программирование,
+   но тут нам надо РАЗДЕЛЯЕМСЯ НА ДВА ПОТОКА  с мемоизацией пути
+
+   смотрим что будет - рассматриваем разные коомбинации первый пошел вниз второй вправа
+   первый пошел вправо второй вниз и так далее
+
   */
+
+  //сюда будем мемоизировать
   Map<String, Integer> map;
 
   public int cherryPickup(int[][] grid) {
@@ -55,7 +76,8 @@ public class CherryPickup {
       return grid[i1][j1];
     }
 
-    int res; // Combine
+    int res; // вот тут получаем результат это либо просто
+    //grid[i][j]; либо grid[i][j] + grid[i1][j1];
     if (i == i1 && j == j1) { //если 1ый и 2ой чуваки на одинаковом месте стоят
       //то просто возвращаем итый жытый из грида
       res = grid[i][j];

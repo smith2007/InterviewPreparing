@@ -3,6 +3,16 @@ package dynamic_programming;
 public class CoinChange2 {
 
   /**
+   *
+   *
+   *
+   * Вам дают монеты разных номиналов и общую сумму денег. Напишите функцию
+   * для вычисления количества комбинаций, составляющих эту сумму.
+   * Вы можете предположить, что у вас есть бесконечное количество монет каждого вида.
+   *
+   * классическая задача на рюкзак
+   *
+   *
    * You are given coins of different denominations and a total amount of money. Write a function to compute the number of combinations that make up that amount. You may assume that you have infinite number of each kind of coin.
    *
    *
