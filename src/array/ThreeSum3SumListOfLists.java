@@ -5,14 +5,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class ThreeSumListOfLists {
+public class ThreeSum3SumListOfLists {
 
     public static void main(String[] args) {
         int[] arr = {-1, 0, 1, 2, -1, -4};
         int sum = 0;
 
         System.out.println(find3Numbers(arr, sum));
-
     }
 
     static List<List<Integer>> find3Numbers(int[] arr, int sum) {

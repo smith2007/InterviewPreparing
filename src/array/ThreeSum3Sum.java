@@ -2,7 +2,7 @@ package array;
 
 import java.util.HashSet;
 
-public class ThreeSum {
+public class ThreeSum3Sum {
 
     public static void main(String[] args) {
         int[] arr = {1, 4, 45, 6, 10, 8};
