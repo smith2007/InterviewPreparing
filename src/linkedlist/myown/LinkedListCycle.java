@@ -2,48 +2,49 @@ package linkedlist.myown;
 
 public class LinkedListCycle {
 
-    public static void main(String[] args) {
-        ListNode first = new ListNode(1);
+  public static void main(String[] args) {
+    ListNode first = new ListNode(1);
 
-        ListNode second = new ListNode(2);
+    ListNode second = new ListNode(2);
 
-        ListNode third = new ListNode(3);
+    ListNode third = new ListNode(3);
 
-        ListNode fourth = new ListNode(4);
+    ListNode fourth = new ListNode(4);
 
-        ListNode fifth = new ListNode(5);
+    ListNode fifth = new ListNode(5);
 
-        first.setNext(second);
-        second.setNext(third);
+    first.setNext(second);
+    second.setNext(third);
 
-        third.setNext(fourth);
+    third.setNext(fourth);
 
-        fourth.setNext(fifth);
+    fourth.setNext(fifth);
 
-        fifth.setNext(third);
+    fifth.setNext(third);
 
-        System.out.println(is(first));
+    System.out.println(hasCycle(first));
 
+  }
+
+  static boolean hasCycle(ListNode head) {
+    if (head == null || head.next == null) {
+      return false;
     }
 
-    static boolean is(ListNode root) {
+    ListNode slow = head;
+    ListNode fast = head.next;
 
-        ListNode first = root;
-        ListNode second = root;
-        while (true) {
-            first = first.getNext();
-            second = second.getNext();
-            if (second == null) {
-                break;
-            } else {
-                second = second.getNext();
-            }
+    while (true) {
 
-            if (first.equals(second)) {
-                return true;
-            }
-
-        }
+      if (slow == fast) {
+        return true;
+      }
+      if (fast == null || fast.next == null) {
         return false;
+      }
+
+      slow = slow.next;
+      fast = fast.next.next;
     }
+  }
 }

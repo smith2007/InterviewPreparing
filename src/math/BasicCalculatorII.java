@@ -8,6 +8,34 @@ public class BasicCalculatorII {
         //System.out.println(calculate("100000000/1/2/3/4/5/6/7/8/9/10"));
     }
 
+    /**
+     *  а зачем нам вообще лист или стек давай сразу набивать коллектор,
+     *  трекая знак и операцию, набивать надо хитро принимая во внимание
+     *  то что у нас есть умножения и деления, для этого делаем globalSum - некий финальный
+     *  коллектор и tempSum котрый нужен для того что бы набивать умножение или деление и потом
+     *  когда встретится плюс или минус производить сложение или вычитание
+     *
+     * switch (lastSign) {
+     *     case '+':
+     *         globalSum += tempSum;
+     *         tempSum = num;
+     *         break;
+     *     case '-':
+     *         globalSum += tempSum;
+     *         tempSum = -num;
+     *         break;
+     *     case '*':
+     *         tempSum *= num;
+     *         break;
+     *     case '/':
+     *         tempSum /= num;
+     *         break;
+     * }
+     * //в конце каждой итерации мы обновляем последний знак
+     * lastSign = curr;
+     * //и сбрасываем текущий нам
+     * num = 0;
+     */
 
     static int calculate(String str) {
         int globalSum = 0;
