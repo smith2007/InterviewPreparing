@@ -74,8 +74,4 @@ public class SerializeandDeserializeNaryTree {
       this.children = children;
     }
   }
-
-  ;
-
-
 }
